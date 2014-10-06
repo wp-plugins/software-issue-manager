@@ -195,7 +195,7 @@ function sim_com_process_issue_search() {
 		$noresult_msg = __('Your search returned no results.', 'sim-com');
 		return emd_search_php_form('issue_search', 'sim_com', 'emd_issue', $noresult_msg, 'sc_issues');
 	} else {
-		return "<div class='well not-logged-in-msg'>" . __('<p>You are not allowed to access to this area. Please contact the site administrator.</p>', 'sim-com') . "</div>";
+		return "<div class='alert alert-info not-authorized'>" . __('You are not allowed to access to this area. Please contact the site administrator.', 'sim-com') . "</div>";
 	}
 }
 /**
@@ -467,6 +467,6 @@ function sim_com_process_issue_entry() {
 	if ($show_form == 1) {
 		return emd_submit_php_form('issue_entry', 'sim_com', 'emd_issue', 'publish', 'Thanks for your submission.', 'There has been an error when submitting your entry. Please contact the site administrator.', 0, 1);
 	} else {
-		return "<div class='well not-logged-in-msg'>" . __('You are not allowed to access to this area. Please contact the site administrator.', 'sim-com') . "</div>";
+		return "<div class='alert alert-info not-authorized'>" . __('You are not allowed to access to this area. Please contact the site administrator.', 'sim-com') . "</div>";
 	}
 }

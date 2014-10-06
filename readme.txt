@@ -3,48 +3,90 @@ Contributors: emarket-design
 Plugin URI: https://emdplugins.com
 Author URI: https://emarketdesign.com
 Donate link: https://emarketdesign.com/donate-emarket-design/
-Tags: issue management, bug management, task management, product features, software requirements management, wp app studio, wpas, software development
+Tags: bug, bug tracking, issue tracking, defect, defect tracking, issues, issue management, product features tracking, task tracking, software development, software requirements management, task management, wp app studio, wpas, issue tracker, projects, project management, requirements, submit issues, submit bugs, issue manager, todo, project planning, bug tracker, enhancement, feature
 Requires at least: 3.8
 Tested up to: 4.0
-Stable tag: 1.0
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Software Issue Manager allows to track the progress and resolution of every project issue in a productive and efficient way.
 
 == Description ==
-Software Issue Manager community edition helps organize content on projects and issues. Issues are the things you would like to track in your projects. Issues could be tasks, feature requests, bugs or pretty much any thing you need related to your projects.
- 
+Software Issue Manager is bug, issue, task and product feature request tracking system with extensive built-in and custom reporting capabilities. Premium editions are available. 
+
+Issues are the things you would like to track in your projects. Issues could be tasks, feature requests, bugs or pretty much any thing you need related to your projects.
+
 Projects are temporary organizations formed up to produce a final deliverable for project clients. Projects are identified by a name and a version number. Issues can be shared by multiple projects. Community version supports "open" projects which do not require participants to login to WordPress. Premium versions limit access to content by user's role and are appropriate for "closed" projects which require users to login to access content.
 
-= Community edition =
-Software Issue Manager community edition is for developers who work on projects which are open to public. There is no content access limitation. Built-in WordPress roles (based on post access) are used to limit user access capabilities. It allows users create, search, and track issues from the front-end and backend.
-
-One can set issue priority, status, category, and assign tags to better organize issue content. Optionally, browsers and operating system taxonomies are provided as well. The app allows to relate one issue to many projects. For example; issue A could be related to Project B, C, D  which are identified by a name and a version number. You can upload and display links to the issue documents from/on the front-end and admin area.
-
-Issue participants can comment using the WP built-in commenting system. A sidebar widget is also provided to display recent issues. If you are using a well-written, nonintrusive theme, there should not be a need to modify theme files since the app does only change the content area of the frontend and tries to mind its own business in terms of css specificity.
-
-We hope it would be helpful for most developers and designers. For development teams with strict content access requirements, we recommend premium versions.
+= Community Edition Features =
+* For developers who work on projects which are open to public. There is no content access limitation. 
+* Built-in WordPress roles (based on post access) are used to limit user access capabilities in the admin area. 
+* Allows users to create, search, and track issues from the front-end and backend.
+* Set issue priority, status, category, and assign tags to better organize issue content. Optionally, browsers and operating system taxonomies are provided as well.
+* Allows to relate one issue to many projects. For example; issue A could be related to Project B, C, D  which are identified by a name and a version number.
+* Allows upload and display links to the issue documents from/on the front-end and admin area.
+* Issue participants can comment using the WP built-in commenting system.
+* A sidebar widget is also provided to display recent issues. 
+* Responsive, bring your own theme interface.
+* Honeypot + Captcha spam prevention.
+* Cross-site scripting (XSS) prevention mechanism. 
+* Protection against cross-site request forgery (CSRF) attacks.
+* Full localization ready. Translate it to your language.
 
 [Community Edition Documentation](https://docs.emdplugins.com/docs/software-issue-manager-community-documentation/)
 
-= Pro edition =
-Pro edition is for development teams who work on "closed projects" which require membership. This edition adds "Member" entity to store development team member information. "Project manager" and "Client" custom roles are provided for members. Clients can access self-reported, project manager assigned, and the issues that they are allowed to participate. Clients can not access member detail profiles. Clients can only submit issues pending project manager approval. Project managers are developers and/or designers who work together to serve clients. There is no hierarchy among project managers in terms of content access. Project managers can access and edit any issue.
- 
-The app includes a system-wide app dashboard, a custom commenting system for projects and issues, a set of custom notifications, contextually colored responsive interface and extensive documentation as well as full single, taxonomy, and archive views. Please refer the plugin page below for more information and demo:
+= Pro Edition Features =
+* For development teams who work on "closed projects" which require membership.
+* Search, sort, filter, and save most used filters for issues. (frontend/backend)
+* Search, sort, filter, and save most used filters for projects. (frontend/backend)
+* Search, sort, filter, and save most used filters for members. (frontend/backend)
+* Client area:  Clients can access self-reported, project manager assigned, and the issues that they are allowed to participate. Clients can not access member detail profiles. Clients can only submit issues pending project manager approval.
+* Project manager area:  There is no hierarchy among project managers in terms of content access. Project managers can access and edit any issue.
+* Provides a system-wide app dashboard page which has built-in reports and charts
+* Provides a custom commenting system for issues. Comments are only accessible to users who have access rights.
+* Ajax-enabled issue entry and issue search forms
+* Ajax-enabled project entry and project search forms
+* Ajax-enabled member entry and member search forms
+* New Issue Notification, emails are customizable with attributes.
+* Issue Updated Notification, emails are customizable with attributes.
+* Issue Comment Addition Notification, emails are customizable with attributes.
+* Contextually colored responsive, bring your own theme interface.
+* Full localization ready. Translate it to your language.
+* Full single, taxonomy, and archive views.
+* Cross-site scripting (XSS) prevention mechanism.
+* Protection against cross-site request forgery (CSRF) attacks.
+* [Extensive documentation](https://docs.emdplugins.com/docs/software-issue-manager-professional-documentation/).
+* [Full demo is available] (https://pro.emdplugins.com/demos/software-issue-manager-professional-demo/).
+* Many more features, not listed here. Check the plugin page for details:
 
 [Pro Edition](https://emdplugins.com/plugins/software-issue-manager-professional/)
-
-= Enterprise edition =
-Enterprise edition is for multiple "closed" project teams whose members may hold different organizational roles such analyst, developer, sponsor etc. App membership is required and content access is strictly enforced in manager, member, and client areas.
-
-Enterprise edition provides 360-degree issue management, custom reporting and commenting module, individual member and project dashboards, a system-wide dashboard with 23 widgets, 14 customizable notification events, and many more advanced features in addition to intuitive contextually colored, responsive frontend and backend user interface with interlink menu system. Please refer the plugin page below for more information and demo:
+ 
+= Enterprise Edition Features =
+* Most advanced and fully featured WordPress app ever built for Issue Management.
+* For agencies, consulting firms, or matrix organizations.
+* Client area with dashboard.
+* Project manager area with dashboard.
+* Team member area with dashboard.
+* Content access strictly limited based on organizational role (frontend/backend).
+* For multiple "closed" project teams whose members may hold different organizational roles such analyst, developer, sponsor etc. App membership is required and content access is strictly enforced in manager, member, and client areas.
+* Provides 360-degree issue management
+* Custom reporting and commenting module for members, issues and projects.
+* Individual member and project dashboards.
+* A system-wide dashboard with 23 widgets.
+* 14 customizable notification events.
+* Intuitive contextually colored, responsive, bring your own theme interface with interlink menu system.
+* [Extensive documentation](https://docs.emdplugins.com/docs/software-issue-manager-enterprise-documentation/).
+* [Full demo is available] (https://ent.emdplugins.com/demos/software-issue-manager-enterprise-demo/).
+* Many more features, not listed here. Check the plugin page for details:
 
 [Enterprise Edition](https://emdplugins.com/plugins/software-issue-manager-enterprise/)
 
 = Customization =
 
-This app as well as premium versions are built with Wp App Studio 4.0 WordPress Development Platform and can be fully customized. Community edition app signature is provided upon request. For premium edition customizations, please contact us @ emarketdesign.com. 
+* All editions are built with [Wp App Studio](https://wordpress.org/plugins/wp-app-studio/) 4.0 WordPress Development Platform and can be fully customized.
+* Community edition app signature is provided upon request.
+* For premium edition customizations, please contact us @ emarketdesign.com. 
 
 == Installation ==
 
@@ -80,9 +122,17 @@ The simplest way to install is to click on 'Plugins' then 'Add' and type 'Softwa
 8. Displays Project single page on the frontend
 
 == Changelog ==
+= 1.0.1 =
+* Fixed some minor Css issues
+* Removed access limitation on Recent Issues widget. It is accessible to visitors (public) now.
+* Added a new list icon for WP plugin page.
 = 1.0 =
 * Initial release.
 
 == Upgrade Notice ==
+= 1.0.1 =
+* Fixed some minor Css issues
+* Removed access limitation on Recent Issues widget. It is accessible to visitors (public) now.
+* Added a new list icon for WP plugin page.
 = 1.0 =
 * Initial release.

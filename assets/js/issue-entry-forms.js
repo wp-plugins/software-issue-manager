@@ -37,7 +37,10 @@ onkeyup: false,
 onclick: false,
 errorClass: 'text-danger',
 rules: {
-  'issue_priority':{
+  'rel_project_issues[]':{
+required:true,
+},
+'issue_priority':{
 required:true,
 },
 'issue_status':{
@@ -54,9 +57,6 @@ required:false,
 },
 'operating_system[]':{
 required:false,
-},
-'rel_project_issues[]':{
-required:true,
 },
 blt_title : {
 required  : true,

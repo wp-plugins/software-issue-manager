@@ -28,8 +28,19 @@ margin-bottom: 20px;
 margin-top: 20px;
 padding-right:5px;
 }
+input[type="file"], input[type="image"], input[type="color"] {
+font-size: 16px;
+}
 div.emd-container .text-danger{
 color:red;
+}
+div.emd-container input[type=text],
+div.emd-container textarea,
+div.emd-container input[type=password] {
+-ms-box-sizing: border-box;
+-webkit-box-sizing : border-box;
+-moz-box-sizing : border-box;
+box-sizing : border-box;
 }
 div.emd-container .text-success{
 color:green;
@@ -38,6 +49,8 @@ div.emd-container .field-icons{
 font-size:12px;
 margin-left:2px;
 margin-right:2px;
+}
+div.emd-container  a.helptip{
 text-decoration: none;
 }
 @font-face {
@@ -82,10 +95,7 @@ div.emd-container #singlebutton_issue_search {
     border-radius: 4px 4px 4px 4px ;
     cursor: pointer ;
     display: inline-block;
-    border-radius: 6px 6px 6px 6px ;
-font-size: 18px ;
-line-height: 1.33 ;
-padding: 10px 16px ;
+    border-radius: 6px 6px 6px 6px ;font-size: 18px ;line-height: 1.33 ;padding: 10px 16px ;
     font-weight: normal;
     padding: 6px 12px ;
     text-align: center;
@@ -146,11 +156,4 @@ padding:0px !important;
 position: absolute;
 left: 50px;
 top: 50px;
-}
-input[type=text],
-input[type=password] {
-...
--webkit-box-sizing : border-box;<200c><200b>
--moz-box-sizing : border-box;
-box-sizing : border-box;
 }

@@ -21,16 +21,16 @@ onkeyup: false,
 onclick: false,
 errorClass: 'text-danger',
 rules: {
-  'issue_priority':{
+  'rel_project_issues[]':{
+required:false,
+},
+'issue_priority':{
 required:false,
 },
 'issue_status':{
 required:false,
 },
 'issue_cat':{
-required:false,
-},
-'rel_project_issues[]':{
 required:false,
 },
 emd_iss_id : {

@@ -46,6 +46,7 @@ class sim_com_recent_issues_sidebar_widget extends Emd_Widget {
 		return $layout;
 	}
 }
-if (current_user_can('edit_emd_issues')) {
+$access_views = get_option('sim_com_access_views', Array());
+if ((empty($access_views['widgets']) && !current_user_can('view_recent_issues_sidebar')) || (!empty($access_views['widgets']) && in_array('recent_issues_sidebar', $access_views['widgets']) && current_user_can('view_recent_issues_sidebar'))) {
 	register_widget('sim_com_recent_issues_sidebar_widget');
 }
