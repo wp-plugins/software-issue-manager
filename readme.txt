@@ -57,7 +57,7 @@ Projects are temporary organizations formed up to produce a final deliverable fo
 * Cross-site scripting (XSS) prevention mechanism.
 * Protection against cross-site request forgery (CSRF) attacks.
 * [Extensive documentation](https://docs.emdplugins.com/docs/software-issue-manager-professional-documentation/).
-* [Full demo is available] (https://pro.emdplugins.com/demos/software-issue-manager-professional-demo/).
+* [Full demo is available](https://pro.emdplugins.com/demos/software-issue-manager-professional-demo/).
 * Many more features, not listed here. Check the plugin page for details:
 
 [Pro Edition](https://emdplugins.com/plugins/software-issue-manager-professional/)
@@ -77,7 +77,7 @@ Projects are temporary organizations formed up to produce a final deliverable fo
 * 14 customizable notification events.
 * Intuitive contextually colored, responsive, bring your own theme interface with interlink menu system.
 * [Extensive documentation](https://docs.emdplugins.com/docs/software-issue-manager-enterprise-documentation/).
-* [Full demo is available] (https://ent.emdplugins.com/demos/software-issue-manager-enterprise-demo/).
+* [Full demo is available](https://ent.emdplugins.com/demos/software-issue-manager-enterprise-demo/).
 * Many more features, not listed here. Check the plugin page for details:
 
 [Enterprise Edition](https://emdplugins.com/plugins/software-issue-manager-enterprise/)
