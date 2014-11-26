@@ -12,19 +12,6 @@ if (!empty($blt_content)) { ?>
    </div>
 <?php
 } ?>
-<?php $emd_iss_due_date = rwmb_meta('emd_iss_due_date');
-if (!empty($emd_iss_due_date)) {
-	$emd_iss_due_date = emd_translate_date_format($ent_attrs['emd_issue']['emd_iss_due_date'], $emd_iss_due_date, 1);
-?>
-   <div id="emd-issue-emd-iss-due-date-div" class="emd-single-div">
-   <div id="emd-issue-emd-iss-due-date-key" class="emd-single-title">
-   <?php _e('Due Date', 'sim-com'); ?>
-   </div>
-   <div id="emd-issue-emd-iss-due-date-val" class="emd-single-val">
-   <?php echo esc_html($emd_iss_due_date); ?>
-   </div></div>
-<?php
-} ?>
 <?php
 $emd_iss_id = rwmb_meta('emd_iss_id');
 if (!empty($emd_iss_id)) { ?>
@@ -49,6 +36,19 @@ if (!empty($emd_iss_resolution_summary)) { ?>
 <?php echo $emd_iss_resolution_summary; ?>
    </div>
    </div>
+<?php
+} ?>
+<?php $emd_iss_due_date = rwmb_meta('emd_iss_due_date');
+if (!empty($emd_iss_due_date)) {
+	$emd_iss_due_date = emd_translate_date_format($ent_attrs['emd_issue']['emd_iss_due_date'], $emd_iss_due_date, 1);
+?>
+   <div id="emd-issue-emd-iss-due-date-div" class="emd-single-div">
+   <div id="emd-issue-emd-iss-due-date-key" class="emd-single-title">
+   <?php _e('Due Date', 'sim-com'); ?>
+   </div>
+   <div id="emd-issue-emd-iss-due-date-val" class="emd-single-val">
+   <?php echo esc_html($emd_iss_due_date); ?>
+   </div></div>
 <?php
 } ?>
 <?php $rwmb_file = rwmb_meta('emd_iss_document', 'type=file');

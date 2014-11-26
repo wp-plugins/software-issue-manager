@@ -5,7 +5,7 @@
  * Uninstalling deletes notifications and terms initializations
  *
  * @package SIM_COM
- * @version 1.0.0
+ * @version 1.0.2
  * @since WPAS 4.0
  */
 if (!defined('WP_UNINSTALL_PLUGIN')) exit;
@@ -20,6 +20,7 @@ function sim_com_uninstall() {
 		'sim_com_tax_list',
 		'sim_com_rel_list',
 		'sim_com_license_key',
+		'sim_com_license_status',
 		'sim_com_comment_list',
 		'sim_com_access_views',
 		'sim_com_limitby_auth_caps',

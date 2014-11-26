@@ -3,7 +3,7 @@
  * Entity Class
  *
  * @package SIM_COM
- * @version 1.0.0
+ * @version 1.0.2
  * @since WPAS 4.0
  */
 if (!defined('ABSPATH')) exit;
@@ -449,6 +449,7 @@ class Emd_Project extends Emd_Entity {
 			'name' => 'project_issues',
 			'from' => 'emd_project',
 			'to' => 'emd_issue',
+			'sortable' => 'any',
 			'reciprocal' => false,
 			'cardinality' => 'many-to-many',
 			'title' => array(

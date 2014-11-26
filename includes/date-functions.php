@@ -71,9 +71,13 @@ function emd_translate_date_format($myfield_opt, $meta_value, $reverse = 0) {
 				return $meta_value;
 		}
 		if ($reverse == 1) {
-			return DateTime::createFromFormat($data_format, $meta_value)->format($new_format);
+			if(DateTime::createFromFormat($data_format, $meta_value)){
+				return DateTime::createFromFormat($data_format, $meta_value)->format($new_format);
+			}
 		} else {
-			return DateTime::createFromFormat($new_format, $meta_value)->format($data_format);
+			if(DateTime::createFromFormat($new_format, $meta_value)){
+				return DateTime::createFromFormat($new_format, $meta_value)->format($data_format);
+			}
 		}
 	}
 	return $meta_value;

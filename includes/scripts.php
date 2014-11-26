@@ -3,7 +3,7 @@
  * Enqueue Scripts Functions
  *
  * @package SIM_COM
- * @version 1.0.0
+ * @version 1.0.2
  * @since WPAS 4.0
  */
 if (!defined('ABSPATH')) exit;
@@ -16,6 +16,7 @@ add_action('admin_enqueue_scripts', 'sim_com_load_admin_enq');
  *
  */
 function sim_com_load_admin_enq($hook) {
+	wp_enqueue_script('emd-share', SIM_COM_PLUGIN_URL . 'assets/js/emd-share.js', '', SIM_COM_VERSION, true);
 	if ($hook == 'settings_page_sim_com_settings') {
 		wp_enqueue_script('accordion');
 		return;

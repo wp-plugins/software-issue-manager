@@ -64,7 +64,7 @@ class Emd_Entity {
 		if (defined('DOING_AJAX') && DOING_AJAX) return;
 		if ($this->maybe_show_tabs()) {
 			$fname = str_replace("_", "-", $this->post_type);
-			$inc_file = plugin_dir_path(__FILE__) . '/' . $fname . '-tabs.php';
+			$inc_file = constant(strtoupper(str_replace("-", "_", $this->textdomain)) . "_PLUGIN_DIR") . '/includes/entities/' . $fname . '-tabs.php';
 			if (file_exists($inc_file)) {
 				require_once $inc_file;
 			}

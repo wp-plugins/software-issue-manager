@@ -12,6 +12,32 @@ if (!empty($blt_content)) { ?>
    </div>
 <?php
 } ?>
+<?php
+$emd_prj_name = rwmb_meta('emd_prj_name');
+if (!empty($emd_prj_name)) { ?>
+   <div id="emd-project-emd-prj-name-div" class="emd-single-div">
+   <div id="emd-project-emd-prj-name-key" class="emd-single-title">
+<?php _e('Name', 'sim-com'); ?>
+   </div>
+   <div id="emd-project-emd-prj-name-val" class="emd-single-val">
+<?php echo $emd_prj_name; ?>
+   </div>
+   </div>
+<?php
+} ?>
+<?php
+$emd_prj_version = rwmb_meta('emd_prj_version');
+if (!empty($emd_prj_version)) { ?>
+   <div id="emd-project-emd-prj-version-div" class="emd-single-div">
+   <div id="emd-project-emd-prj-version-key" class="emd-single-title">
+<?php _e('Version', 'sim-com'); ?>
+   </div>
+   <div id="emd-project-emd-prj-version-val" class="emd-single-val">
+<?php echo $emd_prj_version; ?>
+   </div>
+   </div>
+<?php
+} ?>
 <?php $emd_prj_start_date = rwmb_meta('emd_prj_start_date');
 if (!empty($emd_prj_start_date)) {
 	$emd_prj_start_date = emd_translate_date_format($ent_attrs['emd_project']['emd_prj_start_date'], $emd_prj_start_date, 1);
@@ -49,32 +75,6 @@ if (!empty($emd_prj_actual_end_date)) {
    <div id="emd-project-emd-prj-actual-end-date-val" class="emd-single-val">
    <?php echo esc_html($emd_prj_actual_end_date); ?>
    </div></div>
-<?php
-} ?>
-<?php
-$emd_prj_name = rwmb_meta('emd_prj_name');
-if (!empty($emd_prj_name)) { ?>
-   <div id="emd-project-emd-prj-name-div" class="emd-single-div">
-   <div id="emd-project-emd-prj-name-key" class="emd-single-title">
-<?php _e('Name', 'sim-com'); ?>
-   </div>
-   <div id="emd-project-emd-prj-name-val" class="emd-single-val">
-<?php echo $emd_prj_name; ?>
-   </div>
-   </div>
-<?php
-} ?>
-<?php
-$emd_prj_version = rwmb_meta('emd_prj_version');
-if (!empty($emd_prj_version)) { ?>
-   <div id="emd-project-emd-prj-version-div" class="emd-single-div">
-   <div id="emd-project-emd-prj-version-key" class="emd-single-title">
-<?php _e('Version', 'sim-com'); ?>
-   </div>
-   <div id="emd-project-emd-prj-version-val" class="emd-single-val">
-<?php echo $emd_prj_version; ?>
-   </div>
-   </div>
 <?php
 } ?>
 <?php $rwmb_file = rwmb_meta('emd_prj_file', 'type=file');

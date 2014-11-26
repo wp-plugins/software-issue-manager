@@ -21,7 +21,11 @@ if (!defined('ABSPATH')) exit;
 function emd_shc_get_layout_list($atts, $args, $args_default, $fields) {
 	//fields -- app , class, shc , form, has_pages , pageno, theme
 	if ($fields['has_pages'] && empty($args)) {
-		if (get_query_var('pageno')) $fields['pageno'] = get_query_var('pageno');
+		if (is_front_page() && get_query_var('pagename') == get_post(get_query_var('page_id'))->post_name) {
+			$fields['pageno'] = get_query_var('paged');
+		} else {
+			if (get_query_var('pageno')) $fields['pageno'] = get_query_var('pageno');
+		}
 	}
 	if (empty($args)) {
 		if (is_array($atts) && !empty($atts['filter'])) {
@@ -50,22 +54,27 @@ function emd_shc_get_layout_list($atts, $args, $args_default, $fields) {
 		<input type='hidden' id='emd_entity' name='emd_entity' value='<?php echo esc_attr($fields['class']); ?>'>
 		<input type='hidden' id='emd_view' name='emd_view' value='<?php echo esc_attr($fields['shc']); ?>'>
 		<input type='hidden' id='emd_app' name='emd_app' value='<?php echo esc_attr($fields['app']); ?>'>
-		<?php emd_get_template_part($fields['app'], 'shc', str_replace('_', '-', $fields['shc']) . "-header"); ?>
-		<?php $res_posts = Array();
+		<?php
+		emd_get_template_part($fields['app'], 'shc', str_replace('_', '-', $fields['shc']) . "-header");
+		$res_posts = Array();
 		while ($myshc_query->have_posts()) {
 			$myshc_query->the_post();
 			$in_post_id = get_the_ID();
 			if (!in_array($in_post_id, $res_posts)) {
-				$res_posts[] = $in_post_id; ?>
-                <?php emd_get_template_part($fields['app'], 'shc', str_replace('_', '-', $fields['shc']) . "-content"); ?>
-		<?php
+				$res_posts[] = $in_post_id;
+				emd_get_template_part($fields['app'], 'shc', str_replace('_', '-', $fields['shc']) . "-content");
 			}
-		} ?>
-		<?php emd_get_template_part($fields['app'], 'shc', str_replace('_', '-', $fields['shc']) . "-footer"); ?>
-		<?php if ($fields['has_pages'] && $myshc_query->max_num_pages > 1) {
+		}
+		wp_reset_postdata();
+		emd_get_template_part($fields['app'], 'shc', str_replace('_', '-', $fields['shc']) . "-footer");
+		if ($fields['has_pages'] && $myshc_query->max_num_pages > 1) {
 			global $wp_rewrite;
 			if ($wp_rewrite->using_permalinks()) {
-				$base = '/' . get_query_var('pagename') . '/pageno/%#%/';
+				if (is_front_page()) {
+					$base = '/' . get_post(get_query_var('page_id'))->post_name . '/page/%#%/';
+				} else {
+					$base = '/' . get_query_var('pagename') . '/pageno/%#%/';
+				}
 			} else {
 				$base = '/?page_id=' . get_query_var('page_id') . '&pageno=%#%';
 			}
@@ -83,7 +92,7 @@ function emd_shc_get_layout_list($atts, $args, $args_default, $fields) {
 		<?php
 		} ?>
 		</div>
-		<?php wp_reset_postdata();
+		<?php
 		$layout = ob_get_clean();
 		return $layout;
 	}

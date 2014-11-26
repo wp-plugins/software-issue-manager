@@ -3,7 +3,7 @@
  * Entity Widget Classes
  *
  * @package SIM_COM
- * @version 1.0.0
+ * @version 1.0.2
  * @since WPAS 4.0
  */
 if (!defined('ABSPATH')) exit;
@@ -47,6 +47,6 @@ class sim_com_recent_issues_sidebar_widget extends Emd_Widget {
 	}
 }
 $access_views = get_option('sim_com_access_views', Array());
-if ((empty($access_views['widgets']) && !current_user_can('view_recent_issues_sidebar')) || (!empty($access_views['widgets']) && in_array('recent_issues_sidebar', $access_views['widgets']) && current_user_can('view_recent_issues_sidebar'))) {
+if (empty($access_views['widgets']) || (!empty($access_views['widgets']) && in_array('recent_issues_sidebar', $access_views['widgets']) && current_user_can('view_recent_issues_sidebar'))) {
 	register_widget('sim_com_recent_issues_sidebar_widget');
 }

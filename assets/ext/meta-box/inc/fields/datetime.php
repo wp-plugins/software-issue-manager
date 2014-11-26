@@ -67,10 +67,12 @@ if ( !class_exists( 'RWMB_Datetime_Field' ) )
                                 {
                                         $getformat = 'Y-m-d H:i:s';
                                 }
-                                $meta = DateTime::createFromFormat($getformat,$meta)->format(self::translate_format($field));
+				if(DateTime::createFromFormat($getformat,$meta)){
+                                	$meta = DateTime::createFromFormat($getformat,$meta)->format(self::translate_format($field));
+				}
                         }
                         return sprintf(
-                                '<input type="text" class="rwmb-datetime" name="%s" value="%s" id="%s" size="%s" data-options="%s" />',
+                                '<input type="text" class="rwmb-datetime" name="%s" value="%s" id="%s" size="%s" data-options="%s" readonly/>',
                                 $field['field_name'],
                                 $meta,
                                 isset( $field['clone'] ) && $field['clone'] ? '' : $field['id'],
@@ -157,8 +159,10 @@ if ( !class_exists( 'RWMB_Datetime_Field' ) )
                         {
                                 $getformat = 'Y-m-d H:i:s';
                         }
-                        $new = DateTime::createFromFormat(self::translate_format($field), $new)->format($getformat);
-                        update_post_meta( $post_id, $name, $new );
+			if(DateTime::createFromFormat(self::translate_format($field), $new)){
+                        	$new = DateTime::createFromFormat(self::translate_format($field), $new)->format($getformat);
+                        	update_post_meta( $post_id, $name, $new );
+			}
                 }
 	}
 }

@@ -2,7 +2,7 @@
 /**
  * Setup and Process submit and search forms
  * @package SIM_COM
- * @version 1.0.0
+ * @version 1.0.2
  * @since WPAS 4.0
  */
 if (!defined('ABSPATH')) exit;
@@ -195,7 +195,7 @@ function sim_com_process_issue_search() {
 		$noresult_msg = __('Your search returned no results.', 'sim-com');
 		return emd_search_php_form('issue_search', 'sim_com', 'emd_issue', $noresult_msg, 'sc_issues');
 	} else {
-		return "<div class='alert alert-info not-authorized'>" . __('You are not allowed to access to this area. Please contact the site administrator.', 'sim-com') . "</div>";
+		return "<div class='alert alert-info not-authorized'>" . __('<p>You are not allowed to access to this area. Please contact the site administrator.</p>', 'sim-com') . "</div>";
 	}
 }
 /**

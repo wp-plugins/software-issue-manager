@@ -7,8 +7,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2014-10-05T22:01:13-04:00\n"
-"POT-Creation-Date: 2014-10-05T22:01:13-04:00\n"
+"PO-Revision-Date: 2014-11-26T15:07:22-05:00\n"
+"POT-Creation-Date: 2014-11-26T15:07:22-05:00\n"
 
 #: software-issue-manager/forms/issue-entry.php:9
 msgid "<p>Use this <em>form</em> to file <em>issues</em> about projects.</p>"
@@ -135,7 +135,7 @@ msgid "Sets a unique identifier for an issue."
 msgstr ""
 
 #: software-issue-manager/includes/admin/glossary.php:18
-msgid "Software Issue Manager allows to track the progress and resolution of every project issue in a productive and efficient way."
+msgid "Software Issue Manager allows to track the resolution of every project issue in a productive and efficient way."
 msgstr ""
 
 #: software-issue-manager/includes/admin/glossary.php:19
@@ -699,15 +699,34 @@ msgstr ""
 msgid "Operating Systems"
 msgstr ""
 
-#: software-issue-manager/includes/class-install-deactivate.php:570
+#: software-issue-manager/includes/class-install-deactivate.php:605
+#: software-issue-manager/includes/class-install-deactivate.php:617
+#: software-issue-manager/includes/class-install-deactivate.php:629
+msgid "Dismiss"
+msgstr ""
+
+#: software-issue-manager/includes/class-install-deactivate.php:617
+msgid "New To Software Issue Manager? Review the documentation!"
+msgstr ""
+
+#: software-issue-manager/includes/class-install-deactivate.php:617
+#: software-issue-manager/includes/class-install-deactivate.php:629
+msgid "&#187;"
+msgstr ""
+
+#: software-issue-manager/includes/class-install-deactivate.php:629
+msgid "Upgrade to Professional Version for just $49.99! Use Coupon Code SIMCOM"
+msgstr ""
+
+#: software-issue-manager/includes/class-install-deactivate.php:635
 msgid "Welcome to Software Issue Manager"
 msgstr ""
 
-#: software-issue-manager/includes/class-install-deactivate.php:571
+#: software-issue-manager/includes/class-install-deactivate.php:636
 msgid "Setup Software Issue Manager Pages"
 msgstr ""
 
-#: software-issue-manager/includes/class-install-deactivate.php:571
+#: software-issue-manager/includes/class-install-deactivate.php:636
 msgid "Skip setup"
 msgstr ""
 
@@ -995,7 +1014,7 @@ msgstr ""
 
 #: software-issue-manager/includes/entities/class-emd-project.php:176
 #: software-issue-manager/includes/entities/class-emd-project.php:333
-#: software-issue-manager/includes/entities/class-emd-project.php:459
+#: software-issue-manager/includes/entities/class-emd-project.php:460
 msgid "Project"
 msgstr ""
 
@@ -1020,7 +1039,7 @@ msgid "View Project"
 msgstr ""
 
 #: software-issue-manager/includes/entities/class-emd-project.php:183
-#: software-issue-manager/includes/entities/class-emd-project.php:460
+#: software-issue-manager/includes/entities/class-emd-project.php:461
 msgid "Search Projects"
 msgstr ""
 
@@ -1060,11 +1079,11 @@ msgstr ""
 msgid "Allows to upload project related files."
 msgstr ""
 
-#: software-issue-manager/includes/entities/class-emd-project.php:461
+#: software-issue-manager/includes/entities/class-emd-project.php:462
 msgid "No Projects found."
 msgstr ""
 
-#: software-issue-manager/includes/entities/class-emd-project.php:466
+#: software-issue-manager/includes/entities/class-emd-project.php:467
 msgid "No Issues found."
 msgstr ""
 
@@ -1117,7 +1136,7 @@ msgid "Your search returned no results."
 msgstr ""
 
 #: software-issue-manager/includes/forms.php:198
-msgid "You are not allowed to access to this area. Please contact the site administrator."
+msgid "<p>You are not allowed to access to this area. Please contact the site administrator.</p>"
 msgstr ""
 
 #: software-issue-manager/includes/forms.php:229
@@ -1152,72 +1171,72 @@ msgstr ""
 msgid "You are not allowed to access to this area. Please contact the site administrator."
 msgstr ""
 
-#: software-issue-manager/includes/scripts.php:33
-#: software-issue-manager/includes/scripts.php:91
+#: software-issue-manager/includes/scripts.php:34
+#: software-issue-manager/includes/scripts.php:92
 msgid "Please enter a unique value."
 msgstr ""
 
-#: software-issue-manager/includes/scripts.php:75
+#: software-issue-manager/includes/scripts.php:76
 msgid "This field is required."
 msgstr ""
 
-#: software-issue-manager/includes/scripts.php:76
+#: software-issue-manager/includes/scripts.php:77
 msgid "Please fix this field."
 msgstr ""
 
-#: software-issue-manager/includes/scripts.php:77
+#: software-issue-manager/includes/scripts.php:78
 msgid "Please enter a valid email address."
 msgstr ""
 
-#: software-issue-manager/includes/scripts.php:78
+#: software-issue-manager/includes/scripts.php:79
 msgid "Please enter a valid URL."
 msgstr ""
 
-#: software-issue-manager/includes/scripts.php:79
+#: software-issue-manager/includes/scripts.php:80
 msgid "Please enter a valid date."
 msgstr ""
 
-#: software-issue-manager/includes/scripts.php:80
+#: software-issue-manager/includes/scripts.php:81
 msgid "Please enter a valid date ( ISO )"
 msgstr ""
 
-#: software-issue-manager/includes/scripts.php:81
+#: software-issue-manager/includes/scripts.php:82
 msgid "Please enter a valid number."
 msgstr ""
 
-#: software-issue-manager/includes/scripts.php:82
+#: software-issue-manager/includes/scripts.php:83
 msgid "Please enter only digits."
 msgstr ""
 
-#: software-issue-manager/includes/scripts.php:83
+#: software-issue-manager/includes/scripts.php:84
 msgid "Please enter a valid credit card number."
 msgstr ""
 
-#: software-issue-manager/includes/scripts.php:84
+#: software-issue-manager/includes/scripts.php:85
 msgid "Please enter the same value again."
 msgstr ""
 
-#: software-issue-manager/includes/scripts.php:85
+#: software-issue-manager/includes/scripts.php:86
 msgid "Please enter no more than {0} characters."
 msgstr ""
 
-#: software-issue-manager/includes/scripts.php:86
+#: software-issue-manager/includes/scripts.php:87
 msgid "Please enter at least {0} characters."
 msgstr ""
 
-#: software-issue-manager/includes/scripts.php:87
+#: software-issue-manager/includes/scripts.php:88
 msgid "Please enter a value between {0} and {1} characters long."
 msgstr ""
 
-#: software-issue-manager/includes/scripts.php:88
+#: software-issue-manager/includes/scripts.php:89
 msgid "Please enter a value between {0} and {1}."
 msgstr ""
 
-#: software-issue-manager/includes/scripts.php:89
+#: software-issue-manager/includes/scripts.php:90
 msgid "Please enter a value less than or equal to {0}."
 msgstr ""
 
-#: software-issue-manager/includes/scripts.php:90
+#: software-issue-manager/includes/scripts.php:91
 msgid "Please enter a value greater than or equal to {0}."
 msgstr ""
 

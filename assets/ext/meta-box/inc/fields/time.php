@@ -13,22 +13,10 @@ if ( ! class_exists( 'RWMB_Time_Field' ) )
 		 */
 		static function admin_enqueue_scripts( )
 		{
-			/*$url = RWMB_CSS_URL . 'jqueryui';
-			wp_register_style( 'jquery-ui-core', "{$url}/jquery.ui.core.css", array(), '1.8.17' );
-			wp_register_style( 'jquery-ui-theme', "{$url}/jquery.ui.theme.css", array(), '1.8.17' );
-			wp_register_style( 'jquery-ui-datepicker', "{$url}/jquery.ui.datepicker.css", array( 'jquery-ui-core', 'jquery-ui-theme' ), '1.8.17' );
-			wp_register_style( 'jquery-ui-slider', "{$url}/jquery.ui.slider.css", array( 'jquery-ui-core', 'jquery-ui-theme' ), '1.8.17' );
-			wp_enqueue_style( 'jquery-ui-timepicker', "{$url}/jquery-ui-timepicker-addon.css", array( 'jquery-ui-datepicker', 'jquery-ui-slider' ), '0.9.7' );
-
-			*/
 			$url = RWMB_JS_URL . 'jqueryui';
 			wp_register_script( 'jquery-ui-timepicker', "{$url}/jquery-ui-timepicker-addon.js", array( 'jquery-ui-datepicker', 'jquery-ui-slider' ), '0.9.7', true );
 
-			/*$locale = str_replace( '_', '-', get_locale() );
-			wp_register_script( 'jquery-ui-timepicker-i18n', "{$url}/timepicker-i18n/jquery-ui-timepicker-{$locale}.js", array( 'jquery-ui-timepicker' ), '0.9.7', true );
-*/
 			wp_enqueue_script( 'rwmb-time', RWMB_JS_URL.'time.js', array( 'jquery-ui-timepicker' ), RWMB_VER, true );
-			//wp_localize_script( 'rwmb-time', 'RWMB_Timepicker', array( 'lang' => $locale ) );
 		}
 
 		/**
@@ -51,10 +39,12 @@ if ( ! class_exists( 'RWMB_Time_Field' ) )
                                 {
                                         $getformat = 'H:i:s';
                                 }
-                                $meta = DateTime::createFromFormat($getformat,$meta)->format(self::translate_format($field));
+				if(DateTime::createFromFormat($getformat,$meta)){
+                                	$meta = DateTime::createFromFormat($getformat,$meta)->format(self::translate_format($field));
+				}
                         }
                         return sprintf(
-                                '<input type="text" class="rwmb-time" name="%s" value="%s" id="%s" size="%s" data-options="%s" />',
+                                '<input type="text" class="rwmb-time" name="%s" value="%s" id="%s" size="%s" data-options="%s" readonly/>',
                                 $field['field_name'],
                                 $meta,
                                 isset( $field['clone'] ) && $field['clone'] ? '' : $field['id'],
@@ -112,8 +102,10 @@ if ( ! class_exists( 'RWMB_Time_Field' ) )
                         {
                                 $getformat = 'H:i:s';
                         }
-                        $new = DateTime::createFromFormat(self::translate_format($field), $new)->format($getformat);
-                        update_post_meta( $post_id, $name, $new );
+			if(DateTime::createFromFormat(self::translate_format($field), $new)){
+				$new = DateTime::createFromFormat(self::translate_format($field), $new)->format($getformat);
+                        	update_post_meta( $post_id, $name, $new );
+			}
                 }
 	}
 }

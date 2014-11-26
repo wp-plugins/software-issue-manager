@@ -547,7 +547,8 @@ function emd_submit_form($myapp, $myentity, $post_status, $form) {
 	}
 	$entity_post['post_type'] = $myentity;
 	$entity_post['post_author'] = $current_user_id;
-	if (current_user_can('edit_published_' . $myentity . 's')) {
+	$published_cap = get_post_type_object($myentity)->cap->edit_published_posts;
+        if (current_user_can($published_cap)) {
 		$entity_post['post_status'] = $post_status;
 	}
 	if (!empty($blts)) {

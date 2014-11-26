@@ -8,7 +8,7 @@ jQuery( document ).ready( function( $ )
 		if ( v['required'] )
 		{
 			//$( '#' + k ).parent().siblings( '.rwmb-label' ).addClass( 'required' ).append( '<span>*</span>' );
-                         $('input[name='+k+'],select[name='+k+']').parent().parent().parent().find('label[for='+k+']').parent().addClass( 'required' ).append( '<span>*</span>' );
+			$('input[name='+k+'],select[name='+k+'],textarea[name='+k+']').parents().find('label[for='+k+']').parent().addClass( 'required' ).append( '<span>*</span>' );
 		}
 	} );
 

@@ -2,8 +2,8 @@
 /** 
  * Plugin Name: Software Issue Manager
  * Plugin URI: http://emdplugins.com
- * Description: Software Issue Manager allows to track the progress and resolution of every project issue in a productive and efficient way.
- * Version: 1.0.0
+ * Description: Software Issue Manager allows to track the resolution of every project issue in a productive and efficient way.
+ * Version: 1.0.2
  * Author: eMarket Design
  * Author URI: http://emarketdesign.com
  * Text Domain: sim-com
@@ -11,7 +11,7 @@
  * @since WPAS 4.0
  */
 /*
-This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License, version 2, as published by the Free Software Foundation. This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+STANDARD
 */
 if (!defined('ABSPATH')) exit;
 if (!class_exists('Software_Issue_Manager')):
@@ -74,7 +74,7 @@ if (!class_exists('Software_Issue_Manager')):
 		 * @return void
 		 */
 		private function define_constants() {
-			define('SIM_COM_VERSION', '1.0.0');
+			define('SIM_COM_VERSION', '1.0.2');
 			define('SIM_COM_AUTHOR', 'eMarket Design');
 			define('SIM_COM_PLUGIN_FILE', __FILE__);
 			define('SIM_COM_PLUGIN_DIR', plugin_dir_path(__FILE__));
@@ -89,20 +89,20 @@ if (!class_exists('Software_Issue_Manager')):
 		private function includes() {
 			if (is_admin()) {
 				//these files are in all apps
-				if (!function_exists('emd_shc_button')) {
-					require_once SIM_COM_PLUGIN_DIR . 'includes/admin/wpas-btn-functions.php';
-				}
 				if (!function_exists('emd_settings_page')) {
 					require_once SIM_COM_PLUGIN_DIR . 'includes/admin/settings-functions.php';
 				}
 				//the rest
+				if (!function_exists('emd_shc_button')) {
+					require_once SIM_COM_PLUGIN_DIR . 'includes/admin/wpas-btn-functions.php';
+				}
 				if (!class_exists('Emd_Single_Taxonomy')) {
 					require_once SIM_COM_PLUGIN_DIR . 'includes/admin/singletax/class-emd-single-taxonomy.php';
 					require_once SIM_COM_PLUGIN_DIR . 'includes/admin/singletax/class-emd-walker-radio.php';
 				}
 			}
 			//these files are in all apps
-			if (!class_exists('RW_Meta_Box')) {
+			if (!function_exists('rwmb_meta')) {
 				require_once SIM_COM_PLUGIN_DIR . 'assets/ext/meta-box/meta-box.php';
 			}
 			if (!function_exists('emd_translate_date_format')) {

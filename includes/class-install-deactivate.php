@@ -2,7 +2,7 @@
 /**
  * Install and Deactivate Plugin Functions
  * @package SIM_COM
- * @version 1.0.0
+ * @version 1.0.2
  * @since WPAS 4.0
  */
 if (!defined('ABSPATH')) exit;
@@ -549,6 +549,18 @@ if (!class_exists('Sim_Com_Install_Deactivate')):
 			delete_option($this->option_name . '_attr_list');
 			delete_option($this->option_name . '_tax_list');
 			delete_option($this->option_name . '_rel_list');
+			$users = get_users();
+			foreach ($users as $user) {
+				delete_user_meta($user->ID, $this->option_name . '_adm_share');
+			}
+			$users = get_users();
+			foreach ($users as $user) {
+				delete_user_meta($user->ID, $this->option_name . '_adm_notice1');
+			}
+			$users = get_users();
+			foreach ($users as $user) {
+				delete_user_meta($user->ID, $this->option_name . '_adm_notice2');
+			}
 			delete_option($this->option_name . '_setup_pages');
 			$emd_activated_plugins = get_option('emd_activated_plugins');
 			if (!empty($emd_activated_plugins)) {
@@ -559,17 +571,70 @@ if (!class_exists('Sim_Com_Install_Deactivate')):
 			}
 		}
 		/**
-		 * Show install notice to setup pages
+		 * Show install notices
 		 *
 		 * @since WPAS 4.0
 		 *
 		 * @return html
 		 */
 		public function install_notice() {
+			if (isset($_GET[$this->option_name . '_adm_share'])) {
+				update_user_meta(get_current_user_id() , $this->option_name . '_adm_share', true);
+			}
+			if (get_user_option($this->option_name . '_adm_share') != 1) {
+				$product_uri = 'goo.gl/5ZOaZh';
+				$product_desc = 'Software Issue Manager allows to track the resolution of every project issue in a productive and efficient way.';
+				$product_name = 'Software Issue Manager';
+				$product_image = 'https://emdplugins.com/campaign_images/sim_pro_banner.gif';
+?>
+<div class="updated">
+<span style="color:red;font-weight:700;">Share this delight with others! <i class="icon-arrow-right"></i></span>
+                <span class="dashicons dashicons-smiley"></span>
+                <ul style="margin:0 !important;display: inline-block;padding-left:20px;">
+                <li style="display: inline-block;"><a href="javascript:twitterShare('http://<?php echo $product_uri; ?>','<?php echo $product_desc; ?>', 602,496);" data-lang="en"><img src="<?php echo SIM_COM_PLUGIN_URL . 'assets/img/twitter_icon.jpg'; ?>" alt="Share on Twitter" /></a></li>
+                <li style="display: inline-block;"><a href="" onclick="javascript:fbShare('<?php echo $product_uri; ?>','<?php echo $product_name; ?>','<?php echo $product_desc; ?>', 600, 400);return false;" target="_blank"><img src="<?php echo SIM_COM_PLUGIN_URL . 'assets/img/fb_icon.jpg'; ?>" alt="Share on Facebook" /></a></li>
+                <li style="display: inline-block;"><a href="javascript:gplusShare('<?php echo $product_uri; ?>', 483, 540)"><img src="<?php echo SIM_COM_PLUGIN_URL . 'assets/img/gplus_icon.jpg'; ?>" alt="Share on Google+"/></a></li>
+                <li style="display: inline-block;"><a href="http://www.tumblr.com/share/link?url=<?php echo $product_uri; ?>&amp;name=<?php echo $product_name; ?>&amp;description=<?php echo $product_desc; ?>" title="Share on Tumblr" target="_blank"><img src="<?php echo SIM_COM_PLUGIN_URL . 'assets/img/tumblr_icon.jpg'; ?>" alt="Share on Tumblr"/></a></li>
+                <li style="display: inline-block;"><a href="javascript:pinterestShare('<?php echo $product_uri; ?>', '<?php echo $product_image; ?>', '<?php echo $product_desc; ?>', 774, 452)" data-pin-do="buttonPin" ><img src="<?php echo SIM_COM_PLUGIN_URL . 'assets/img/pinterest_icon.jpg'; ?>" alt="Share on Pinterest"/></a></li>
+                <li style="display: inline-block;"><a href="javascript:stumbleuponShare('<?php echo $product_uri; ?>', 802, 592)"><img src="<?php echo SIM_COM_PLUGIN_URL . 'assets/img/stumbleupon_icon.jpg'; ?>" alt="Share on Stumbleupon"/></a></li>
+                <li style="display: inline-block;"><a href="javascript:linkedinShare('<?php echo $product_uri; ?>', '<?php echo $product_name; ?>', '<?php echo $product_desc; ?>', 850, 450)"><img src="<?php echo SIM_COM_PLUGIN_URL . 'assets/img/linkedin_icon.jpg'; ?>" alt="Share on LinkedIn"/></a></li>
+                <li style="display: inline-block;"><a href="javascript:redditShare('<?php echo $product_uri; ?>', 800, 400)"><img src="<?php echo SIM_COM_PLUGIN_URL . 'assets/img/reddit_icon.jpg'; ?>" alt="Share on Reddit"/></a></li>
+                <li style="display: inline-block;"><a href="mailto:?subject=<?php echo $product_name; ?>&amp;body=<?php echo $product_desc . "
+ http://" . $product_uri; ?>"><img src="<?php echo SIM_COM_PLUGIN_URL . 'assets/img/email_icon.jpg'; ?>" alt="Email to a friend"/></a></li>
+                </ul>
+                <a style="float:right;" href="<?php echo esc_url(add_query_arg($this->option_name . '_adm_share', true)); ?>"><span class="dashicons dashicons-dismiss" style="font-size:15px;"></span><?php _e('Dismiss', 'sim_com'); ?></a>
+                
+</div>
+<?php
+			}
+			if (isset($_GET[$this->option_name . '_adm_notice1'])) {
+				update_user_meta(get_current_user_id() , $this->option_name . '_adm_notice1', true);
+			}
+			if (get_user_option($this->option_name . '_adm_notice1') != 1) {
+?>
+<div class="updated">
+<?php
+				printf('<p><a href="%1s" target="_blank"> %2$s </a>%3$s<a style="float:right;" href="%4$s"><span class="dashicons dashicons-dismiss" style="font-size:15px;"></span>%5$s</a></p>', 'https://docs.emdplugins.com/docs/software-issue-manager-community-documentation/', __('New To Software Issue Manager? Review the documentation!', 'wpas') , __('&#187;', 'wpas') , esc_url(add_query_arg($this->option_name . '_adm_notice1', true)) , __('Dismiss', 'wpas'));
+?>
+</div>
+<?php
+			}
+			if (isset($_GET[$this->option_name . '_adm_notice2'])) {
+				update_user_meta(get_current_user_id() , $this->option_name . '_adm_notice2', true);
+			}
+			if (get_user_option($this->option_name . '_adm_notice2') != 1) {
+?>
+<div class="updated">
+<?php
+				printf('<p><a href="%1s" target="_blank"> %2$s </a>%3$s<a style="float:right;" href="%4$s"><span class="dashicons dashicons-dismiss" style="font-size:15px;"></span>%5$s</a></p>', 'https://emdplugins.com/plugins/software-issue-manager-professional/', __('Upgrade to Professional Version for just $49.99! Use Coupon Code SIMCOM', 'wpas') , __('&#187;', 'wpas') , esc_url(add_query_arg($this->option_name . '_adm_notice2', true)) , __('Dismiss', 'wpas'));
+?>
+</div>
+<?php
+			}
 			if (get_option($this->option_name . '_setup_pages') == 1) {
 				echo "<div id=\"message\" class=\"updated\"><p><strong>" . __('Welcome to Software Issue Manager', 'sim-com') . "</strong></p>
-                  <p class=\"submit\"><a href=\"" . add_query_arg('setup_sim_com_pages', 'true', admin_url('index.php')) . "\" class=\"button-primary\">" . __('Setup Software Issue Manager Pages', 'sim-com') . "</a> <a class=\"skip button-primary\" href=\"" . add_query_arg('skip_setup_sim_com_pages', 'true', admin_url('index.php')) . "\">" . __('Skip setup', 'sim-com') . "</a></p>
-                  </div>";
+           <p class=\"submit\"><a href=\"" . add_query_arg('setup_sim_com_pages', 'true', admin_url('index.php')) . "\" class=\"button-primary\">" . __('Setup Software Issue Manager Pages', 'sim-com') . "</a> <a class=\"skip button-primary\" href=\"" . add_query_arg('skip_setup_sim_com_pages', 'true', admin_url('index.php')) . "\">" . __('Skip setup', 'sim-com') . "</a></p>
+         </div>";
 			}
 		}
 		/**

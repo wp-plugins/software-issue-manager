@@ -21,7 +21,10 @@ function emd_settings_page($app) {
 	if (!empty($notify_list)) {
 		$tabs['notify'] = __('Notifications', 'emd-plugins');
 	}
-	$tabs = apply_filters('settings_tab_license', $tabs);
+	$has_license = get_option($app . '_has_license');
+	if(!empty($has_license)){
+		$tabs = apply_filters('settings_tab_license', $tabs);
+	}
 	echo '<div class="wrap">
 		<h2 class="nav-tab-wrapper">';
 	foreach ($tabs as $ktab => $mytab) {

@@ -1151,7 +1151,7 @@ class Zebra_Form
                 // iterate through each message of the error block
                 foreach ($error_messages as $error_message) {
 
-		    $content .= '<p class="text-danger">' . $error_message . '</p>';
+		    $content .= '<div class="text-danger">' . $error_message . '</div>';
 
                     // if only one error message is to be show
                     if ($this->form_properties['show_all_error_messages'] === false) break;
@@ -1543,11 +1543,11 @@ class Zebra_Form
 
 	    if($success_msg != '' && empty($this->errors))
             {
-                $output = '<div class="well"><p class="text-success">' . $success_msg . '</p></div>' . $output;
+                $output = '<div class="well"><div class="text-success">' . $success_msg . '</div></div>' . $output;
             }
             elseif($error_msg != '' && empty($this->errors))
             {
-                $output = '<div class="well"><p class="text-danger">' . $error_msg . '</p></div>' . $output;
+                $output = '<div class="well"><div class="text-danger">' . $error_msg . '</div></div>' . $output;
             }
             else
             {
@@ -1589,7 +1589,7 @@ class Zebra_Form
 
 	if($clear_hide_form == 2 && empty($this->errors) && $this->form_properties['is_ajax']  == 0)
 	{
-		$output =  '<div class="well"><p class="text-success">' . $success_msg . '</p></div>';
+		$output =  '<div class="well"><div class="text-success">' . $success_msg . '</div></div>';
 	}
 
 
