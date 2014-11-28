@@ -3,7 +3,7 @@
  * Misc Admin Functions
  *
  * @package SIM_COM
- * @version 1.0.2
+ * @version 1.0.3
  * @since WPAS 4.0
  */
 if (!defined('ABSPATH')) exit;

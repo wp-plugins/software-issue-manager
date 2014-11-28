@@ -6,7 +6,7 @@ Donate link: https://emarketdesign.com/donate-emarket-design/
 Tags: bug, bug tracking, issue tracking, defect, defect tracking, issues, issue management, product features tracking, task tracking, software development, software requirements management, task management, wp app studio, wpas, issue tracker, projects, project management, requirements, submit issues, submit bugs, issue manager, todo, project planning, bug tracker, enhancement, feature
 Requires at least: 3.8
 Tested up to: 4.1
-Stable tag: 1.0.2
+Stable tag: 1.0.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -122,6 +122,8 @@ The simplest way to install is to click on 'Plugins' then 'Add' and type 'Softwa
 8. Displays Project single page on the frontend
 
 == Changelog ==
+= 1.0.3 =
+* Fixed PHP Strict Standards Errors which became part of the E_ALL since PHP 5.4
 = 1.0.2 =
 * Fixed a defect in date input fields
 * Fixed misc. minor defects
@@ -133,6 +135,8 @@ The simplest way to install is to click on 'Plugins' then 'Add' and type 'Softwa
 * Initial release.
 
 == Upgrade Notice ==
+= 1.0.3 =
+* Fixed PHP Strict Standards Errors which became part of the E_ALL since PHP 5.4
 = 1.0.2 =
 * Fixed a defect in date input fields
 * Fixed misc. minor defects
