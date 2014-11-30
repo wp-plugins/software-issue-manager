@@ -3,7 +3,7 @@
  * Enqueue Scripts Functions
  *
  * @package SIM_COM
- * @version 1.0.3
+ * @version 1.0.4
  * @since WPAS 4.0
  */
 if (!defined('ABSPATH')) exit;

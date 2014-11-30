@@ -54,7 +54,7 @@ class Emd_Widget extends WP_Widget {
 			$pids = apply_filters('emd_limit_by', $pids, $app, $this->class);
 		}
 		if ($this->type == 'entity') {
-			$widg_layout = $this->get_ent_widget_layout($count, $pids);
+			$widg_layout = self::get_ent_widget_layout($count, $pids);
 		} elseif ($this->type == 'comment') {
 			$widg_layout = $this->get_comm_widget_layout($count, $pids);
 		}
@@ -125,7 +125,7 @@ class Emd_Widget extends WP_Widget {
 	 *
 	 * @return string $layout
 	 */
-	public function get_ent_widget_layout($posts_per_page, $pids, $args = Array()) {
+	public static function get_ent_widget_layout($posts_per_page, $pids, $args = Array()) {
 		$paged = 1;
 		$layout = "";
 		if (empty($args)) {

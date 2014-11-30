@@ -3,7 +3,7 @@
  * Plugin Name: Software Issue Manager
  * Plugin URI: http://emdplugins.com
  * Description: Software Issue Manager allows to track the resolution of every project issue in a productive and efficient way.
- * Version: 1.0.3
+ * Version: 1.0.4
  * Author: eMarket Design
  * Author URI: http://emarketdesign.com
  * Text Domain: sim-com
@@ -74,7 +74,7 @@ if (!class_exists('Software_Issue_Manager')):
 		 * @return void
 		 */
 		private function define_constants() {
-			define('SIM_COM_VERSION', '1.0.3');
+			define('SIM_COM_VERSION', '1.0.4');
 			define('SIM_COM_AUTHOR', 'eMarket Design');
 			define('SIM_COM_PLUGIN_FILE', __FILE__);
 			define('SIM_COM_PLUGIN_DIR', plugin_dir_path(__FILE__));
@@ -190,7 +190,8 @@ if (!class_exists('Software_Issue_Manager')):
 					if ($mypost_type == 'post' || $mypost_type == 'page') {
 						$mypost_type = "emd_" . $mypost_type;
 					}
-					if (class_exists($mypost_type)) {
+					$ent_list = get_option($this->app_name . '_ent_list');
+					if (in_array($mypost_type, array_keys($ent_list)) && class_exists($mypost_type)) {
 						$func = "change_content";
 						$obj = new $mypost_type;
 						$content = $obj->$func($content);
