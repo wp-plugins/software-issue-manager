@@ -3,7 +3,7 @@
  * Entity Widget Classes
  *
  * @package SIM_COM
- * @version 1.0.4
+ * @version 1.0.5
  * @since WPAS 4.0
  */
 if (!defined('ABSPATH')) exit;
@@ -40,7 +40,7 @@ class sim_com_recent_issues_sidebar_widget extends Emd_Widget {
 	 *
 	 * @since WPAS 4.0
 	 */
-	function layout() {
+	public static function layout() {
 		$layout = "<p class=\"issue-title\">* <a href=\"" . get_permalink() . "\">" . get_the_title() . "</a></p>
 ";
 		return $layout;

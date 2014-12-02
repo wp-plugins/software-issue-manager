@@ -3,7 +3,7 @@
  * Entity Class
  *
  * @package SIM_COM
- * @version 1.0.4
+ * @version 1.0.5
  * @since WPAS 4.0
  */
 if (!defined('ABSPATH')) exit;
@@ -186,7 +186,7 @@ class Emd_Issue extends Emd_Entity {
 			'public' => true,
 			'publicly_queryable' => true,
 			'show_ui' => true,
-			'description' => __('Issues are a collection of information about bugs, tasks, and feature requests that occur during a project\'s life cycle.', 'sim-com') ,
+			'description' => __('An issue is anything that might affect the project meeting its goals such as bugs, tasks, and feature requests that occur during a project\'s life cycle.', 'sim-com') ,
 			'show_in_menu' => true,
 			'menu_position' => 6,
 			'has_archive' => true,

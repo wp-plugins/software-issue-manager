@@ -54,7 +54,11 @@ class Emd_Widget extends WP_Widget {
 			$pids = apply_filters('emd_limit_by', $pids, $app, $this->class);
 		}
 		if ($this->type == 'entity') {
-			$widg_layout = self::get_ent_widget_layout($count, $pids);
+			$args['has_pages'] = $this->has_pages;
+			$args['class'] = $this->class;
+			$args['query_args'] = $this->query_args;
+			$args['cname'] = get_class($this);
+			$widg_layout = self::get_ent_widget_layout($count, $pids,$args);
 		} elseif ($this->type == 'comment') {
 			$widg_layout = $this->get_comm_widget_layout($count, $pids);
 		}
@@ -128,11 +132,6 @@ class Emd_Widget extends WP_Widget {
 	public static function get_ent_widget_layout($posts_per_page, $pids, $args = Array()) {
 		$paged = 1;
 		$layout = "";
-		if (empty($args)) {
-			$args['has_pages'] = $this->has_pages;
-			$args['class'] = $this->class;
-			$args['query_args'] = $this->query_args;
-		}
 		if ($args['has_pages']) {
 			if (get_query_var('paged')) $paged = get_query_var('paged');
 		}
@@ -146,7 +145,7 @@ class Emd_Widget extends WP_Widget {
 			if (isset($args['fname'])) {
 				$layout.= $args['fname']();
 			} else {
-				$layout.= $this->layout();
+				$layout.= $args['cname']::layout();
 			}
 			$layout.= "</div>";
 		}

@@ -3,7 +3,7 @@
  * Plugin Name: Software Issue Manager
  * Plugin URI: http://emdplugins.com
  * Description: Software Issue Manager allows to track the resolution of every project issue in a productive and efficient way.
- * Version: 1.0.4
+ * Version: 1.0.5
  * Author: eMarket Design
  * Author URI: http://emarketdesign.com
  * Text Domain: sim-com
@@ -74,7 +74,7 @@ if (!class_exists('Software_Issue_Manager')):
 		 * @return void
 		 */
 		private function define_constants() {
-			define('SIM_COM_VERSION', '1.0.4');
+			define('SIM_COM_VERSION', '1.0.5');
 			define('SIM_COM_AUTHOR', 'eMarket Design');
 			define('SIM_COM_PLUGIN_FILE', __FILE__);
 			define('SIM_COM_PLUGIN_DIR', plugin_dir_path(__FILE__));

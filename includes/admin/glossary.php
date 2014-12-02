@@ -3,7 +3,7 @@
  * Settings Glossary Functions
  *
  * @package SIM_COM
- * @version 1.0.4
+ * @version 1.0.5
  * @since WPAS 4.0
  */
 if (!defined('ABSPATH')) exit;
@@ -23,7 +23,7 @@ function sim_com_settings_glossary() { ?>
 <h3 class="accordion-section-title hndle" tabindex="2"><?php _e('Issues', 'sim-com'); ?></h3>
 <div class="accordion-section-content">
 <div class="inside">
-<table class="form-table"><p class"lead"><?php _e('Issues are a collection of information about bugs, tasks, and feature requests that occur during a project\'s life cycle.', 'sim-com'); ?></p><tr>
+<table class="form-table"><p class"lead"><?php _e('An issue is anything that might affect the project meeting its goals such as bugs, tasks, and feature requests that occur during a project\'s life cycle.', 'sim-com'); ?></p><tr>
 <th><?php _e('Title', 'sim-com'); ?></th>
 <td><?php _e(' Title is a required field. Title does not have a default value. ', 'sim-com'); ?></td>
 </tr><tr>
