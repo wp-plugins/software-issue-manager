@@ -3,21 +3,35 @@ Contributors: emarket-design
 Plugin URI: https://emdplugins.com
 Author URI: https://emarketdesign.com
 Donate link: https://emarketdesign.com/donate-emarket-design/
-Tags: bug, bug tracking, issue tracking, defect, defect tracking, issues, issue management, product features tracking, task tracking, software development, software requirements management, task management, wp app studio, wpas, issue tracker, projects, project management, requirements, submit issues, submit bugs, issue manager, todo, project planning, bug tracker, enhancement, feature
+Tags: bug, bug tracking, issue tracking, defect, defect tracking, issues, issue management, product features tracking, task tracking, software development, software requirements management, task management, wp app studio, wpas, issue tracker, projects, project management, requirements, submit issues, submit bugs, issue manager, todo, project planning, bug tracker, enhancement, feature, IMAP, POP3, email, incoming email, post by email
 Requires at least: 3.8
 Tested up to: 4.1
-Stable tag: 1.0.5
+Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Software Issue Manager allows to track the progress and resolution of every project issue in a productive and efficient way.
 
 == Description ==
-Software Issue Manager is a bug, issue, task and product feature request tracking system with extensive built-in and custom reporting capabilities. Premium editions are available. 
+Software Issue Manager(SIM) is a bug, issue, task and product feature request tracking system with extensive built-in and custom reporting capabilities. Premium editions are available. 
 
-Issues are the things you would like to track in your projects. Issues could be tasks, feature requests, bugs or pretty much any thing you need related to your projects.
+Issues are the items you would like to track in your projects. Issues could be tasks, feature requests, bugs or pretty much any thing you need related to your projects.
 
-Projects are temporary organizations formed up to produce a final deliverable for project clients. Projects are identified by a name and a version number. Issues can be shared by multiple projects. Community version supports "open" projects which do not require participants to login to WordPress. Premium versions limit access to content by user's role and are appropriate for "closed" projects which require users to login to access content.
+SIM Projects are identified by a name and a version number. Projects may have unlimited number of issues. Issues can be shared by multiple projects. Community version supports "open" projects which do not require participants to login to WordPress. Premium versions limit access to content by user's role and are appropriate for "closed" projects which require users to login to access content.
+
+> <b>Customization</b><br>
+> WP Issue Manager is designed and developed using WP App Studio AUTOBAHN without writing a single line of PHP code. Customize it to your needs by:<br>
+> 1. [Download App signature.](https://wpas.emdplugins.com/wpas-demos/)<br>
+> 2. [Download WP App Studio.](https://wordpress.org/plugins/wp-app-studio/)<br>
+> 3. [Import App signature to WP App Studio AUTOBAHN.](https://wpas.emdplugins.com/)<br>
+> 4. Customize the app design.<br>
+> 5. [Open up a ProDev account.](https://wpas.emdplugins.com/downloads/pro-dev-app/)<br>
+> 6. Generate your custom plugin.<br>
+> 7. Download/Install/Activate your plugin.<br>
+> 8. Set your ProDev license in your plugins setting page, licenses tab. You have 1 year to customize, update your plugin. After initial activation, all other updates are done through WordPress Plugin page like other WP plugins.
+
+= Works with WPAS Extensions =
+* If you need issues to be created through email (POP3/IMAP supported), you can purchase [WPAS incoming email extension](https://emdplugins.com/plugins/incoming-email-extension/).
 
 = Community Edition Features =
 * For developers who work on projects which are open to public. There is no content access limitation. 
@@ -48,6 +62,7 @@ Projects are temporary organizations formed up to produce a final deliverable fo
 * Ajax-enabled issue entry and issue search forms
 * Ajax-enabled project entry and project search forms
 * Ajax-enabled member entry and member search forms
+* Auto-setup upon plugin activation.
 * New Issue Notification, emails are customizable with attributes.
 * Issue Updated Notification, emails are customizable with attributes.
 * Issue Comment Addition Notification, emails are customizable with attributes.
@@ -65,12 +80,14 @@ Projects are temporary organizations formed up to produce a final deliverable fo
 = Enterprise Edition Features =
 * Most advanced and fully featured WordPress app ever built for Issue Management.
 * For agencies, consulting firms, or matrix organizations.
-* Client area with dashboard.
-* Project manager area with dashboard.
-* Team member area with dashboard.
+* Client area with dashboard. Clients can access to their own issues assigned to them or created by them.
+* Project director area with dashboard.
+* Auto-setup upon plugin activation.
+* Project manager area with dashboard.Use it manage a projec manager's utilization and performance.
+* Team member area with dashboard. Use it manage a team member's utilization and performance.
 * Content access strictly limited based on organizational role (frontend/backend).
 * For multiple "closed" project teams whose members may hold different organizational roles such analyst, developer, sponsor etc. App membership is required and content access is strictly enforced in manager, member, and client areas.
-* Provides 360-degree issue management
+* Provides 360-degree issue management. Identify, track, analyze issues through multiple relationships and dependencies they have.
 * Custom reporting and commenting module for members, issues and projects.
 * Individual member and project dashboards.
 * A system-wide dashboard with 23 widgets.
@@ -81,12 +98,6 @@ Projects are temporary organizations formed up to produce a final deliverable fo
 * Many more features, not listed here. Check the plugin page for details:
 
 [Enterprise Edition](https://emdplugins.com/plugins/software-issue-manager-enterprise/)
-
-= Customization =
-
-* All editions are built with [Wp App Studio](https://wordpress.org/plugins/wp-app-studio/) 4.0 WordPress Development Platform and can be fully customized.
-* Community edition app signature is provided upon request.
-* For premium edition customizations, please contact us @ emarketdesign.com. 
 
 == Installation ==
 
@@ -122,6 +133,9 @@ The simplest way to install is to click on 'Plugins' then 'Add' and type 'Softwa
 8. Displays Project single page on the frontend
 
 == Changelog ==
+= 1.1.0 =
+* Added ability to use WPAS incoming email extension
+* Fixed misc bugs
 = 1.0.5 =
 * Fixed bug related to sidebar Recent Issues widget
 = 1.0.4 =
@@ -139,6 +153,9 @@ The simplest way to install is to click on 'Plugins' then 'Add' and type 'Softwa
 * Initial release.
 
 == Upgrade Notice ==
+= 1.1.0 =
+* Added ability to use WPAS incoming email extension
+* Fixed misc bugs
 = 1.0.5 =
 * Fixed bug related to sidebar Recent Issues widget
 = 1.0.4 =

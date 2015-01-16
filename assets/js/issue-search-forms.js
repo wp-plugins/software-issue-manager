@@ -21,11 +21,8 @@ onkeyup: false,
 onclick: false,
 errorClass: 'text-danger',
 rules: {
-  emd_iss_id : {
-required  : false,
-},
-emd_iss_due_date : {
-required  : false,
+  'rel_project_issues[]':{
+required:false,
 },
 'issue_priority':{
 required:false,
@@ -36,8 +33,11 @@ required:false,
 'issue_cat':{
 required:false,
 },
-'rel_project_issues[]':{
-required:false,
+emd_iss_id : {
+required  : false,
+},
+emd_iss_due_date : {
+required  : false,
 },
 },
 success: function(label) {

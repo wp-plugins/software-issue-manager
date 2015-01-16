@@ -3,7 +3,7 @@
  * Entity Widget Classes
  *
  * @package SIM_COM
- * @version 1.0.5
+ * @version 1.1.0
  * @since WPAS 4.0
  */
 if (!defined('ABSPATH')) exit;

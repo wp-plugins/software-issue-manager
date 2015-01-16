@@ -37,17 +37,8 @@ onkeyup: false,
 onclick: false,
 errorClass: 'text-danger',
 rules: {
-  blt_title : {
-required  : true,
-},
-blt_content : {
-required  : false,
-},
-emd_iss_due_date : {
-required  : false,
-},
-emd_iss_document : {
-required  : false,
+  'rel_project_issues[]':{
+required:true,
 },
 'issue_priority':{
 required:true,
@@ -67,8 +58,17 @@ required:false,
 'operating_system[]':{
 required:false,
 },
-'rel_project_issues[]':{
-required:true,
+blt_title : {
+required  : true,
+},
+blt_content : {
+required  : false,
+},
+emd_iss_due_date : {
+required  : false,
+},
+emd_iss_document : {
+required  : false,
 },
 },
 success: function(label) {

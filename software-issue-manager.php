@@ -1,11 +1,11 @@
 <?php
 /** 
  * Plugin Name: Software Issue Manager
- * Plugin URI: http://emdplugins.com
+ * Plugin URI: https://emdplugins.com
  * Description: Software Issue Manager allows to track the resolution of every project issue in a productive and efficient way.
- * Version: 1.0.5
+ * Version: 1.1.0
  * Author: eMarket Design
- * Author URI: http://emarketdesign.com
+ * Author URI: https://emarketdesign.com
  * Text Domain: sim-com
  * @package SIM_COM
  * @since WPAS 4.0
@@ -74,7 +74,7 @@ if (!class_exists('Software_Issue_Manager')):
 		 * @return void
 		 */
 		private function define_constants() {
-			define('SIM_COM_VERSION', '1.0.5');
+			define('SIM_COM_VERSION', '1.1.0');
 			define('SIM_COM_AUTHOR', 'eMarket Design');
 			define('SIM_COM_PLUGIN_FILE', __FILE__);
 			define('SIM_COM_PLUGIN_DIR', plugin_dir_path(__FILE__));
@@ -89,8 +89,8 @@ if (!class_exists('Software_Issue_Manager')):
 		private function includes() {
 			if (is_admin()) {
 				//these files are in all apps
-				if (!function_exists('emd_settings_page')) {
-					require_once SIM_COM_PLUGIN_DIR . 'includes/admin/settings-functions.php';
+				if (!function_exists('emd_display_store')) {
+					require_once SIM_COM_PLUGIN_DIR . 'includes/admin/store-functions.php';
 				}
 				//the rest
 				if (!function_exists('emd_shc_button')) {
@@ -116,6 +116,15 @@ if (!class_exists('Software_Issue_Manager')):
 			}
 			if (!function_exists('emd_get_template_part')) {
 				require_once SIM_COM_PLUGIN_DIR . 'includes/layout-functions.php';
+			}
+			if (!class_exists('EDD_SL_Plugin_Updater')) {
+				require_once SIM_COM_PLUGIN_DIR . 'assets/ext/edd/EDD_SL_Plugin_Updater.php';
+			}
+			if (!class_exists('Emd_License')) {
+				require_once SIM_COM_PLUGIN_DIR . 'includes/admin/class-emd-license.php';
+			}
+			if (!function_exists('emd_show_license_page')) {
+				require_once SIM_COM_PLUGIN_DIR . 'includes/admin/license-functions.php';
 			}
 			//the rest
 			if (!class_exists('Emd_Query')) {
@@ -201,25 +210,43 @@ if (!class_exists('Software_Issue_Manager')):
 			return $content;
 		}
 		/**
-		 * Creates plugin settings submenu page under settings
+		 * Creates plugin page in menu with submenus
 		 *
 		 * @access public
 		 * @return void
 		 */
 		public function display_settings() {
-			add_submenu_page('options-general.php', __('Software Issue Manager Settings', $this->textdomain) , __('Software Issue Manager Settings', $this->textdomain) , 'manage_options', $this->app_name . '_settings', array(
+			add_menu_page(__('SIM Com', $this->textdomain) , __('SIM Com', $this->textdomain) , 'manage_options', $this->app_name, array(
 				$this,
-				'display_settings_page'
+				'display_glossary_page'
 			));
+			add_submenu_page($this->app_name, __('Glossary', $this->textdomain) , __('Glossary', $this->textdomain) , 'manage_options', $this->app_name);
+			add_submenu_page($this->app_name, __('Add-Ons', $this->textdomain) , __('Add-Ons', $this->textdomain) , 'manage_options', $this->app_name . '_store', array(
+				$this,
+				'display_store_page'
+			));
+			$emd_lic_settings = get_option('emd_license_settings',Array());
+			if (!empty($emd_lic_settings)) {
+				add_submenu_page($this->app_name, __('Licenses', $this->textdomain) , __('Licenses', $this->textdomain) , 'manage_options', $this->app_name . '_licenses', array(
+					$this,
+					'display_licenses_page'
+				));
+			}
 		}
 		/**
-		 * Calls settings function to display plugin settings page
+		 * Calls settings function to display glossary page
 		 *
 		 * @access public
 		 * @return void
 		 */
-		public function display_settings_page() {
-			emd_settings_page($this->app_name);
+		public function display_glossary_page() {
+			do_action($this->app_name . '_settings_glossary');
+		}
+		public function display_store_page() {
+			emd_display_store($this->textdomain);
+		}
+		public function display_licenses_page() {
+			do_action('emd_show_license_page', $this->app_name);
 		}
 		/**
 		 * Loads sidebar widgets

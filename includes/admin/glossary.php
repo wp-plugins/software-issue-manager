@@ -3,7 +3,7 @@
  * Settings Glossary Functions
  *
  * @package SIM_COM
- * @version 1.0.5
+ * @version 1.1.0
  * @since WPAS 4.0
  */
 if (!defined('ABSPATH')) exit;
@@ -14,7 +14,11 @@ add_action('sim_com_settings_glossary', 'sim_com_settings_glossary');
  *
  * @return html
  */
-function sim_com_settings_glossary() { ?>
+function sim_com_settings_glossary() {
+	global $title;
+?>
+<div class="wrap">
+<h2><?php echo $title; ?></h2>
 <p><?php _e('Software Issue Manager allows to track the resolution of every project issue in a productive and efficient way.', 'sim-com'); ?></p>
 <p><?php _e('The below are the definitions of entities, attributes, and terms included in Software Issue Manager.', 'sim-com'); ?></p>
 <div id="glossary" class="accordion-container">
@@ -196,6 +200,7 @@ function sim_com_settings_glossary() { ?>
 </div>
 </li>
 </ul>
+</div>
 </div>
 <?php
 }

@@ -2,7 +2,7 @@
 /**
  * Install and Deactivate Plugin Functions
  * @package SIM_COM
- * @version 1.0.5
+ * @version 1.1.0
  * @since WPAS 4.0
  */
 if (!defined('ABSPATH')) exit;
@@ -536,6 +536,29 @@ if (!class_exists('Sim_Com_Install_Deactivate')):
 				array_push($emd_activated_plugins, 'sim-com');
 				update_option('emd_activated_plugins', $emd_activated_plugins);
 			}
+			//conf parameters for incoming email
+			$has_incoming_email = Array(
+				'emd_issue' => Array(
+					'label' => 'Issues',
+					'status' => 'publish',
+					'vis_submit' => 0,
+					'tax' => 'issue_tag',
+					'subject' => 'blt_title',
+					'date' => Array(
+						'post_date'
+					) ,
+					'body' => 'emd_blt_content',
+					'att' => 'emd_iss_document',
+					'email' => '',
+					'name' => ''
+				)
+			);
+			update_option($this->option_name . '_has_incoming_email', $has_incoming_email);
+			$emd_inc_email_apps = get_option('emd_inc_email_apps');
+			$emd_inc_email_apps[$this->option_name] = $this->option_name . '_inc_email_conf';
+			update_option('emd_inc_email_apps', $emd_inc_email_apps);
+			//action to configure different extension conf parameters for this plugin
+			do_action('emd_extension_set_conf');
 		}
 		/**
 		 * Reset app specific options
@@ -569,6 +592,10 @@ if (!class_exists('Sim_Com_Install_Deactivate')):
 				));
 				update_option('emd_activated_plugins', $emd_activated_plugins);
 			}
+			$incemail_settings = get_option('emd_inc_email_apps', Array());
+			unset($incemail_settings[$this->option_name]);
+			update_option('emd_inc_email_apps', $incemail_settings);
+			delete_option($this->option_name . '_has_incoming_email');
 		}
 		/**
 		 * Show install notices
@@ -614,7 +641,7 @@ if (!class_exists('Sim_Com_Install_Deactivate')):
 ?>
 <div class="updated">
 <?php
-				printf('<p><a href="%1s" target="_blank"> %2$s </a>%3$s<a style="float:right;" href="%4$s"><span class="dashicons dashicons-dismiss" style="font-size:15px;"></span>%5$s</a></p>', 'https://docs.emdplugins.com/docs/software-issue-manager-community-documentation/', __('New To Software Issue Manager? Review the documentation!', 'wpas') , __('&#187;', 'wpas') , esc_url(add_query_arg($this->option_name . '_adm_notice1', true)) , __('Dismiss', 'wpas'));
+				printf('<p><a href="%1s" target="_blank"> %2$s </a>%3$s<a style="float:right;" href="%4$s"><span class="dashicons dashicons-dismiss" style="font-size:15px;"></span>%5$s</a></p>', 'https://docs.emdplugins.com/docs/software-issue-manager-community-documentation/?pk_campaign=simcom&pk_source=plugin&pk_medium=link&pk_content=notice', __('New To Software Issue Manager? Review the documentation!', 'wpas') , __('&#187;', 'wpas') , esc_url(add_query_arg($this->option_name . '_adm_notice1', true)) , __('Dismiss', 'wpas'));
 ?>
 </div>
 <?php
@@ -626,7 +653,7 @@ if (!class_exists('Sim_Com_Install_Deactivate')):
 ?>
 <div class="updated">
 <?php
-				printf('<p><a href="%1s" target="_blank"> %2$s </a>%3$s<a style="float:right;" href="%4$s"><span class="dashicons dashicons-dismiss" style="font-size:15px;"></span>%5$s</a></p>', 'https://emdplugins.com/plugins/software-issue-manager-professional/', __('Upgrade to Professional Version for just $49.99! Use Coupon Code SIMCOM', 'wpas') , __('&#187;', 'wpas') , esc_url(add_query_arg($this->option_name . '_adm_notice2', true)) , __('Dismiss', 'wpas'));
+				printf('<p><a href="%1s" target="_blank"> %2$s </a>%3$s<a style="float:right;" href="%4$s"><span class="dashicons dashicons-dismiss" style="font-size:15px;"></span>%5$s</a></p>', 'https://emdplugins.com/plugins/incoming-email-extension/?pk_campaign=simcom&pk_source=plugin&pk_medium=link&pk_content=notice', __('Buy WPAS Incoming Email Extension to create issues through emails!', 'wpas') , __('&#187;', 'wpas') , esc_url(add_query_arg($this->option_name . '_adm_notice2', true)) , __('Dismiss', 'wpas'));
 ?>
 </div>
 <?php

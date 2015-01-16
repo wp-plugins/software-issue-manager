@@ -109,30 +109,21 @@ foreach ($taxlist as $taxkey => $mytax) {
    <?php
 	}
 } ?>
-<div id="emd_project-emd_issue-relation-sec" class="relation-sec"><div class="connected-div" id="rel__project_issues-connected">
-<?php
-$res = emd_get_p2p_connections('connected', 'project_issues', 'ul', get_the_ID() , 1, 0);
+<div id="emd_project-emd_issue-relation-sec" class="relation-sec"><div class='connected-div' id='rel-project-issues-connected'>
+				<div class='connected-title' id='rel-project-issues-connected-title'><?php echo __('Project Issues', 'sim-com'); ?></div>
+<?php $post = get_post();
+$res = emd_get_p2p_connections('connected', 'project_issues', 'ul', $post, 1, 0);
 if (!empty($res['rels'])) {
-	echo '<div class="connected-title" id="rel__project_issues-connected-title">';
-	_e('Project Issues', 'sim-com');
-	echo '</div>';
-	echo '<div class="connected-data" id="rel__project_issues-connected-data">';
 	echo $res['before_list'];
+	$real_post = $post;
 	foreach ($res['rels'] as $myrel) {
-		echo $res['before_item'];
-		echo '<a href="' . $myrel->permalink . '">' . $myrel->ptitle . '</a>';
-		if (!empty($myrel->fields)) {
-			echo '<div id="rel-project_issues-attributes" class="rel-attrib">';
-			foreach ($myrel->fields as $show_field_val) {
-				echo $show_field_val;
-			}
-			echo '</div>';
-		}
+		$post = $myrel;
+		echo $res['before_item']; ?>
+<a href="<?php echo get_permalink($post->ID); ?>"><?php echo get_the_title(); ?></a><?php
 		echo $res['after_item'];
 	}
+	$post = $real_post;
 	echo $res['after_list'];
-	echo '</div>';
-}
-echo '</div>';
-?></div>
+} ?>
+</div></div>
 </div><!--container-end-->
