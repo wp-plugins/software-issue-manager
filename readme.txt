@@ -19,7 +19,7 @@ Issues are the items you would like to track in your projects. Issues could be t
 
 SIM Projects are identified by a name and a version number. Projects may have unlimited number of issues. Issues can be shared by multiple projects. Community version supports "open" projects which do not require participants to login to WordPress. Premium versions limit access to content by user's role and are appropriate for "closed" projects which require users to login to access content.
 
-> <b>Customization</b><br>
+> <strong>Customization</strong><br>
 > WP Issue Manager is designed and developed using WP App Studio AUTOBAHN without writing a single line of PHP code. Customize it to your needs by:<br>
 > 1. [Download App signature.](https://wpas.emdplugins.com/wpas-demos/)<br>
 > 2. [Download WP App Studio.](https://wordpress.org/plugins/wp-app-studio/)<br>
