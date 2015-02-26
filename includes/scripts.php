@@ -3,7 +3,7 @@
  * Enqueue Scripts Functions
  *
  * @package SIM_COM
- * @version 1.1.0
+ * @version 1.2.0
  * @since WPAS 4.0
  */
 if (!defined('ABSPATH')) exit;
@@ -20,7 +20,11 @@ function sim_com_load_admin_enq($hook) {
 	if ($hook == 'toplevel_page_sim_com' || $hook == 'sim-com_page_sim_com_notify') {
 		wp_enqueue_script('accordion');
 		return;
-	} else if ($hook == 'sim-com_page_sim_com_store') {
+	} else if (in_array($hook, Array(
+		'sim-com_page_sim_com_store',
+		'sim-com_page_sim_com_designs',
+		'sim-com_page_sim_com_support'
+	))) {
 		wp_enqueue_style('admin-tabs', SIM_COM_PLUGIN_URL . 'assets/css/admin-store.css');
 		return;
 	}
@@ -35,7 +39,10 @@ function sim_com_load_admin_enq($hook) {
 		$sing_enq = 0;
 		if ($hook == 'post.php' || $hook == 'post-new.php') {
 			$unique_vars['msg'] = __('Please enter a unique value.', 'emd-plugins');
-			wp_enqueue_script('unique_validate-js', SIM_COM_PLUGIN_URL . 'assets/js/unique_validate.js', '', SIM_COM_VERSION, true);
+			wp_enqueue_script('unique_validate-js', SIM_COM_PLUGIN_URL . 'assets/js/unique_validate.js', array(
+				'jquery',
+				'jquery-validate'
+			) , SIM_COM_VERSION, true);
 			wp_localize_script("unique_validate-js", 'unique_vars', $unique_vars);
 		}
 		switch ($post->post_type) {
@@ -50,7 +57,7 @@ function sim_com_load_admin_enq($hook) {
 		}
 		wp_enqueue_style("jq-css", "//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/themes/smoothness/jquery-ui.css");
 		if ($datetime_enq == 1) {
-			wp_enqueue_script("jquery-ui-timepicker", SIM_COM_PLUGIN_URL . 'assets/ext/meta-box/js/jqueryui/jquery-ui-timepicker-addon.js', array(
+			wp_enqueue_script("jquery-ui-timepicker", SIM_COM_PLUGIN_URL . 'assets/ext/emd-meta-box/js/jqueryui/jquery-ui-timepicker-addon.js', array(
 				'jquery-ui-datepicker',
 				'jquery-ui-slider'
 			) , SIM_COM_VERSION, true);

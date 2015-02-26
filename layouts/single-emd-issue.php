@@ -13,7 +13,7 @@ if (!empty($blt_content)) { ?>
 <?php
 } ?>
 <?php
-$emd_iss_id = rwmb_meta('emd_iss_id');
+$emd_iss_id = emd_mb_meta('emd_iss_id');
 if (!empty($emd_iss_id)) { ?>
    <div id="emd-issue-emd-iss-id-div" class="emd-single-div">
    <div id="emd-issue-emd-iss-id-key" class="emd-single-title">
@@ -26,7 +26,7 @@ if (!empty($emd_iss_id)) { ?>
 <?php
 } ?>
 <?php
-$emd_iss_resolution_summary = rwmb_meta('emd_iss_resolution_summary');
+$emd_iss_resolution_summary = emd_mb_meta('emd_iss_resolution_summary');
 if (!empty($emd_iss_resolution_summary)) { ?>
    <div id="emd-issue-emd-iss-resolution-summary-div" class="emd-single-div">
    <div id="emd-issue-emd-iss-resolution-summary-key" class="emd-single-title">
@@ -38,7 +38,7 @@ if (!empty($emd_iss_resolution_summary)) { ?>
    </div>
 <?php
 } ?>
-<?php $emd_iss_due_date = rwmb_meta('emd_iss_due_date');
+<?php $emd_iss_due_date = emd_mb_meta('emd_iss_due_date');
 if (!empty($emd_iss_due_date)) {
 	$emd_iss_due_date = emd_translate_date_format($ent_attrs['emd_issue']['emd_iss_due_date'], $emd_iss_due_date, 1);
 ?>
@@ -51,16 +51,18 @@ if (!empty($emd_iss_due_date)) {
    </div></div>
 <?php
 } ?>
-<?php $rwmb_file = rwmb_meta('emd_iss_document', 'type=file');
-if (!empty($rwmb_file)) { ?>
+<?php $emd_mb_file = emd_mb_meta('emd_iss_document', 'type=file');
+if (!empty($emd_mb_file)) { ?>
   <div id="emd-issue-emd-iss-document-div" class="emd-single-div">
   <div id="emd-issue-emd-iss-document-key" class="emd-single-title">
   <?php _e('Documents', 'sim-com'); ?>
   </div>
   <div id="emd-issue-emd-iss-document-val" class="emd-single-val">
-  <?php foreach ($rwmb_file as $info) { ?>
-  <a href='<?php echo esc_url($info['url']); ?>' target='_blank' title='<?php echo esc_attr($info['title']); ?>'><?php echo esc_html($info['name']); ?>
-   </a><br />
+  <?php foreach ($emd_mb_file as $info) {
+		$fsrc = wp_mime_type_icon($info['ID']);
+?>
+  <a href='<?php echo esc_url($info['url']); ?>' target='_blank' title='<?php echo esc_attr($info['title']); ?>'><img src='<?php echo $fsrc; ?>' title='<?php echo esc_html($info['name']); ?>' width='20' />
+   </a>
   <?php
 	} ?>
   </div>

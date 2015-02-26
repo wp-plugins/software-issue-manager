@@ -3,7 +3,7 @@
  * Entity Related Shortcode Functions
  *
  * @package SIM_COM
- * @version 1.1.0
+ * @version 1.2.0
  * @since WPAS 4.0
  */
 if (!defined('ABSPATH')) exit;
@@ -26,6 +26,7 @@ function sim_com_sc_issues_set_shc($atts, $args = Array() , $form_name = '', $pa
 		'form' => $form_name,
 		'has_pages' => true,
 		'pageno' => $pageno,
+		'pgn_class' => '',
 		'theme' => 'jui'
 	);
 	$args_default = array(

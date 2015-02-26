@@ -2,7 +2,7 @@
 /**
  * Install and Deactivate Plugin Functions
  * @package SIM_COM
- * @version 1.1.0
+ * @version 1.2.0
  * @since WPAS 4.0
  */
 if (!defined('ABSPATH')) exit;
@@ -43,6 +43,10 @@ if (!class_exists('Sim_Com_Install_Deactivate')):
 			add_action('before_delete_post', array(
 				$this,
 				'delete_post_file_att'
+			));
+			add_filter('tiny_mce_before_init', array(
+				$this,
+				'tinymce_fix'
 			));
 		}
 		/**
@@ -557,6 +561,7 @@ if (!class_exists('Sim_Com_Install_Deactivate')):
 			$emd_inc_email_apps = get_option('emd_inc_email_apps');
 			$emd_inc_email_apps[$this->option_name] = $this->option_name . '_inc_email_conf';
 			update_option('emd_inc_email_apps', $emd_inc_email_apps);
+			//conf parameters for inline entity
 			//action to configure different extension conf parameters for this plugin
 			do_action('emd_extension_set_conf');
 		}
@@ -653,7 +658,7 @@ if (!class_exists('Sim_Com_Install_Deactivate')):
 ?>
 <div class="updated">
 <?php
-				printf('<p><a href="%1s" target="_blank"> %2$s </a>%3$s<a style="float:right;" href="%4$s"><span class="dashicons dashicons-dismiss" style="font-size:15px;"></span>%5$s</a></p>', 'https://emdplugins.com/plugins/incoming-email-extension/?pk_campaign=simcom&pk_source=plugin&pk_medium=link&pk_content=notice', __('Buy WPAS Incoming Email Extension to create issues through emails!', 'wpas') , __('&#187;', 'wpas') , esc_url(add_query_arg($this->option_name . '_adm_notice2', true)) , __('Dismiss', 'wpas'));
+				printf('<p><a href="%1s" target="_blank"> %2$s </a>%3$s<a style="float:right;" href="%4$s"><span class="dashicons dashicons-dismiss" style="font-size:15px;"></span>%5$s</a></p>', 'https://emdplugins.com/plugins/software-issue-manager-professional/?pk_campaign=simcom&pk_source=plugin&pk_medium=link&pk_content=notice', __('Upgrade to Professional Version Now!', 'wpas') , __('&#187;', 'wpas') , esc_url(add_query_arg($this->option_name . '_adm_notice2', true)) , __('Dismiss', 'wpas'));
 ?>
 </div>
 <?php
@@ -750,6 +755,10 @@ if (!class_exists('Sim_Com_Install_Deactivate')):
 				}
 			}
 			return true;
+		}
+		public function tinymce_fix($init) {
+			$init['wpautop'] = false;
+			return $init;
 		}
 	}
 endif;

@@ -7,8 +7,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2015-01-16T10:34:53-05:00\n"
-"POT-Creation-Date: 2015-01-16T10:34:53-05:00\n"
+"PO-Revision-Date: 2015-02-26T14:02:02-05:00\n"
+"POT-Creation-Date: 2015-02-26T14:02:02-05:00\n"
 
 #: software-issue-manager/forms/issue-entry.php:9
 msgid "<p>Use this <em>form</em> to file <em>issues</em> about projects.</p>"
@@ -678,6 +678,7 @@ msgid "required"
 msgstr ""
 
 #: software-issue-manager/includes/admin/store-functions.php:22
+#: software-issue-manager/includes/admin/store-functions.php:42
 msgid "Browse All"
 msgstr ""
 
@@ -685,85 +686,109 @@ msgstr ""
 msgid "The following plugins extend and expand the functionality of your app."
 msgstr ""
 
+#: software-issue-manager/includes/admin/store-functions.php:44
+msgid "The following <a href=\"%s\" title=\"WP App Studio Prodev\" target=\"_blank\">WP App Studio Prodev</a> plugin designs can be used as a template:"
+msgstr ""
+
 #: software-issue-manager/includes/admin/store-functions.php:46
+msgid "To customize the functionality of their corresponding plugins"
+msgstr ""
+
+#: software-issue-manager/includes/admin/store-functions.php:49
+msgid "To create your own plugin"
+msgstr ""
+
+#: software-issue-manager/includes/admin/store-functions.php:74
 msgid "There was an error retrieving the extensions list from the server. Please try again later."
 msgstr ""
 
-#: software-issue-manager/includes/class-install-deactivate.php:364
-msgid "Issue Entry"
+#: software-issue-manager/includes/admin/store-functions.php:92
+msgid "Thanks for installing %s."
+msgstr ""
+
+#: software-issue-manager/includes/admin/store-functions.php:92
+msgid "All support requests are accepted through <a href=\"%s\" target=\"_blank\">our support site.</a>"
+msgstr ""
+
+#: software-issue-manager/includes/admin/store-functions.php:115
+msgid "Like our plugin? Leave us a review"
 msgstr ""
 
 #: software-issue-manager/includes/class-install-deactivate.php:368
+msgid "Issue Entry"
+msgstr ""
+
+#: software-issue-manager/includes/class-install-deactivate.php:372
 msgid "Search Issues"
 msgstr ""
 
-#: software-issue-manager/includes/class-install-deactivate.php:469
-#: software-issue-manager/includes/class-install-deactivate.php:502
+#: software-issue-manager/includes/class-install-deactivate.php:473
+#: software-issue-manager/includes/class-install-deactivate.php:506
 msgid "Priorities"
 msgstr ""
 
-#: software-issue-manager/includes/class-install-deactivate.php:476
-#: software-issue-manager/includes/class-install-deactivate.php:495
+#: software-issue-manager/includes/class-install-deactivate.php:480
+#: software-issue-manager/includes/class-install-deactivate.php:499
 msgid "Statuses"
 msgstr ""
 
-#: software-issue-manager/includes/class-install-deactivate.php:483
+#: software-issue-manager/includes/class-install-deactivate.php:487
 msgid "Categories"
 msgstr ""
 
-#: software-issue-manager/includes/class-install-deactivate.php:490
+#: software-issue-manager/includes/class-install-deactivate.php:494
 msgid "Tags"
 msgstr ""
 
-#: software-issue-manager/includes/class-install-deactivate.php:509
+#: software-issue-manager/includes/class-install-deactivate.php:513
 msgid "Browsers"
 msgstr ""
 
-#: software-issue-manager/includes/class-install-deactivate.php:514
+#: software-issue-manager/includes/class-install-deactivate.php:518
 msgid "Operating Systems"
 msgstr ""
 
-#: software-issue-manager/includes/class-install-deactivate.php:632
-#: software-issue-manager/includes/class-install-deactivate.php:644
-#: software-issue-manager/includes/class-install-deactivate.php:656
+#: software-issue-manager/includes/class-install-deactivate.php:637
+#: software-issue-manager/includes/class-install-deactivate.php:649
+#: software-issue-manager/includes/class-install-deactivate.php:661
 msgid "Dismiss"
 msgstr ""
 
-#: software-issue-manager/includes/class-install-deactivate.php:644
+#: software-issue-manager/includes/class-install-deactivate.php:649
 msgid "New To Software Issue Manager? Review the documentation!"
 msgstr ""
 
-#: software-issue-manager/includes/class-install-deactivate.php:644
-#: software-issue-manager/includes/class-install-deactivate.php:656
+#: software-issue-manager/includes/class-install-deactivate.php:649
+#: software-issue-manager/includes/class-install-deactivate.php:661
 msgid "&#187;"
 msgstr ""
 
-#: software-issue-manager/includes/class-install-deactivate.php:656
-msgid "Buy WPAS Incoming Email Extension to create issues through emails!"
+#: software-issue-manager/includes/class-install-deactivate.php:661
+msgid "Upgrade to Professional Version Now!"
 msgstr ""
 
-#: software-issue-manager/includes/class-install-deactivate.php:662
+#: software-issue-manager/includes/class-install-deactivate.php:667
 msgid "Welcome to Software Issue Manager"
 msgstr ""
 
-#: software-issue-manager/includes/class-install-deactivate.php:663
+#: software-issue-manager/includes/class-install-deactivate.php:668
 msgid "Setup Software Issue Manager Pages"
 msgstr ""
 
-#: software-issue-manager/includes/class-install-deactivate.php:663
+#: software-issue-manager/includes/class-install-deactivate.php:668
 msgid "Skip setup"
 msgstr ""
 
-#: software-issue-manager/includes/entities/class-emd-issue-widgets.php:36
+#: software-issue-manager/includes/entities/class-emd-issue-widgets.php:37
 msgid "Recent Issues"
 msgstr ""
 
-#: software-issue-manager/includes/entities/class-emd-issue-widgets.php:36
+#: software-issue-manager/includes/entities/class-emd-issue-widgets.php:37
 msgid "The most recent issues"
 msgstr ""
 
 #: software-issue-manager/includes/entities/class-emd-issue.php:172
-#: software-issue-manager/includes/entities/class-emd-issue.php:622
+#: software-issue-manager/includes/entities/class-emd-issue.php:623
 msgid "Issue"
 msgstr ""
 
@@ -1028,17 +1053,17 @@ msgstr ""
 msgid "Mac OS X 10.5 Leopard"
 msgstr ""
 
-#: software-issue-manager/includes/entities/class-emd-issue.php:626
+#: software-issue-manager/includes/entities/class-emd-issue.php:627
 msgid "Issue Info"
 msgstr ""
 
-#: software-issue-manager/includes/entities/class-emd-issue.php:657
+#: software-issue-manager/includes/entities/class-emd-issue.php:658
 msgid "Sets a brief summary of the resolution of an issue."
 msgstr ""
 
 #: software-issue-manager/includes/entities/class-emd-project.php:176
-#: software-issue-manager/includes/entities/class-emd-project.php:333
-#: software-issue-manager/includes/entities/class-emd-project.php:460
+#: software-issue-manager/includes/entities/class-emd-project.php:334
+#: software-issue-manager/includes/entities/class-emd-project.php:461
 msgid "Project"
 msgstr ""
 
@@ -1063,7 +1088,7 @@ msgid "View Project"
 msgstr ""
 
 #: software-issue-manager/includes/entities/class-emd-project.php:183
-#: software-issue-manager/includes/entities/class-emd-project.php:461
+#: software-issue-manager/includes/entities/class-emd-project.php:462
 msgid "Search Projects"
 msgstr ""
 
@@ -1075,211 +1100,223 @@ msgstr ""
 msgid "No Projects Found In Trash"
 msgstr ""
 
-#: software-issue-manager/includes/entities/class-emd-project.php:337
+#: software-issue-manager/includes/entities/class-emd-project.php:338
 msgid "Project Info"
 msgstr ""
 
-#: software-issue-manager/includes/entities/class-emd-project.php:348
+#: software-issue-manager/includes/entities/class-emd-project.php:349
 msgid "Sets the name of a project."
 msgstr ""
 
-#: software-issue-manager/includes/entities/class-emd-project.php:356
+#: software-issue-manager/includes/entities/class-emd-project.php:357
 msgid "Sets the version number of a project."
 msgstr ""
 
-#: software-issue-manager/includes/entities/class-emd-project.php:368
+#: software-issue-manager/includes/entities/class-emd-project.php:369
 msgid "Sets the start date of a project."
 msgstr ""
 
-#: software-issue-manager/includes/entities/class-emd-project.php:379
+#: software-issue-manager/includes/entities/class-emd-project.php:380
 msgid "Sets the targeted end date of a project."
 msgstr ""
 
-#: software-issue-manager/includes/entities/class-emd-project.php:390
+#: software-issue-manager/includes/entities/class-emd-project.php:391
 msgid "Sets the actual end date of a project."
 msgstr ""
 
-#: software-issue-manager/includes/entities/class-emd-project.php:398
+#: software-issue-manager/includes/entities/class-emd-project.php:399
 msgid "Allows to upload project related files."
 msgstr ""
 
-#: software-issue-manager/includes/entities/class-emd-project.php:462
+#: software-issue-manager/includes/entities/class-emd-project.php:463
 msgid "No Projects found."
 msgstr ""
 
-#: software-issue-manager/includes/entities/class-emd-project.php:467
+#: software-issue-manager/includes/entities/class-emd-project.php:468
 msgid "No Issues found."
 msgstr ""
 
-#: software-issue-manager/includes/forms.php:73
-#: software-issue-manager/includes/forms.php:254
+#: software-issue-manager/includes/forms.php:68
+#: software-issue-manager/includes/forms.php:249
 msgid "Due Date: Please enter a valid date format"
 msgstr ""
 
-#: software-issue-manager/includes/forms.php:81
-#: software-issue-manager/includes/forms.php:98
-#: software-issue-manager/includes/forms.php:115
-#: software-issue-manager/includes/forms.php:133
-#: software-issue-manager/includes/forms.php:262
-#: software-issue-manager/includes/forms.php:284
-#: software-issue-manager/includes/forms.php:306
-#: software-issue-manager/includes/forms.php:329
-#: software-issue-manager/includes/forms.php:346
-#: software-issue-manager/includes/forms.php:363
-#: software-issue-manager/includes/forms.php:390
+#: software-issue-manager/includes/forms.php:77
+#: software-issue-manager/includes/forms.php:94
+#: software-issue-manager/includes/forms.php:111
+#: software-issue-manager/includes/forms.php:128
+#: software-issue-manager/includes/forms.php:257
+#: software-issue-manager/includes/forms.php:279
+#: software-issue-manager/includes/forms.php:301
+#: software-issue-manager/includes/forms.php:324
+#: software-issue-manager/includes/forms.php:341
+#: software-issue-manager/includes/forms.php:358
+#: software-issue-manager/includes/forms.php:385
 msgid "Please Select"
 msgstr ""
 
-#: software-issue-manager/includes/forms.php:130
-#: software-issue-manager/includes/forms.php:387
+#: software-issue-manager/includes/forms.php:125
+#: software-issue-manager/includes/forms.php:382
 msgid "Please select"
 msgstr ""
 
-#: software-issue-manager/includes/forms.php:161
-#: software-issue-manager/includes/forms.php:434
+#: software-issue-manager/includes/forms.php:156
+#: software-issue-manager/includes/forms.php:429
 msgid "Please enter the characters with black color."
+msgstr ""
+
+#: software-issue-manager/includes/forms.php:158
+#: software-issue-manager/includes/forms.php:431
+msgid "Code"
 msgstr ""
 
 #: software-issue-manager/includes/forms.php:163
 #: software-issue-manager/includes/forms.php:436
-msgid "Code"
-msgstr ""
-
-#: software-issue-manager/includes/forms.php:168
-#: software-issue-manager/includes/forms.php:441
 msgid "Captcha is required"
 msgstr ""
 
-#: software-issue-manager/includes/forms.php:172
-#: software-issue-manager/includes/forms.php:445
+#: software-issue-manager/includes/forms.php:167
+#: software-issue-manager/includes/forms.php:440
 msgid "Characters from captcha image entered incorrectly!"
 msgstr ""
 
-#: software-issue-manager/includes/forms.php:195
+#: software-issue-manager/includes/forms.php:190
 msgid "Your search returned no results."
 msgstr ""
 
-#: software-issue-manager/includes/forms.php:198
+#: software-issue-manager/includes/forms.php:193
 msgid "<p>You are not allowed to access to this area. Please contact the site administrator.</p>"
 msgstr ""
 
-#: software-issue-manager/includes/forms.php:229
+#: software-issue-manager/includes/forms.php:224
 msgid "Title is required"
 msgstr ""
 
-#: software-issue-manager/includes/forms.php:237
+#: software-issue-manager/includes/forms.php:232
 msgid "Enter text ..."
 msgstr ""
 
-#: software-issue-manager/includes/forms.php:276
+#: software-issue-manager/includes/forms.php:271
 msgid "Priority is required!"
 msgstr ""
 
-#: software-issue-manager/includes/forms.php:298
+#: software-issue-manager/includes/forms.php:293
 msgid "Category is required!"
 msgstr ""
 
-#: software-issue-manager/includes/forms.php:320
+#: software-issue-manager/includes/forms.php:315
 msgid "Status is required!"
 msgstr ""
 
-#: software-issue-manager/includes/forms.php:416
+#: software-issue-manager/includes/forms.php:411
 msgid "Affected Projects is required!"
 msgstr ""
 
-#: software-issue-manager/includes/forms.php:449
+#: software-issue-manager/includes/forms.php:444
 msgid "Create Issue"
 msgstr ""
 
-#: software-issue-manager/includes/forms.php:470
+#: software-issue-manager/includes/forms.php:465
 msgid "You are not allowed to access to this area. Please contact the site administrator."
 msgstr ""
 
-#: software-issue-manager/includes/scripts.php:37
-#: software-issue-manager/includes/scripts.php:95
+#: software-issue-manager/includes/scripts.php:41
+#: software-issue-manager/includes/scripts.php:102
 msgid "Please enter a unique value."
 msgstr ""
 
-#: software-issue-manager/includes/scripts.php:79
+#: software-issue-manager/includes/scripts.php:86
 msgid "This field is required."
 msgstr ""
 
-#: software-issue-manager/includes/scripts.php:80
+#: software-issue-manager/includes/scripts.php:87
 msgid "Please fix this field."
 msgstr ""
 
-#: software-issue-manager/includes/scripts.php:81
+#: software-issue-manager/includes/scripts.php:88
 msgid "Please enter a valid email address."
 msgstr ""
 
-#: software-issue-manager/includes/scripts.php:82
+#: software-issue-manager/includes/scripts.php:89
 msgid "Please enter a valid URL."
 msgstr ""
 
-#: software-issue-manager/includes/scripts.php:83
+#: software-issue-manager/includes/scripts.php:90
 msgid "Please enter a valid date."
 msgstr ""
 
-#: software-issue-manager/includes/scripts.php:84
+#: software-issue-manager/includes/scripts.php:91
 msgid "Please enter a valid date ( ISO )"
 msgstr ""
 
-#: software-issue-manager/includes/scripts.php:85
+#: software-issue-manager/includes/scripts.php:92
 msgid "Please enter a valid number."
 msgstr ""
 
-#: software-issue-manager/includes/scripts.php:86
+#: software-issue-manager/includes/scripts.php:93
 msgid "Please enter only digits."
 msgstr ""
 
-#: software-issue-manager/includes/scripts.php:87
+#: software-issue-manager/includes/scripts.php:94
 msgid "Please enter a valid credit card number."
 msgstr ""
 
-#: software-issue-manager/includes/scripts.php:88
+#: software-issue-manager/includes/scripts.php:95
 msgid "Please enter the same value again."
 msgstr ""
 
-#: software-issue-manager/includes/scripts.php:89
+#: software-issue-manager/includes/scripts.php:96
 msgid "Please enter no more than {0} characters."
 msgstr ""
 
-#: software-issue-manager/includes/scripts.php:90
+#: software-issue-manager/includes/scripts.php:97
 msgid "Please enter at least {0} characters."
 msgstr ""
 
-#: software-issue-manager/includes/scripts.php:91
+#: software-issue-manager/includes/scripts.php:98
 msgid "Please enter a value between {0} and {1} characters long."
 msgstr ""
 
-#: software-issue-manager/includes/scripts.php:92
+#: software-issue-manager/includes/scripts.php:99
 msgid "Please enter a value between {0} and {1}."
 msgstr ""
 
-#: software-issue-manager/includes/scripts.php:93
+#: software-issue-manager/includes/scripts.php:100
 msgid "Please enter a value less than or equal to {0}."
 msgstr ""
 
-#: software-issue-manager/includes/scripts.php:94
+#: software-issue-manager/includes/scripts.php:101
 msgid "Please enter a value greater than or equal to {0}."
+msgstr ""
+
+#: software-issue-manager/layouts/shc-sc-issues-header.php:2
+msgid "Below are your search results."
 msgstr ""
 
 #: software-issue-manager/software-issue-manager.php:68
 msgid "Cheatin&#8217; huh?"
 msgstr ""
 
-#: software-issue-manager/software-issue-manager.php:219
+#: software-issue-manager/software-issue-manager.php:218
 msgid "SIM Com"
 msgstr ""
 
-#: software-issue-manager/software-issue-manager.php:223
+#: software-issue-manager/software-issue-manager.php:222
 msgid "Glossary"
 msgstr ""
 
-#: software-issue-manager/software-issue-manager.php:224
+#: software-issue-manager/software-issue-manager.php:223
 msgid "Add-Ons"
 msgstr ""
 
-#: software-issue-manager/software-issue-manager.php:229
+#: software-issue-manager/software-issue-manager.php:227
+msgid "Designs"
+msgstr ""
+
+#: software-issue-manager/software-issue-manager.php:231
+msgid "Support"
+msgstr ""
+
+#: software-issue-manager/software-issue-manager.php:247
 msgid "Licenses"
 msgstr ""

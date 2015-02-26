@@ -2,7 +2,7 @@
 /**
  * Setup and Process submit and search forms
  * @package SIM_COM
- * @version 1.1.0
+ * @version 1.2.0
  * @since WPAS 4.0
  */
 if (!defined('ABSPATH')) exit;
@@ -10,22 +10,17 @@ if (is_admin()) {
 	add_action('wp_ajax_emd_check_unique', 'emd_check_unique');
 	add_action('wp_ajax_nopriv_emd_check_unique', 'emd_check_unique');
 }
-add_action('wp_loaded', 'sim_com_form_shortcodes');
+add_action('init', 'sim_com_form_shortcodes', -2);
 /**
  * Start session and setup upload idr and current user id
  * @since WPAS 4.0
  *
  */
 function sim_com_form_shortcodes() {
-	global $current_user, $current_user_id, $file_upload_dir;
-	get_currentuserinfo();
-	$current_user_id = $current_user->ID;
-	if (!isset($current_user_id) || $current_user_id == '') {
-		$current_user_id = 'guest';
-	}
+	global $file_upload_dir;
 	$upload_dir = wp_upload_dir();
-	$file_upload_dir = $upload_dir['basedir'] . '/wpas-files/' . $current_user_id;
-	if (!session_id()) {
+	$file_upload_dir = $upload_dir['basedir'];
+	if (!session_id() && !headers_sent()) {
 		session_start();
 	}
 }
@@ -76,12 +71,12 @@ function sim_com_set_issue_search() {
 	$form->add('label', 'label_issue_cat', 'issue_cat', 'Category', array(
 		'class' => 'control-label'
 	));
-	$obj = $form->add('selectadv', 'issue_cat', 'bug', array(
+	$obj = $form->add('selectadv', 'issue_cat[]', 'bug', array(
+		'multiple' => 'multiple',
 		'class' => 'input-md'
 	) , '', '{"allowClear":true,"placeholder":"' . __("Please Select", "sim-com") . '","placeholderOption":"first"}');
 	//get taxonomy values
 	$txn_arr = Array();
-	$txn_arr[''] = 'Please select';
 	$txn_obj = get_terms('issue_cat', array(
 		'hide_empty' => 0
 	));
@@ -93,12 +88,12 @@ function sim_com_set_issue_search() {
 	$form->add('label', 'label_issue_priority', 'issue_priority', 'Priority', array(
 		'class' => 'control-label'
 	));
-	$obj = $form->add('selectadv', 'issue_priority', 'normal', array(
+	$obj = $form->add('selectadv', 'issue_priority[]', 'normal', array(
+		'multiple' => 'multiple',
 		'class' => 'input-md'
 	) , '', '{"allowClear":true,"placeholder":"' . __("Please Select", "sim-com") . '","placeholderOption":"first"}');
 	//get taxonomy values
 	$txn_arr = Array();
-	$txn_arr[''] = 'Please select';
 	$txn_obj = get_terms('issue_priority', array(
 		'hide_empty' => 0
 	));
@@ -110,12 +105,12 @@ function sim_com_set_issue_search() {
 	$form->add('label', 'label_issue_status', 'issue_status', 'Status', array(
 		'class' => 'control-label'
 	));
-	$obj = $form->add('selectadv', 'issue_status', 'open', array(
+	$obj = $form->add('selectadv', 'issue_status[]', 'open', array(
+		'multiple' => 'multiple',
 		'class' => 'input-md'
 	) , '', '{"allowClear":true,"placeholder":"' . __("Please Select", "sim-com") . '","placeholderOption":"first"}');
 	//get taxonomy values
 	$txn_arr = Array();
-	$txn_arr[''] = 'Please select';
 	$txn_obj = get_terms('issue_status', array(
 		'hide_empty' => 0
 	));

@@ -37,10 +37,7 @@ onkeyup: false,
 onclick: false,
 errorClass: 'text-danger',
 rules: {
-  'rel_project_issues[]':{
-required:true,
-},
-'issue_priority':{
+  'issue_priority':{
 required:true,
 },
 'issue_status':{
@@ -69,6 +66,9 @@ required  : false,
 },
 emd_iss_document : {
 required  : false,
+},
+'rel_project_issues[]':{
+required:true,
 },
 },
 success: function(label) {

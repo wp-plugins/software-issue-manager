@@ -13,7 +13,7 @@ if (!empty($blt_content)) { ?>
 <?php
 } ?>
 <?php
-$emd_prj_name = rwmb_meta('emd_prj_name');
+$emd_prj_name = emd_mb_meta('emd_prj_name');
 if (!empty($emd_prj_name)) { ?>
    <div id="emd-project-emd-prj-name-div" class="emd-single-div">
    <div id="emd-project-emd-prj-name-key" class="emd-single-title">
@@ -26,7 +26,7 @@ if (!empty($emd_prj_name)) { ?>
 <?php
 } ?>
 <?php
-$emd_prj_version = rwmb_meta('emd_prj_version');
+$emd_prj_version = emd_mb_meta('emd_prj_version');
 if (!empty($emd_prj_version)) { ?>
    <div id="emd-project-emd-prj-version-div" class="emd-single-div">
    <div id="emd-project-emd-prj-version-key" class="emd-single-title">
@@ -38,7 +38,7 @@ if (!empty($emd_prj_version)) { ?>
    </div>
 <?php
 } ?>
-<?php $emd_prj_start_date = rwmb_meta('emd_prj_start_date');
+<?php $emd_prj_start_date = emd_mb_meta('emd_prj_start_date');
 if (!empty($emd_prj_start_date)) {
 	$emd_prj_start_date = emd_translate_date_format($ent_attrs['emd_project']['emd_prj_start_date'], $emd_prj_start_date, 1);
 ?>
@@ -51,7 +51,7 @@ if (!empty($emd_prj_start_date)) {
    </div></div>
 <?php
 } ?>
-<?php $emd_prj_target_end_date = rwmb_meta('emd_prj_target_end_date');
+<?php $emd_prj_target_end_date = emd_mb_meta('emd_prj_target_end_date');
 if (!empty($emd_prj_target_end_date)) {
 	$emd_prj_target_end_date = emd_translate_date_format($ent_attrs['emd_project']['emd_prj_target_end_date'], $emd_prj_target_end_date, 1);
 ?>
@@ -64,7 +64,7 @@ if (!empty($emd_prj_target_end_date)) {
    </div></div>
 <?php
 } ?>
-<?php $emd_prj_actual_end_date = rwmb_meta('emd_prj_actual_end_date');
+<?php $emd_prj_actual_end_date = emd_mb_meta('emd_prj_actual_end_date');
 if (!empty($emd_prj_actual_end_date)) {
 	$emd_prj_actual_end_date = emd_translate_date_format($ent_attrs['emd_project']['emd_prj_actual_end_date'], $emd_prj_actual_end_date, 1);
 ?>
@@ -77,16 +77,18 @@ if (!empty($emd_prj_actual_end_date)) {
    </div></div>
 <?php
 } ?>
-<?php $rwmb_file = rwmb_meta('emd_prj_file', 'type=file');
-if (!empty($rwmb_file)) { ?>
+<?php $emd_mb_file = emd_mb_meta('emd_prj_file', 'type=file');
+if (!empty($emd_mb_file)) { ?>
   <div id="emd-project-emd-prj-file-div" class="emd-single-div">
   <div id="emd-project-emd-prj-file-key" class="emd-single-title">
   <?php _e('Documents', 'sim-com'); ?>
   </div>
   <div id="emd-project-emd-prj-file-val" class="emd-single-val">
-  <?php foreach ($rwmb_file as $info) { ?>
-  <a href='<?php echo esc_url($info['url']); ?>' target='_blank' title='<?php echo esc_attr($info['title']); ?>'><?php echo esc_html($info['name']); ?>
-   </a><br />
+  <?php foreach ($emd_mb_file as $info) {
+		$fsrc = wp_mime_type_icon($info['ID']);
+?>
+  <a href='<?php echo esc_url($info['url']); ?>' target='_blank' title='<?php echo esc_attr($info['title']); ?>'><img src='<?php echo $fsrc; ?>' title='<?php echo esc_html($info['name']); ?>' width='20' />
+   </a>
   <?php
 	} ?>
   </div>

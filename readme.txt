@@ -5,8 +5,8 @@ Author URI: https://emarketdesign.com
 Donate link: https://emarketdesign.com/donate-emarket-design/
 Tags: bug, bug tracking, issue tracking, defect, defect tracking, issues, issue management, product features tracking, task tracking, software development, software requirements management, task management, wp app studio, wpas, issue tracker, projects, project management, requirements, submit issues, submit bugs, issue manager, todo, project planning, bug tracker, enhancement, feature, IMAP, POP3, email, incoming email, post by email
 Requires at least: 3.8
-Tested up to: 4.1
-Stable tag: 1.1.0
+Tested up to: 4.1.1
+Stable tag: 1.2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -19,16 +19,22 @@ Issues are the items you would like to track in your projects. Issues could be t
 
 SIM Projects are identified by a name and a version number. Projects may have unlimited number of issues. Issues can be shared by multiple projects. Community version supports "open" projects which do not require participants to login to WordPress. Premium versions limit access to content by user's role and are appropriate for "closed" projects which require users to login to access content.
 
-> <strong>Customization</strong><br>
-> WP Issue Manager is designed and developed using WP App Studio AUTOBAHN without writing a single line of PHP code. Customize it to your needs by:<br>
-> 1. [Download App signature.](https://wpas.emdplugins.com/wpas-demos/)<br>
-> 2. [Download WP App Studio.](https://wordpress.org/plugins/wp-app-studio/)<br>
-> 3. [Import App signature to WP App Studio AUTOBAHN.](https://wpas.emdplugins.com/)<br>
-> 4. Customize the app design.<br>
-> 5. [Open up a ProDev account.](https://wpas.emdplugins.com/downloads/pro-dev-app/)<br>
-> 6. Generate your custom plugin.<br>
+
+> <strong>Customization using your WP App Studio ProdDev account</strong><br>
+> Software Issue Manager is designed and developed using WP App Studio AUTOBAHN (4.3+) without writing a single line of PHP code. Customize it to your needs by: <br>
+> 1. [Download App signature.](https://emdplugins.com/designs/)<br>
+> 2. [Download WP App Studio.](https://wordpress.org/plugins/wp-app-studio/) <br>
+> 3. [Import App signature to WP App Studio AUTOBAHN by clicking on Import button in the app list screen](https://wpas.emdplugins.com/articles/importing-and-exporting-apps/)<br>
+> 4. [Open up a ProDev account.](https://wpas.emdplugins.com/)<br>
+> 5. Go to WP App Studio menu Applications page Click on the app signature imported and change the *app name* and *text domain* to your ProDev *app name* and *text domain* you purchased.<br>
+> 6. Make modifications to the design and Generate your plugin.<br>
 > 7. Download/Install/Activate your plugin.<br>
-> 8. Set your ProDev license in your plugins setting page, licenses tab. You have 1 year to customize, update your plugin. After initial activation, all other updates are done through WordPress Plugin page like other WP plugins.
+> 8. Set your ProDev license in your plugins setting page, licenses tab. You have 1 year to customize, update your plugin. After initial activation, all other updates are done through WordPress Plugin page like other WP plugins.<br>
+
+> <strong>Enterprise Edition Intro Video</strong> <br>
+
+> [youtube https://www.youtube.com/watch?v=IjD3aZSmYhc]
+
 
 = Works with WPAS Extensions =
 * If you need issues to be created through email (POP3/IMAP supported), you can purchase [WPAS incoming email extension](https://emdplugins.com/plugins/incoming-email-extension/).
@@ -95,8 +101,9 @@ SIM Projects are identified by a name and a version number. Projects may have un
 * Intuitive contextually colored, responsive, bring your own theme interface with interlink menu system.
 * [Extensive documentation](https://docs.emdplugins.com/docs/software-issue-manager-enterprise-documentation/).
 * [Full demo is available](https://ent.emdplugins.com/demos/software-issue-manager-enterprise-demo/).
-* Many more features, not listed here. Check the plugin page for details:
+* Many more features, not listed here.
 
+Check the plugin page for details:
 [Enterprise Edition](https://emdplugins.com/plugins/software-issue-manager-enterprise/)
 
 == Installation ==
@@ -133,6 +140,10 @@ The simplest way to install is to click on 'Plugins' then 'Add' and type 'Softwa
 8. Displays Project single page on the frontend
 
 == Changelog ==
+= 1.2.0 =
+* Fixed untranslatable search form results view header columns
+* Fixed file uploads issue with file names including spaces
+* Fixed various compatibility issues related to other plugins
 = 1.1.0 =
 * Added ability to use WPAS incoming email extension
 * Fixed misc bugs
@@ -153,6 +164,10 @@ The simplest way to install is to click on 'Plugins' then 'Add' and type 'Softwa
 * Initial release.
 
 == Upgrade Notice ==
+= 1.2.0 =
+* Fixed untranslatable search form results view header columns
+* Fixed file uploads issue with file names including spaces
+* Fixed various compatibility issues related to other plugins
 = 1.1.0 =
 * Added ability to use WPAS incoming email extension
 * Fixed misc bugs
