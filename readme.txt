@@ -31,9 +31,9 @@ SIM Projects are identified by a name and a version number. Projects may have un
 > 7. Download/Install/Activate your plugin.<br>
 > 8. Set your ProDev license in your plugins setting page, licenses tab. You have 1 year to customize, update your plugin. After initial activation, all other updates are done through WordPress Plugin page like other WP plugins.<br>
 
-> <strong>Enterprise Edition Intro Video</strong> <br>
+<strong>Enterprise Edition Intro Video</strong> <br>
 
-> [youtube https://www.youtube.com/watch?v=IjD3aZSmYhc]
+[youtube https://www.youtube.com/watch?v=IjD3aZSmYhc]
 
 
 = Works with WPAS Extensions =
