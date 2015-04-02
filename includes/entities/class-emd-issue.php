@@ -3,7 +3,7 @@
  * Entity Class
  *
  * @package SIM_COM
- * @version 1.2.0
+ * @version 1.3.0
  * @since WPAS 4.0
  */
 if (!defined('ABSPATH')) exit;
@@ -16,7 +16,7 @@ class Emd_Issue extends Emd_Entity {
 	protected $textdomain = 'sim-com';
 	protected $sing_label;
 	protected $plural_label;
-	private $boxes = Array();
+	protected $menu_entity;
 	/**
 	 * Initialize entity class
 	 *
@@ -208,82 +208,6 @@ class Emd_Issue extends Emd_Entity {
 				'comments'
 			)
 		));
-		$browser_nohr_labels = array(
-			'name' => __('Browsers', 'sim-com') ,
-			'singular_name' => __('Browser', 'sim-com') ,
-			'search_items' => __('Search Browsers', 'sim-com') ,
-			'popular_items' => __('Popular Browsers', 'sim-com') ,
-			'all_items' => __('All', 'sim-com') ,
-			'parent_item' => null,
-			'parent_item_colon' => null,
-			'edit_item' => __('Edit Browser', 'sim-com') ,
-			'update_item' => __('Update Browser', 'sim-com') ,
-			'add_new_item' => __('Add New Browser', 'sim-com') ,
-			'new_item_name' => __('Add New Browser Name', 'sim-com') ,
-			'separate_items_with_commas' => __('Seperate Browsers with commas', 'sim-com') ,
-			'add_or_remove_items' => __('Add or Remove Browsers', 'sim-com') ,
-			'choose_from_most_used' => __('Choose from the most used Browsers', 'sim-com') ,
-			'menu_name' => __('Browsers', 'sim-com') ,
-		);
-		register_taxonomy('browser', array(
-			'emd_issue'
-		) , array(
-			'hierarchical' => false,
-			'labels' => $browser_nohr_labels,
-			'public' => true,
-			'show_ui' => true,
-			'show_in_nav_menus' => true,
-			'show_tagcloud' => true,
-			'update_count_callback' => '_update_post_term_count',
-			'query_var' => true,
-			'rewrite' => array(
-				'slug' => 'browser'
-			) ,
-			'capabilities' => array(
-				'manage_terms' => 'manage_browser',
-				'edit_terms' => 'edit_browser',
-				'delete_terms' => 'delete_browser',
-				'assign_terms' => 'assign_browser'
-			) ,
-		));
-		$issue_cat_nohr_labels = array(
-			'name' => __('Categories', 'sim-com') ,
-			'singular_name' => __('Category', 'sim-com') ,
-			'search_items' => __('Search Categories', 'sim-com') ,
-			'popular_items' => __('Popular Categories', 'sim-com') ,
-			'all_items' => __('All', 'sim-com') ,
-			'parent_item' => null,
-			'parent_item_colon' => null,
-			'edit_item' => __('Edit Category', 'sim-com') ,
-			'update_item' => __('Update Category', 'sim-com') ,
-			'add_new_item' => __('Add New Category', 'sim-com') ,
-			'new_item_name' => __('Add New Category Name', 'sim-com') ,
-			'separate_items_with_commas' => __('Seperate Categories with commas', 'sim-com') ,
-			'add_or_remove_items' => __('Add or Remove Categories', 'sim-com') ,
-			'choose_from_most_used' => __('Choose from the most used Categories', 'sim-com') ,
-			'menu_name' => __('Categories', 'sim-com') ,
-		);
-		register_taxonomy('issue_cat', array(
-			'emd_issue'
-		) , array(
-			'hierarchical' => false,
-			'labels' => $issue_cat_nohr_labels,
-			'public' => true,
-			'show_ui' => true,
-			'show_in_nav_menus' => true,
-			'show_tagcloud' => true,
-			'update_count_callback' => '_update_post_term_count',
-			'query_var' => true,
-			'rewrite' => array(
-				'slug' => 'issue_cat'
-			) ,
-			'capabilities' => array(
-				'manage_terms' => 'manage_issue_cat',
-				'edit_terms' => 'edit_issue_cat',
-				'delete_terms' => 'delete_issue_cat',
-				'assign_terms' => 'assign_issue_cat'
-			) ,
-		));
 		$operating_system_nohr_labels = array(
 			'name' => __('Operating Systems', 'sim-com') ,
 			'singular_name' => __('Operating System', 'sim-com') ,
@@ -309,6 +233,7 @@ class Emd_Issue extends Emd_Entity {
 			'public' => true,
 			'show_ui' => true,
 			'show_in_nav_menus' => true,
+			'show_in_menu' => true,
 			'show_tagcloud' => true,
 			'update_count_callback' => '_update_post_term_count',
 			'query_var' => true,
@@ -320,44 +245,6 @@ class Emd_Issue extends Emd_Entity {
 				'edit_terms' => 'edit_operating_system',
 				'delete_terms' => 'delete_operating_system',
 				'assign_terms' => 'assign_operating_system'
-			) ,
-		));
-		$issue_tag_nohr_labels = array(
-			'name' => __('Tags', 'sim-com') ,
-			'singular_name' => __('Tag', 'sim-com') ,
-			'search_items' => __('Search Tags', 'sim-com') ,
-			'popular_items' => __('Popular Tags', 'sim-com') ,
-			'all_items' => __('All', 'sim-com') ,
-			'parent_item' => null,
-			'parent_item_colon' => null,
-			'edit_item' => __('Edit Tag', 'sim-com') ,
-			'update_item' => __('Update Tag', 'sim-com') ,
-			'add_new_item' => __('Add New Tag', 'sim-com') ,
-			'new_item_name' => __('Add New Tag Name', 'sim-com') ,
-			'separate_items_with_commas' => __('Seperate Tags with commas', 'sim-com') ,
-			'add_or_remove_items' => __('Add or Remove Tags', 'sim-com') ,
-			'choose_from_most_used' => __('Choose from the most used Tags', 'sim-com') ,
-			'menu_name' => __('Tags', 'sim-com') ,
-		);
-		register_taxonomy('issue_tag', array(
-			'emd_issue'
-		) , array(
-			'hierarchical' => false,
-			'labels' => $issue_tag_nohr_labels,
-			'public' => true,
-			'show_ui' => true,
-			'show_in_nav_menus' => true,
-			'show_tagcloud' => true,
-			'update_count_callback' => '_update_post_term_count',
-			'query_var' => true,
-			'rewrite' => array(
-				'slug' => 'issue_tag'
-			) ,
-			'capabilities' => array(
-				'manage_terms' => 'manage_issue_tag',
-				'edit_terms' => 'edit_issue_tag',
-				'delete_terms' => 'delete_issue_tag',
-				'assign_terms' => 'assign_issue_tag'
 			) ,
 		));
 		$issue_priority_nohr_labels = array(
@@ -385,6 +272,7 @@ class Emd_Issue extends Emd_Entity {
 			'public' => true,
 			'show_ui' => true,
 			'show_in_nav_menus' => true,
+			'show_in_menu' => true,
 			'show_tagcloud' => true,
 			'update_count_callback' => '_update_post_term_count',
 			'query_var' => true,
@@ -396,6 +284,123 @@ class Emd_Issue extends Emd_Entity {
 				'edit_terms' => 'edit_issue_priority',
 				'delete_terms' => 'delete_issue_priority',
 				'assign_terms' => 'assign_issue_priority'
+			) ,
+		));
+		$issue_cat_nohr_labels = array(
+			'name' => __('Categories', 'sim-com') ,
+			'singular_name' => __('Category', 'sim-com') ,
+			'search_items' => __('Search Categories', 'sim-com') ,
+			'popular_items' => __('Popular Categories', 'sim-com') ,
+			'all_items' => __('All', 'sim-com') ,
+			'parent_item' => null,
+			'parent_item_colon' => null,
+			'edit_item' => __('Edit Category', 'sim-com') ,
+			'update_item' => __('Update Category', 'sim-com') ,
+			'add_new_item' => __('Add New Category', 'sim-com') ,
+			'new_item_name' => __('Add New Category Name', 'sim-com') ,
+			'separate_items_with_commas' => __('Seperate Categories with commas', 'sim-com') ,
+			'add_or_remove_items' => __('Add or Remove Categories', 'sim-com') ,
+			'choose_from_most_used' => __('Choose from the most used Categories', 'sim-com') ,
+			'menu_name' => __('Categories', 'sim-com') ,
+		);
+		register_taxonomy('issue_cat', array(
+			'emd_issue'
+		) , array(
+			'hierarchical' => false,
+			'labels' => $issue_cat_nohr_labels,
+			'public' => true,
+			'show_ui' => true,
+			'show_in_nav_menus' => true,
+			'show_in_menu' => true,
+			'show_tagcloud' => true,
+			'update_count_callback' => '_update_post_term_count',
+			'query_var' => true,
+			'rewrite' => array(
+				'slug' => 'issue_cat'
+			) ,
+			'capabilities' => array(
+				'manage_terms' => 'manage_issue_cat',
+				'edit_terms' => 'edit_issue_cat',
+				'delete_terms' => 'delete_issue_cat',
+				'assign_terms' => 'assign_issue_cat'
+			) ,
+		));
+		$issue_tag_nohr_labels = array(
+			'name' => __('Tags', 'sim-com') ,
+			'singular_name' => __('Tag', 'sim-com') ,
+			'search_items' => __('Search Tags', 'sim-com') ,
+			'popular_items' => __('Popular Tags', 'sim-com') ,
+			'all_items' => __('All', 'sim-com') ,
+			'parent_item' => null,
+			'parent_item_colon' => null,
+			'edit_item' => __('Edit Tag', 'sim-com') ,
+			'update_item' => __('Update Tag', 'sim-com') ,
+			'add_new_item' => __('Add New Tag', 'sim-com') ,
+			'new_item_name' => __('Add New Tag Name', 'sim-com') ,
+			'separate_items_with_commas' => __('Seperate Tags with commas', 'sim-com') ,
+			'add_or_remove_items' => __('Add or Remove Tags', 'sim-com') ,
+			'choose_from_most_used' => __('Choose from the most used Tags', 'sim-com') ,
+			'menu_name' => __('Tags', 'sim-com') ,
+		);
+		register_taxonomy('issue_tag', array(
+			'emd_issue'
+		) , array(
+			'hierarchical' => false,
+			'labels' => $issue_tag_nohr_labels,
+			'public' => true,
+			'show_ui' => true,
+			'show_in_nav_menus' => true,
+			'show_in_menu' => true,
+			'show_tagcloud' => true,
+			'update_count_callback' => '_update_post_term_count',
+			'query_var' => true,
+			'rewrite' => array(
+				'slug' => 'issue_tag'
+			) ,
+			'capabilities' => array(
+				'manage_terms' => 'manage_issue_tag',
+				'edit_terms' => 'edit_issue_tag',
+				'delete_terms' => 'delete_issue_tag',
+				'assign_terms' => 'assign_issue_tag'
+			) ,
+		));
+		$browser_nohr_labels = array(
+			'name' => __('Browsers', 'sim-com') ,
+			'singular_name' => __('Browser', 'sim-com') ,
+			'search_items' => __('Search Browsers', 'sim-com') ,
+			'popular_items' => __('Popular Browsers', 'sim-com') ,
+			'all_items' => __('All', 'sim-com') ,
+			'parent_item' => null,
+			'parent_item_colon' => null,
+			'edit_item' => __('Edit Browser', 'sim-com') ,
+			'update_item' => __('Update Browser', 'sim-com') ,
+			'add_new_item' => __('Add New Browser', 'sim-com') ,
+			'new_item_name' => __('Add New Browser Name', 'sim-com') ,
+			'separate_items_with_commas' => __('Seperate Browsers with commas', 'sim-com') ,
+			'add_or_remove_items' => __('Add or Remove Browsers', 'sim-com') ,
+			'choose_from_most_used' => __('Choose from the most used Browsers', 'sim-com') ,
+			'menu_name' => __('Browsers', 'sim-com') ,
+		);
+		register_taxonomy('browser', array(
+			'emd_issue'
+		) , array(
+			'hierarchical' => false,
+			'labels' => $browser_nohr_labels,
+			'public' => true,
+			'show_ui' => true,
+			'show_in_nav_menus' => true,
+			'show_in_menu' => true,
+			'show_tagcloud' => true,
+			'update_count_callback' => '_update_post_term_count',
+			'query_var' => true,
+			'rewrite' => array(
+				'slug' => 'browser'
+			) ,
+			'capabilities' => array(
+				'manage_terms' => 'manage_browser',
+				'edit_terms' => 'edit_browser',
+				'delete_terms' => 'delete_browser',
+				'assign_terms' => 'assign_browser'
 			) ,
 		));
 		$issue_status_nohr_labels = array(
@@ -423,6 +428,7 @@ class Emd_Issue extends Emd_Entity {
 			'public' => true,
 			'show_ui' => true,
 			'show_in_nav_menus' => true,
+			'show_in_menu' => true,
 			'show_tagcloud' => true,
 			'update_count_callback' => '_update_post_term_count',
 			'query_var' => true,
@@ -437,47 +443,6 @@ class Emd_Issue extends Emd_Entity {
 			) ,
 		));
 		if (!get_option('sim_com_emd_issue_terms_init')) {
-			$set_tax_terms = Array(
-				Array(
-					'name' => __('Chrome 33', 'sim-com') ,
-					'slug' => sanitize_title('Chrome 33')
-				) ,
-				Array(
-					'name' => __('Internet Explorer 11', 'sim-com') ,
-					'slug' => sanitize_title('Internet Explorer 11')
-				) ,
-				Array(
-					'name' => __('Safari 7.0', 'sim-com') ,
-					'slug' => sanitize_title('Safari 7.0')
-				) ,
-				Array(
-					'name' => __('Opera 20', 'sim-com') ,
-					'slug' => sanitize_title('Opera 20')
-				) ,
-				Array(
-					'name' => __('Firefox 29', 'sim-com') ,
-					'slug' => sanitize_title('Firefox 29')
-				)
-			);
-			self::set_taxonomy_init($set_tax_terms, 'browser');
-			$set_tax_terms = Array(
-				Array(
-					'name' => __('Bug', 'sim-com') ,
-					'slug' => sanitize_title('Bug') ,
-					'desc' => __('Bugs are software problems or defects in the system that need to be resolved.', 'sim-com')
-				) ,
-				Array(
-					'name' => __('Feature Request', 'sim-com') ,
-					'slug' => sanitize_title('Feature Request') ,
-					'desc' => __('Feature requests are functional enhancements submitted by clients.', 'sim-com')
-				) ,
-				Array(
-					'name' => __('Task', 'sim-com') ,
-					'slug' => sanitize_title('Task') ,
-					'desc' => __('Tasks are activities that need to be accomplished within a defined period of time or by a deadline to resolve issues.', 'sim-com')
-				)
-			);
-			self::set_taxonomy_init($set_tax_terms, 'issue_cat');
 			$set_tax_terms = Array(
 				Array(
 					'name' => __('Windows 8 (32-bit and 64-bit)', 'sim-com') ,
@@ -562,6 +527,47 @@ class Emd_Issue extends Emd_Entity {
 			self::set_taxonomy_init($set_tax_terms, 'issue_priority');
 			$set_tax_terms = Array(
 				Array(
+					'name' => __('Bug', 'sim-com') ,
+					'slug' => sanitize_title('Bug') ,
+					'desc' => __('Bugs are software problems or defects in the system that need to be resolved.', 'sim-com')
+				) ,
+				Array(
+					'name' => __('Feature Request', 'sim-com') ,
+					'slug' => sanitize_title('Feature Request') ,
+					'desc' => __('Feature requests are functional enhancements submitted by clients.', 'sim-com')
+				) ,
+				Array(
+					'name' => __('Task', 'sim-com') ,
+					'slug' => sanitize_title('Task') ,
+					'desc' => __('Tasks are activities that need to be accomplished within a defined period of time or by a deadline to resolve issues.', 'sim-com')
+				)
+			);
+			self::set_taxonomy_init($set_tax_terms, 'issue_cat');
+			$set_tax_terms = Array(
+				Array(
+					'name' => __('Chrome 33', 'sim-com') ,
+					'slug' => sanitize_title('Chrome 33')
+				) ,
+				Array(
+					'name' => __('Internet Explorer 11', 'sim-com') ,
+					'slug' => sanitize_title('Internet Explorer 11')
+				) ,
+				Array(
+					'name' => __('Safari 7.0', 'sim-com') ,
+					'slug' => sanitize_title('Safari 7.0')
+				) ,
+				Array(
+					'name' => __('Opera 20', 'sim-com') ,
+					'slug' => sanitize_title('Opera 20')
+				) ,
+				Array(
+					'name' => __('Firefox 29', 'sim-com') ,
+					'slug' => sanitize_title('Firefox 29')
+				)
+			);
+			self::set_taxonomy_init($set_tax_terms, 'browser');
+			$set_tax_terms = Array(
+				Array(
 					'name' => __('Open', 'sim-com') ,
 					'slug' => sanitize_title('Open') ,
 					'desc' => __('This issue is in the initial state, ready for the assignee to start work on it.', 'sim-com')
@@ -618,10 +624,9 @@ class Emd_Issue extends Emd_Entity {
 	 *
 	 */
 	public function set_filters() {
-		$search_args = array();
-		$filter_args = array();
 		$this->sing_label = __('Issue', 'sim-com');
 		$this->plural_label = __('Issues', 'sim-com');
+		$this->menu_entity = 'emd_issue';
 		$this->boxes[] = array(
 			'id' => 'issue_info_emd_issue_0',
 			'title' => __('Issue Info', 'sim-com') ,
@@ -629,103 +634,8 @@ class Emd_Issue extends Emd_Entity {
 				'emd_issue'
 			) ,
 			'context' => 'normal',
-			'fields' => array(
-				'emd_iss_id' => array(
-					'name' => __('ID', 'sim-com') ,
-					'id' => 'emd_iss_id',
-					'type' => 'hidden',
-					'hidden_func' => 'unique_id',
-					'multiple' => false,
-					'desc' => __('Sets a unique identifier for an issue.', 'sim-com') ,
-					'class' => 'emd_iss_id',
-				) ,
-				'emd_iss_due_date' => array(
-					'name' => __('Due Date', 'sim-com') ,
-					'id' => 'emd_iss_due_date',
-					'type' => 'date',
-					'multiple' => false,
-					'js_options' => array(
-						'dateFormat' => 'mm-dd-yy'
-					) ,
-					'desc' => __('Sets the targeted resolution date for an issue.', 'sim-com') ,
-					'class' => 'emd_iss_due_date',
-				) ,
-				'emd_iss_resolution_summary' => array(
-					'name' => __('Resolution Summary', 'sim-com') ,
-					'id' => 'emd_iss_resolution_summary',
-					'type' => 'wysiwyg',
-					'multiple' => false,
-					'desc' => __('Sets a brief summary of the resolution of an issue.', 'sim-com') ,
-					'class' => 'emd_iss_resolution_summary',
-					'options' => array(
-						'media_buttons' => false
-					)
-				) ,
-				'emd_iss_document' => array(
-					'name' => __('Documents', 'sim-com') ,
-					'id' => 'emd_iss_document',
-					'type' => 'file',
-					'multiple' => false,
-					'desc' => __('Allows to upload files related to an issue.', 'sim-com') ,
-					'class' => 'emd_iss_document',
-				) ,
-				'wpas_form_name' => array(
-					'name' => __('Form Name', 'sim-com') ,
-					'id' => 'wpas_form_name',
-					'type' => 'hidden',
-					'no_update' => 1,
-					'multiple' => false,
-					'std' => 'admin',
-					'class' => 'wpas_form_name',
-				) ,
-				'wpas_form_submitted_by' => array(
-					'name' => __('Form Submitted By', 'sim-com') ,
-					'id' => 'wpas_form_submitted_by',
-					'type' => 'hidden',
-					'hidden_func' => 'user_login',
-					'no_update' => 1,
-					'multiple' => false,
-					'class' => 'wpas_form_submitted_by',
-				) ,
-				'wpas_form_submitted_ip' => array(
-					'name' => __('Form Submitted IP', 'sim-com') ,
-					'id' => 'wpas_form_submitted_ip',
-					'type' => 'hidden',
-					'hidden_func' => 'user_ip',
-					'no_update' => 1,
-					'multiple' => false,
-					'class' => 'wpas_form_submitted_ip',
-				) ,
-			) ,
-			'validation' => array(
-				'onfocusout' => false,
-				'onkeyup' => false,
-				'onclick' => false,
-				'rules' => array(
-					'emd_iss_id' => array(
-						'required' => false,
-					) ,
-					'emd_iss_due_date' => array(
-						'required' => false,
-					) ,
-					'emd_iss_resolution_summary' => array(
-						'required' => false,
-					) ,
-					'emd_iss_document' => array(
-						'required' => false,
-					) ,
-					'wpas_form_name' => array(
-						'required' => false,
-					) ,
-					'wpas_form_submitted_by' => array(
-						'required' => false,
-					) ,
-					'wpas_form_submitted_ip' => array(
-						'required' => false,
-					) ,
-				) ,
-			)
 		);
+		list($search_args, $filter_args) = $this->set_args_boxes();
 		if (!post_type_exists($this->post_type) || in_array($this->post_type, Array(
 			'post',
 			'page'

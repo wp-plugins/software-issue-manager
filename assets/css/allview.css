@@ -19,11 +19,4 @@ vertical-align: middle;
 div.emd-container li{
 margin:0px;
 }
-th.results-header{
- padding-right: 20px;
- text-decoration:none;
- }
-.results{
- padding-top: 10px;
- padding-bottom: 10px;
- }
+th.results-header{ padding-right: 20px; text-decoration:none; } .results{ padding-top: 10px; padding-bottom: 10px; }

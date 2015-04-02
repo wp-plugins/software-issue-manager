@@ -3,7 +3,7 @@
  * Enqueue Scripts Functions
  *
  * @package SIM_COM
- * @version 1.2.0
+ * @version 1.3.0
  * @since WPAS 4.0
  */
 if (!defined('ABSPATH')) exit;
@@ -16,7 +16,10 @@ add_action('admin_enqueue_scripts', 'sim_com_load_admin_enq');
  *
  */
 function sim_com_load_admin_enq($hook) {
-	wp_enqueue_script('emd-share', SIM_COM_PLUGIN_URL . 'assets/js/emd-share.js', '', SIM_COM_VERSION, true);
+	global $typenow;
+	if ($hook == 'edit-tags.php') {
+		return;
+	}
 	if ($hook == 'toplevel_page_sim_com' || $hook == 'sim-com_page_sim_com_notify') {
 		wp_enqueue_script('accordion');
 		return;
@@ -28,8 +31,7 @@ function sim_com_load_admin_enq($hook) {
 		wp_enqueue_style('admin-tabs', SIM_COM_PLUGIN_URL . 'assets/css/admin-store.css');
 		return;
 	}
-	global $post;
-	if (isset($post) && in_array($post->post_type, Array(
+	if (in_array($typenow, Array(
 		'emd_project',
 		'emd_issue'
 	))) {
@@ -37,15 +39,21 @@ function sim_com_load_admin_enq($hook) {
 		$datetime_enq = 0;
 		$date_enq = 0;
 		$sing_enq = 0;
+		$tab_enq = 0;
 		if ($hook == 'post.php' || $hook == 'post-new.php') {
-			$unique_vars['msg'] = __('Please enter a unique value.', 'emd-plugins');
+			$unique_vars['msg'] = __('Please enter a unique value.', 'sim-com');
+			$unique_vars['app_name'] = 'sim_com';
+			$ent_list = get_option('sim_com_ent_list');
+			if (!empty($ent_list[$typenow])) {
+				$unique_vars['keys'] = $ent_list[$typenow]['unique_keys'];
+			}
 			wp_enqueue_script('unique_validate-js', SIM_COM_PLUGIN_URL . 'assets/js/unique_validate.js', array(
 				'jquery',
 				'jquery-validate'
 			) , SIM_COM_VERSION, true);
 			wp_localize_script("unique_validate-js", 'unique_vars', $unique_vars);
 		}
-		switch ($post->post_type) {
+		switch ($typenow) {
 			case 'emd_issue':
 				$date_enq = 1;
 				$sing_enq = 1;
@@ -55,19 +63,23 @@ function sim_com_load_admin_enq($hook) {
 				$sing_enq = 1;
 			break;
 		}
-		wp_enqueue_style("jq-css", "//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/themes/smoothness/jquery-ui.css");
 		if ($datetime_enq == 1) {
 			wp_enqueue_script("jquery-ui-timepicker", SIM_COM_PLUGIN_URL . 'assets/ext/emd-meta-box/js/jqueryui/jquery-ui-timepicker-addon.js', array(
 				'jquery-ui-datepicker',
 				'jquery-ui-slider'
 			) , SIM_COM_VERSION, true);
+			$tab_enq = 1;
 		} elseif ($date_enq == 1) {
 			wp_enqueue_script("jquery-ui-datepicker");
+			$tab_enq = 1;
 		}
 		if ($sing_enq == 1) {
 			wp_enqueue_script('radiotax', SIM_COM_PLUGIN_URL . 'includes/admin/singletax/singletax.js', array(
 				'jquery'
 			) , SIM_COM_VERSION, true);
+		}
+		if ($tab_enq == 1) {
+			wp_enqueue_style('jq-css', SIM_COM_PLUGIN_URL . 'assets/css/smoothness-jquery-ui.css');
 		}
 	}
 }
@@ -110,7 +122,7 @@ function sim_com_frontend_scripts() {
 			wp_enqueue_script('jvalidate-js', $dir_url . 'assets/ext/jvalidate1111/wpas.validate.min.js', array(
 				'jquery'
 			));
-			wp_enqueue_style("jq-css", "//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/themes/smoothness/jquery-ui.css");
+			wp_enqueue_style('jq-css', SIM_COM_PLUGIN_URL . 'assets/css/smoothness-jquery-ui.css');
 			wp_enqueue_style('wpasui', SIM_COM_PLUGIN_URL . 'assets/ext/wpas-jui/wpas-jui.min.css');
 			wp_enqueue_script('jquery-ui-datepicker');
 			wp_enqueue_style('issue-entry-forms', $dir_url . 'assets/css/issue-entry-forms.css');
@@ -121,7 +133,7 @@ function sim_com_frontend_scripts() {
 			wp_enqueue_script('jvalidate-js', $dir_url . 'assets/ext/jvalidate1111/wpas.validate.min.js', array(
 				'jquery'
 			));
-			wp_enqueue_style("jq-css", "//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/themes/smoothness/jquery-ui.css");
+			wp_enqueue_style('jq-css', SIM_COM_PLUGIN_URL . 'assets/css/smoothness-jquery-ui.css');
 			wp_enqueue_style('wpasui', SIM_COM_PLUGIN_URL . 'assets/ext/wpas-jui/wpas-jui.min.css');
 			wp_enqueue_script('jquery-ui-datepicker');
 			wp_enqueue_style('allview-css', $dir_url . '/assets/css/allview.css');

@@ -15,29 +15,28 @@ $.validator.setDefaults({
 $.extend($.validator.messages,issue_entry_vars.validate_msg);
 $('#emd_iss_due_date').datepicker({
 'dateFormat' : 'mm-dd-yy'});
-$.validator.addMethod('uniqueAttr',function(val,element){
-  var unique = true;
-  var data_input = $("form").serialize();
-  $.ajax({
-    type: 'GET',
-    url: issue_entry_vars.ajax_url,
-    cache: false,
-    async: false,
-    data: {action:'emd_check_unique',data_input:data_input, ptype:'emd_issue',myapp:'sim_com'},
-    success: function(response)
-    {
-      unique = response;
-    },
-  });
-  return unique;                
-}, issue_entry_vars.unique_msg);
 $('#issue_entry').validate({
 onfocusout: false,
 onkeyup: false,
 onclick: false,
 errorClass: 'text-danger',
 rules: {
-  'issue_priority':{
+  blt_title:{
+required : true
+},
+blt_content:{
+required : false
+},
+emd_iss_due_date:{
+required : false
+},
+emd_iss_document:{
+required : false
+},
+'rel_project_issues[]':{
+required:true,
+},
+'issue_priority':{
 required:true,
 },
 'issue_status':{
@@ -54,21 +53,6 @@ required:false,
 },
 'operating_system[]':{
 required:false,
-},
-blt_title : {
-required  : true,
-},
-blt_content : {
-required  : false,
-},
-emd_iss_due_date : {
-required  : false,
-},
-emd_iss_document : {
-required  : false,
-},
-'rel_project_issues[]':{
-required:true,
 },
 },
 success: function(label) {

@@ -21,22 +21,22 @@ onkeyup: false,
 onclick: false,
 errorClass: 'text-danger',
 rules: {
-  'issue_priority[]':{
+  emd_iss_id:{
+required : false
+},
+emd_iss_due_date:{
+required : false
+},
+'rel_project_issues[]':{
+required:false,
+},
+'issue_priority[]':{
 required:false,
 },
 'issue_status[]':{
 required:false,
 },
 'issue_cat[]':{
-required:false,
-},
-emd_iss_id : {
-required  : false,
-},
-emd_iss_due_date : {
-required  : false,
-},
-'rel_project_issues[]':{
 required:false,
 },
 },

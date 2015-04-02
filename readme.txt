@@ -6,7 +6,7 @@ Donate link: https://emarketdesign.com/donate-emarket-design/
 Tags: bug, bug tracking, issue tracking, defect, defect tracking, issues, issue management, product features tracking, task tracking, software development, software requirements management, task management, wp app studio, wpas, issue tracker, projects, project management, requirements, submit issues, submit bugs, issue manager, todo, project planning, bug tracker, enhancement, feature, IMAP, POP3, email, incoming email, post by email
 Requires at least: 3.8
 Tested up to: 4.1.1
-Stable tag: 1.2.0
+Stable tag: 1.3.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -140,6 +140,10 @@ The simplest way to install is to click on 'Plugins' then 'Add' and type 'Softwa
 8. Displays Project single page on the frontend
 
 == Changelog ==
+= 1.3.0 =
+* Fixed unique check for issues and projects
+* Moved all js and css from cdn to local
+* Fixed misc bugs
 = 1.2.0 =
 * Fixed untranslatable search form results view header columns
 * Fixed file uploads issue with file names including spaces
@@ -164,6 +168,10 @@ The simplest way to install is to click on 'Plugins' then 'Add' and type 'Softwa
 * Initial release.
 
 == Upgrade Notice ==
+= 1.3.0 =
+* Fixed unique check for issues and projects
+* Moved all js and css from cdn to local
+* Fixed misc bugs
 = 1.2.0 =
 * Fixed untranslatable search form results view header columns
 * Fixed file uploads issue with file names including spaces

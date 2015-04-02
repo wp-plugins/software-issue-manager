@@ -3,7 +3,7 @@
  * Entity Class
  *
  * @package SIM_COM
- * @version 1.2.0
+ * @version 1.3.0
  * @since WPAS 4.0
  */
 if (!defined('ABSPATH')) exit;
@@ -16,7 +16,7 @@ class Emd_Project extends Emd_Entity {
 	protected $textdomain = 'sim-com';
 	protected $sing_label;
 	protected $plural_label;
-	private $boxes = Array();
+	protected $menu_entity;
 	/**
 	 * Initialize entity class
 	 *
@@ -208,44 +208,6 @@ class Emd_Project extends Emd_Entity {
 				'editor',
 			)
 		));
-		$project_priority_nohr_labels = array(
-			'name' => __('Priorities', 'sim-com') ,
-			'singular_name' => __('Priority', 'sim-com') ,
-			'search_items' => __('Search Priorities', 'sim-com') ,
-			'popular_items' => __('Popular Priorities', 'sim-com') ,
-			'all_items' => __('All', 'sim-com') ,
-			'parent_item' => null,
-			'parent_item_colon' => null,
-			'edit_item' => __('Edit Priority', 'sim-com') ,
-			'update_item' => __('Update Priority', 'sim-com') ,
-			'add_new_item' => __('Add New Priority', 'sim-com') ,
-			'new_item_name' => __('Add New Priority Name', 'sim-com') ,
-			'separate_items_with_commas' => __('Seperate Priorities with commas', 'sim-com') ,
-			'add_or_remove_items' => __('Add or Remove Priorities', 'sim-com') ,
-			'choose_from_most_used' => __('Choose from the most used Priorities', 'sim-com') ,
-			'menu_name' => __('Priorities', 'sim-com') ,
-		);
-		register_taxonomy('project_priority', array(
-			'emd_project'
-		) , array(
-			'hierarchical' => false,
-			'labels' => $project_priority_nohr_labels,
-			'public' => true,
-			'show_ui' => true,
-			'show_in_nav_menus' => true,
-			'show_tagcloud' => true,
-			'update_count_callback' => '_update_post_term_count',
-			'query_var' => true,
-			'rewrite' => array(
-				'slug' => 'project_priority'
-			) ,
-			'capabilities' => array(
-				'manage_terms' => 'manage_project_priority',
-				'edit_terms' => 'edit_project_priority',
-				'delete_terms' => 'delete_project_priority',
-				'assign_terms' => 'assign_project_priority'
-			) ,
-		));
 		$project_status_nohr_labels = array(
 			'name' => __('Statuses', 'sim-com') ,
 			'singular_name' => __('Status', 'sim-com') ,
@@ -271,6 +233,7 @@ class Emd_Project extends Emd_Entity {
 			'public' => true,
 			'show_ui' => true,
 			'show_in_nav_menus' => true,
+			'show_in_menu' => true,
 			'show_tagcloud' => true,
 			'update_count_callback' => '_update_post_term_count',
 			'query_var' => true,
@@ -284,22 +247,46 @@ class Emd_Project extends Emd_Entity {
 				'assign_terms' => 'assign_project_status'
 			) ,
 		));
+		$project_priority_nohr_labels = array(
+			'name' => __('Priorities', 'sim-com') ,
+			'singular_name' => __('Priority', 'sim-com') ,
+			'search_items' => __('Search Priorities', 'sim-com') ,
+			'popular_items' => __('Popular Priorities', 'sim-com') ,
+			'all_items' => __('All', 'sim-com') ,
+			'parent_item' => null,
+			'parent_item_colon' => null,
+			'edit_item' => __('Edit Priority', 'sim-com') ,
+			'update_item' => __('Update Priority', 'sim-com') ,
+			'add_new_item' => __('Add New Priority', 'sim-com') ,
+			'new_item_name' => __('Add New Priority Name', 'sim-com') ,
+			'separate_items_with_commas' => __('Seperate Priorities with commas', 'sim-com') ,
+			'add_or_remove_items' => __('Add or Remove Priorities', 'sim-com') ,
+			'choose_from_most_used' => __('Choose from the most used Priorities', 'sim-com') ,
+			'menu_name' => __('Priorities', 'sim-com') ,
+		);
+		register_taxonomy('project_priority', array(
+			'emd_project'
+		) , array(
+			'hierarchical' => false,
+			'labels' => $project_priority_nohr_labels,
+			'public' => true,
+			'show_ui' => true,
+			'show_in_nav_menus' => true,
+			'show_in_menu' => true,
+			'show_tagcloud' => true,
+			'update_count_callback' => '_update_post_term_count',
+			'query_var' => true,
+			'rewrite' => array(
+				'slug' => 'project_priority'
+			) ,
+			'capabilities' => array(
+				'manage_terms' => 'manage_project_priority',
+				'edit_terms' => 'edit_project_priority',
+				'delete_terms' => 'delete_project_priority',
+				'assign_terms' => 'assign_project_priority'
+			) ,
+		));
 		if (!get_option('sim_com_emd_project_terms_init')) {
-			$set_tax_terms = Array(
-				Array(
-					'name' => __('Low', 'sim-com') ,
-					'slug' => sanitize_title('Low')
-				) ,
-				Array(
-					'name' => __('Medium', 'sim-com') ,
-					'slug' => sanitize_title('Medium')
-				) ,
-				Array(
-					'name' => __('High', 'sim-com') ,
-					'slug' => sanitize_title('High')
-				)
-			);
-			self::set_taxonomy_init($set_tax_terms, 'project_priority');
 			$set_tax_terms = Array(
 				Array(
 					'name' => __('Draft', 'sim-com') ,
@@ -319,6 +306,21 @@ class Emd_Project extends Emd_Entity {
 				)
 			);
 			self::set_taxonomy_init($set_tax_terms, 'project_status');
+			$set_tax_terms = Array(
+				Array(
+					'name' => __('Low', 'sim-com') ,
+					'slug' => sanitize_title('Low')
+				) ,
+				Array(
+					'name' => __('Medium', 'sim-com') ,
+					'slug' => sanitize_title('Medium')
+				) ,
+				Array(
+					'name' => __('High', 'sim-com') ,
+					'slug' => sanitize_title('High')
+				)
+			);
+			self::set_taxonomy_init($set_tax_terms, 'project_priority');
 			update_option('sim_com_emd_project_terms_init', true);
 		}
 	}
@@ -329,10 +331,9 @@ class Emd_Project extends Emd_Entity {
 	 *
 	 */
 	public function set_filters() {
-		$search_args = array();
-		$filter_args = array();
 		$this->sing_label = __('Project', 'sim-com');
 		$this->plural_label = __('Projects', 'sim-com');
+		$this->menu_entity = 'emd_project';
 		$this->boxes[] = array(
 			'id' => 'project_info_emd_project_0',
 			'title' => __('Project Info', 'sim-com') ,
@@ -340,95 +341,8 @@ class Emd_Project extends Emd_Entity {
 				'emd_project'
 			) ,
 			'context' => 'normal',
-			'fields' => array(
-				'emd_prj_name' => array(
-					'name' => __('Name', 'sim-com') ,
-					'id' => 'emd_prj_name',
-					'type' => 'text',
-					'multiple' => false,
-					'desc' => __('Sets the name of a project.', 'sim-com') ,
-					'class' => 'emd_prj_name',
-				) ,
-				'emd_prj_version' => array(
-					'name' => __('Version', 'sim-com') ,
-					'id' => 'emd_prj_version',
-					'type' => 'text',
-					'multiple' => false,
-					'desc' => __('Sets the version number of a project.', 'sim-com') ,
-					'std' => 'V1.0.0',
-					'class' => 'emd_prj_version',
-				) ,
-				'emd_prj_start_date' => array(
-					'name' => __('Start Date', 'sim-com') ,
-					'id' => 'emd_prj_start_date',
-					'type' => 'date',
-					'multiple' => false,
-					'js_options' => array(
-						'dateFormat' => 'mm-dd-yy'
-					) ,
-					'desc' => __('Sets the start date of a project.', 'sim-com') ,
-					'class' => 'emd_prj_start_date',
-				) ,
-				'emd_prj_target_end_date' => array(
-					'name' => __('Target End Date', 'sim-com') ,
-					'id' => 'emd_prj_target_end_date',
-					'type' => 'date',
-					'multiple' => false,
-					'js_options' => array(
-						'dateFormat' => 'mm-dd-yy'
-					) ,
-					'desc' => __('Sets the targeted end date of a project.', 'sim-com') ,
-					'class' => 'emd_prj_target_end_date',
-				) ,
-				'emd_prj_actual_end_date' => array(
-					'name' => __('Actual End Date', 'sim-com') ,
-					'id' => 'emd_prj_actual_end_date',
-					'type' => 'date',
-					'multiple' => false,
-					'js_options' => array(
-						'dateFormat' => 'mm-dd-yy'
-					) ,
-					'desc' => __('Sets the actual end date of a project.', 'sim-com') ,
-					'class' => 'emd_prj_actual_end_date',
-				) ,
-				'emd_prj_file' => array(
-					'name' => __('Documents', 'sim-com') ,
-					'id' => 'emd_prj_file',
-					'type' => 'file',
-					'multiple' => false,
-					'desc' => __('Allows to upload project related files.', 'sim-com') ,
-					'class' => 'emd_prj_file',
-				) ,
-			) ,
-			'validation' => array(
-				'onfocusout' => false,
-				'onkeyup' => false,
-				'onclick' => false,
-				'rules' => array(
-					'emd_prj_name' => array(
-						'required' => true,
-						'minlength' => 3,
-						'uniqueAttr' => true,
-					) ,
-					'emd_prj_version' => array(
-						'required' => true,
-						'uniqueAttr' => true,
-					) ,
-					'emd_prj_start_date' => array(
-						'required' => true,
-					) ,
-					'emd_prj_target_end_date' => array(
-						'required' => false,
-					) ,
-					'emd_prj_actual_end_date' => array(
-						'required' => false,
-					) ,
-					'emd_prj_file' => array(
-						'required' => false,
-					) ,
-				) ,
-			)
 		);
+		list($search_args, $filter_args) = $this->set_args_boxes();
 		if (!post_type_exists($this->post_type) || in_array($this->post_type, Array(
 			'post',
 			'page'
