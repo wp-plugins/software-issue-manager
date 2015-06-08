@@ -93,7 +93,7 @@ class P2P_Column_Post extends P2P_Column {
 			'post_type' => get_current_screen()->post_type
 		);
 
-		return add_query_arg( $args, admin_url( 'edit.php' ) );
+		return esc_url(add_query_arg( $args, admin_url( 'edit.php' ) ));
 	}
 
 	function display_column( $column, $item_id ) {
@@ -119,7 +119,7 @@ class P2P_Column_User extends P2P_Column {
 			'connected_items' => $item->get_id(),
 		);
 
-		return add_query_arg( $args, admin_url( 'users.php' ) );
+		return esc_url(add_query_arg( $args, admin_url( 'users.php' ) ));
 	}
 
 	function display_column( $content, $column, $item_id ) {

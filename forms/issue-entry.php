@@ -2,6 +2,8 @@
 <div class="form-alerts">
 <?php
 echo (isset($zf_error) ? $zf_error : (isset($error) ? $error : ''));
+$form_list = get_option('sim_com_glob_forms_list');
+$form_variables = $form_list['issue_entry'];
 ?>
 </div>
 <!-- issue_entry Form Description -->
@@ -14,7 +16,8 @@ echo (isset($zf_error) ? $zf_error : (isset($error) ? $error : ''));
 <div class="issue_entry_attributes">
 <div id="row1" class="row">
 <!-- text input-->
-<div class="col-md-12 woptdiv">
+<?php if ($form_variables['blt_title']['show'] == 1) { ?>
+<div class="col-md-<?php echo $form_variables['blt_title']['size']; ?> woptdiv">
 <div class="form-group">
 <label id="label_blt_title" class="control-label" for="blt_title">
 <?php _e('Title', 'sim-com'); ?>
@@ -27,10 +30,13 @@ echo (isset($zf_error) ? $zf_error : (isset($error) ? $error : ''));
 <?php echo $blt_title; ?>
 </div>
 </div>
+<?php
+} ?>
 </div>
 <div id="row2" class="row">
 <!-- wysiwyg input-->
-<div class="col-md-12">
+<?php if ($form_variables['blt_content']['show'] == 1) { ?>
+<div class="col-md-<?php echo $form_variables['blt_content']['size']; ?>">
 <div class="form-group">
 <label id="label_blt_content" class="control-label" for="blt_content">
 <?php _e('Content', 'sim-com'); ?>
@@ -40,10 +46,13 @@ echo (isset($zf_error) ? $zf_error : (isset($error) ? $error : ''));
 <?php echo $blt_content; ?>
 </div>
 </div>
+<?php
+} ?>
 </div>
 <div id="row3" class="row">
 <!-- date-->
-<div class="col-md-12 woptdiv">
+<?php if ($form_variables['emd_iss_due_date']['show'] == 1) { ?>
+<div class="col-md-<?php echo $form_variables['emd_iss_due_date']['size']; ?> woptdiv">
 <div class="form-group">
 <label id="label_emd_iss_due_date" class="control-label" for="emd_iss_due_date">
 <?php _e('Due Date', 'sim-com'); ?>
@@ -53,61 +62,64 @@ echo (isset($zf_error) ? $zf_error : (isset($error) ? $error : ''));
 <?php echo $emd_iss_due_date; ?>
 </div>
 </div>
+<?php
+} ?>
 </div>
 <div id="row4" class="row">
 <!-- Taxonomy input-->
-<div class="col-md-12">
+<?php if ($form_variables['issue_priority']['show'] == 1) { ?>
+<div class="col-md-<?php echo $form_variables['issue_priority']['size']; ?>">
 <div class="form-group">
 <label id="label_issue_priority" class="control-label" for="issue_priority">
 <?php _e('Priority', 'sim-com'); ?>
 <span style="display: inline-flex;right: 0px; position: relative; top:-6px;">
 <a data-html="true" href="#" data-toggle="tooltip" title="<?php _e('Sets the priority level assigned to an issue.', 'sim-com'); ?>" id="info_issue_priority" class="helptip"><span class="field-icons icons-help"></span></a>
-<a href="#" data-html="true" data-toggle="tooltip" title="<?php _e('Priority field is required', 'sim-com'); ?>" id="info_issue_priority" class="helptip">
-<span class="field-icons icons-required"></span>
-</a>
 </span>
 </label>
 <?php echo $issue_priority; ?>
 </div>
 </div>
+<?php
+} ?>
 </div>
 <div id="row5" class="row">
 <!-- Taxonomy input-->
-<div class="col-md-12">
+<?php if ($form_variables['issue_cat']['show'] == 1) { ?>
+<div class="col-md-<?php echo $form_variables['issue_cat']['size']; ?>">
 <div class="form-group">
 <label id="label_issue_cat" class="control-label" for="issue_cat">
 <?php _e('Category', 'sim-com'); ?>
 <span style="display: inline-flex;right: 0px; position: relative; top:-6px;">
 <a data-html="true" href="#" data-toggle="tooltip" title="<?php _e('Sets the category that an issue belongs to.', 'sim-com'); ?>" id="info_issue_cat" class="helptip"><span class="field-icons icons-help"></span></a>
-<a href="#" data-html="true" data-toggle="tooltip" title="<?php _e('Category field is required', 'sim-com'); ?>" id="info_issue_cat" class="helptip">
-<span class="field-icons icons-required"></span>
-</a>
 </span>
 </label>
 <?php echo $issue_cat; ?>
 </div>
 </div>
+<?php
+} ?>
 </div>
 <div id="row6" class="row">
 <!-- Taxonomy input-->
-<div class="col-md-12">
+<?php if ($form_variables['issue_status']['show'] == 1) { ?>
+<div class="col-md-<?php echo $form_variables['issue_status']['size']; ?>">
 <div class="form-group">
 <label id="label_issue_status" class="control-label" for="issue_status">
 <?php _e('Status', 'sim-com'); ?>
 <span style="display: inline-flex;right: 0px; position: relative; top:-6px;">
 <a data-html="true" href="#" data-toggle="tooltip" title="<?php _e('Sets the current status of an issue.', 'sim-com'); ?>" id="info_issue_status" class="helptip"><span class="field-icons icons-help"></span></a>
-<a href="#" data-html="true" data-toggle="tooltip" title="<?php _e('Status field is required', 'sim-com'); ?>" id="info_issue_status" class="helptip">
-<span class="field-icons icons-required"></span>
-</a>
 </span>
 </label>
 <?php echo $issue_status; ?>
 </div>
 </div>
+<?php
+} ?>
 </div>
 <div id="row7" class="row">
 <!-- Taxonomy input-->
-<div class="col-md-12">
+<?php if ($form_variables['issue_tag']['show'] == 1) { ?>
+<div class="col-md-<?php echo $form_variables['issue_tag']['size']; ?>">
 <div class="form-group">
 <label id="label_issue_tag" class="control-label" for="issue_tag">
 <?php _e('Tag', 'sim-com'); ?>
@@ -118,10 +130,13 @@ echo (isset($zf_error) ? $zf_error : (isset($error) ? $error : ''));
 <?php echo $issue_tag; ?>
 </div>
 </div>
+<?php
+} ?>
 </div>
 <div id="row8" class="row">
 <!-- Taxonomy input-->
-<div class="col-md-12">
+<?php if ($form_variables['browser']['show'] == 1) { ?>
+<div class="col-md-<?php echo $form_variables['browser']['size']; ?>">
 <div class="form-group">
 <label id="label_browser" class="control-label" for="browser">
 <?php _e('Browser', 'sim-com'); ?>
@@ -132,10 +147,13 @@ echo (isset($zf_error) ? $zf_error : (isset($error) ? $error : ''));
 <?php echo $browser; ?>
 </div>
 </div>
+<?php
+} ?>
 </div>
 <div id="row9" class="row">
 <!-- Taxonomy input-->
-<div class="col-md-12">
+<?php if ($form_variables['operating_system']['show'] == 1) { ?>
+<div class="col-md-<?php echo $form_variables['operating_system']['size']; ?>">
 <div class="form-group">
 <label id="label_operating_system" class="control-label" for="operating_system">
 <?php _e('Operating System', 'sim-com'); ?>
@@ -146,16 +164,21 @@ echo (isset($zf_error) ? $zf_error : (isset($error) ? $error : ''));
 <?php echo $operating_system; ?>
 </div>
 </div>
+<?php
+} ?>
 </div>
 <div id="row10" class="row">
 <!-- file input-->
-<div class="col-md-12">
+<?php if ($form_variables['emd_iss_document']['show'] == 1) { ?>
+<div class="col-md-<?php echo $form_variables['emd_iss_document']['size']; ?>">
 <?php _e('Documents', 'sim-com'); ?>
 <a data-html="true" href="#" data-toggle="tooltip" title="<?php _e('Allows to upload files related to an issue.', 'sim-com'); ?>" id="info_emd_iss_document" class="helptip"><span class="field-icons icons-help"></span></a>
 <div class="form-group">
 <?php echo $emd_iss_document; ?>
 </div>
 </div>
+<?php
+} ?>
 </div>
 <div id="row11" class="row">
 <!-- HR-->
@@ -163,7 +186,8 @@ echo (isset($zf_error) ? $zf_error : (isset($error) ? $error : ''));
 </div>
 <div id="row12" class="row">
 <!-- rel-ent input-->
-<div class="col-md-12">
+<?php if ($form_variables['rel_project_issues']['show'] == 1) { ?>
+<div class="col-md-<?php echo $form_variables['rel_project_issues']['size']; ?>">
 <div class="form-group">
 <label id="label_rel_project_issues" class="control-label" for="rel_project_issues">
 <?php _e('Affected Projects', 'sim-com'); ?>
@@ -177,6 +201,8 @@ echo (isset($zf_error) ? $zf_error : (isset($error) ? $error : ''));
 <?php echo $rel_project_issues; ?>
 </div>
 </div>
+<?php
+} ?>
 </div>
  
  

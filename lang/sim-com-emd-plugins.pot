@@ -7,8 +7,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2015-04-02T12:03:45-04:00\n"
-"POT-Creation-Date: 2015-04-02T12:03:45-04:00\n"
+"PO-Revision-Date: 2015-06-08T10:45:27-04:00\n"
+"POT-Creation-Date: 2015-06-08T10:45:27-04:00\n"
 
 #: ./software-issue-manager/assets/ext/edd/EDD_SL_Plugin_Updater.php:177
 msgid "There is a new version of %1$s available. <a target=\"_blank\" class=\"thickbox\" href=\"%2$s\">View version %3$s details</a>."
@@ -393,71 +393,71 @@ msgstr ""
 msgid "User"
 msgstr ""
 
-#: ./software-issue-manager/assets/ext/emd-meta-box/inc/meta-box.php:103
+#: ./software-issue-manager/assets/ext/emd-meta-box/inc/meta-box.php:107
 msgid "This field is required."
 msgstr ""
 
-#: ./software-issue-manager/assets/ext/emd-meta-box/inc/meta-box.php:104
+#: ./software-issue-manager/assets/ext/emd-meta-box/inc/meta-box.php:108
 msgid "Please fix this field."
 msgstr ""
 
-#: ./software-issue-manager/assets/ext/emd-meta-box/inc/meta-box.php:105
+#: ./software-issue-manager/assets/ext/emd-meta-box/inc/meta-box.php:109
 msgid "Please enter a valid email address."
 msgstr ""
 
-#: ./software-issue-manager/assets/ext/emd-meta-box/inc/meta-box.php:106
+#: ./software-issue-manager/assets/ext/emd-meta-box/inc/meta-box.php:110
 msgid "Please enter a valid URL."
 msgstr ""
 
-#: ./software-issue-manager/assets/ext/emd-meta-box/inc/meta-box.php:107
+#: ./software-issue-manager/assets/ext/emd-meta-box/inc/meta-box.php:111
 msgid "Please enter a valid date."
 msgstr ""
 
-#: ./software-issue-manager/assets/ext/emd-meta-box/inc/meta-box.php:108
+#: ./software-issue-manager/assets/ext/emd-meta-box/inc/meta-box.php:112
 msgid "Please enter a valid date ( ISO )"
 msgstr ""
 
-#: ./software-issue-manager/assets/ext/emd-meta-box/inc/meta-box.php:109
+#: ./software-issue-manager/assets/ext/emd-meta-box/inc/meta-box.php:113
 msgid "Please enter a valid number."
 msgstr ""
 
-#: ./software-issue-manager/assets/ext/emd-meta-box/inc/meta-box.php:110
+#: ./software-issue-manager/assets/ext/emd-meta-box/inc/meta-box.php:114
 msgid "Please enter only digits."
 msgstr ""
 
-#: ./software-issue-manager/assets/ext/emd-meta-box/inc/meta-box.php:111
+#: ./software-issue-manager/assets/ext/emd-meta-box/inc/meta-box.php:115
 msgid "Please enter a valid credit card number."
 msgstr ""
 
-#: ./software-issue-manager/assets/ext/emd-meta-box/inc/meta-box.php:112
+#: ./software-issue-manager/assets/ext/emd-meta-box/inc/meta-box.php:116
 msgid "Please enter the same value again."
 msgstr ""
 
-#: ./software-issue-manager/assets/ext/emd-meta-box/inc/meta-box.php:113
+#: ./software-issue-manager/assets/ext/emd-meta-box/inc/meta-box.php:117
 msgid "Please enter no more than {0} characters."
 msgstr ""
 
-#: ./software-issue-manager/assets/ext/emd-meta-box/inc/meta-box.php:114
+#: ./software-issue-manager/assets/ext/emd-meta-box/inc/meta-box.php:118
 msgid "Please enter at least {0} characters."
 msgstr ""
 
-#: ./software-issue-manager/assets/ext/emd-meta-box/inc/meta-box.php:115
+#: ./software-issue-manager/assets/ext/emd-meta-box/inc/meta-box.php:119
 msgid "Please enter a value between {0} and {1} characters long."
 msgstr ""
 
-#: ./software-issue-manager/assets/ext/emd-meta-box/inc/meta-box.php:116
+#: ./software-issue-manager/assets/ext/emd-meta-box/inc/meta-box.php:120
 msgid "Please enter a value between {0} and {1}."
 msgstr ""
 
-#: ./software-issue-manager/assets/ext/emd-meta-box/inc/meta-box.php:117
+#: ./software-issue-manager/assets/ext/emd-meta-box/inc/meta-box.php:121
 msgid "Please enter a value less than or equal to {0}."
 msgstr ""
 
-#: ./software-issue-manager/assets/ext/emd-meta-box/inc/meta-box.php:118
+#: ./software-issue-manager/assets/ext/emd-meta-box/inc/meta-box.php:122
 msgid "Please enter a value greater than or equal to {0}."
 msgstr ""
 
-#: ./software-issue-manager/assets/ext/emd-meta-box/inc/meta-box.php:268
+#: ./software-issue-manager/assets/ext/emd-meta-box/inc/meta-box.php:272
 msgid "Please correct the errors highlighted below and try again."
 msgstr ""
 
@@ -634,6 +634,50 @@ msgstr ""
 msgid "Activate License"
 msgstr ""
 
+#: ./software-issue-manager/includes/admin/settings-functions.php:31
+msgid "Global"
+msgstr ""
+
+#: ./software-issue-manager/includes/admin/settings-functions.php:36
+msgid "Forms"
+msgstr ""
+
+#: ./software-issue-manager/includes/admin/settings-functions.php:40
+msgid "No settings found."
+msgstr ""
+
+#: ./software-issue-manager/includes/admin/settings-functions.php:45
+msgid "Settings Saved."
+msgstr ""
+
+#: ./software-issue-manager/includes/admin/settings-functions.php:90
+msgid "%s is required."
+msgstr ""
+
+#: ./software-issue-manager/includes/admin/settings-functions.php:300
+msgid "Use the section below to show or hide corresponding form elements. Size column refers to the form elements length relative to the other elements in the same row. Total element size in each row can not exceed 12 units. When you hide or show an element you may adjust sizes of the other elements in the same row. The required form elements are disabled however you can change their sizes. The form elements which are in the same row are color coded."
+msgstr ""
+
+#: ./software-issue-manager/includes/admin/settings-functions.php:360
+msgid "Show %s"
+msgstr ""
+
+#: ./software-issue-manager/includes/admin/settings-functions.php:379
+msgid "Show Captcha"
+msgstr ""
+
+#: ./software-issue-manager/includes/admin/settings-functions.php:381
+msgid "Never Show"
+msgstr ""
+
+#: ./software-issue-manager/includes/admin/settings-functions.php:382
+msgid "Always Show"
+msgstr ""
+
+#: ./software-issue-manager/includes/admin/settings-functions.php:383
+msgid "Visitors Only"
+msgstr ""
+
 #: ./software-issue-manager/includes/admin/singletax/class-emd-single-taxonomy.php:139
 msgid "Most Used"
 msgstr ""
@@ -677,10 +721,6 @@ msgstr ""
 
 #: ./software-issue-manager/includes/admin/store-functions.php:115
 msgid "Like our plugin? Leave us a review"
-msgstr ""
-
-#: ./software-issue-manager/includes/admin/wpas-btn-functions.php:30
-msgid "Forms"
 msgstr ""
 
 #: ./software-issue-manager/includes/admin/wpas-btn-functions.php:37

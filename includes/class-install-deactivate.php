@@ -2,7 +2,7 @@
 /**
  * Install and Deactivate Plugin Functions
  * @package SIM_COM
- * @version 1.3.0
+ * @version 2.0.0
  * @since WPAS 4.0
  */
 if (!defined('ABSPATH')) exit;
@@ -43,6 +43,10 @@ if (!class_exists('Sim_Com_Install_Deactivate')):
 			));
 			add_action('generate_rewrite_rules', 'emd_create_rewrite_rules');
 			add_filter('query_vars', 'emd_query_vars');
+			add_action('admin_init', array(
+				$this,
+				'register_settings'
+			));
 			if (is_admin()) {
 				$this->stax = new Emd_Single_Taxonomy('sim-com');
 			}
@@ -80,6 +84,14 @@ if (!class_exists('Sim_Com_Install_Deactivate')):
 			flush_rewrite_rules();
 			$this->remove_caps_roles();
 			$this->reset_options();
+		}
+		/**
+		 * Register notification and/or license settings
+		 * @since WPAS 4.0
+		 *
+		 */
+		public function register_settings() {
+			emd_glob_register_settings($this->option_name);
 		}
 		/**
 		 * Sets caps and roles
@@ -358,23 +370,32 @@ if (!class_exists('Sim_Com_Install_Deactivate')):
 					'unique_keys' => Array(
 						'emd_prj_name',
 						'emd_prj_version'
-					)
+					) ,
 				) ,
 				'emd_issue' => Array(
 					'label' => __('Issues', 'sim-com') ,
 					'unique_keys' => Array(
 						'emd_iss_id'
-					)
+					) ,
+					'req_blt' => Array(
+						'blt_title' => Array(
+							'msg' => __('Title', 'sim-com')
+						) ,
+					) ,
 				) ,
 			);
 			update_option($this->option_name . '_ent_list', $ent_list);
 			$shc_list['app'] = 'Software Issue Manager';
 			$shc_list['forms']['issue_entry'] = Array(
 				'name' => 'issue_entry',
+				'type' => 'submit',
+				'ent' => 'emd_issue',
 				'page_title' => __('Issue Entry', 'sim-com')
 			);
 			$shc_list['forms']['issue_search'] = Array(
 				'name' => 'issue_search',
+				'type' => 'search',
+				'ent' => 'emd_issue',
 				'page_title' => __('Search Issues', 'sim-com')
 			);
 			if (!empty($shc_list)) {
@@ -385,7 +406,9 @@ if (!class_exists('Sim_Com_Install_Deactivate')):
 				'label' => __('Name', 'sim-com') ,
 				'display_type' => 'text',
 				'required' => 1,
+				'srequired' => 0,
 				'filterable' => 0,
+				'list_visible' => 1,
 				'desc' => __('Sets the name of a project.', 'sim-com') ,
 				'type' => 'char',
 				'minlength' => 3,
@@ -396,7 +419,9 @@ if (!class_exists('Sim_Com_Install_Deactivate')):
 				'label' => __('Version', 'sim-com') ,
 				'display_type' => 'text',
 				'required' => 1,
+				'srequired' => 0,
 				'filterable' => 0,
+				'list_visible' => 1,
 				'desc' => __('Sets the version number of a project.', 'sim-com') ,
 				'type' => 'char',
 				'std' => 'V1.0.0',
@@ -407,7 +432,9 @@ if (!class_exists('Sim_Com_Install_Deactivate')):
 				'label' => __('Start Date', 'sim-com') ,
 				'display_type' => 'date',
 				'required' => 1,
+				'srequired' => 0,
 				'filterable' => 0,
+				'list_visible' => 1,
 				'desc' => __('Sets the start date of a project.', 'sim-com') ,
 				'type' => 'date',
 				'dformat' => array(
@@ -421,7 +448,9 @@ if (!class_exists('Sim_Com_Install_Deactivate')):
 				'label' => __('Target End Date', 'sim-com') ,
 				'display_type' => 'date',
 				'required' => 0,
+				'srequired' => 0,
 				'filterable' => 0,
+				'list_visible' => 1,
 				'desc' => __('Sets the targeted end date of a project.', 'sim-com') ,
 				'type' => 'date',
 				'dformat' => array(
@@ -435,7 +464,9 @@ if (!class_exists('Sim_Com_Install_Deactivate')):
 				'label' => __('Actual End Date', 'sim-com') ,
 				'display_type' => 'date',
 				'required' => 0,
+				'srequired' => 0,
 				'filterable' => 0,
+				'list_visible' => 1,
 				'desc' => __('Sets the actual end date of a project.', 'sim-com') ,
 				'type' => 'date',
 				'dformat' => array(
@@ -449,7 +480,9 @@ if (!class_exists('Sim_Com_Install_Deactivate')):
 				'label' => __('Documents', 'sim-com') ,
 				'display_type' => 'file',
 				'required' => 0,
+				'srequired' => 0,
 				'filterable' => 0,
+				'list_visible' => 1,
 				'desc' => __('Allows to upload project related files.', 'sim-com') ,
 				'type' => 'char',
 			);
@@ -458,7 +491,9 @@ if (!class_exists('Sim_Com_Install_Deactivate')):
 				'label' => __('ID', 'sim-com') ,
 				'display_type' => 'hidden',
 				'required' => 0,
+				'srequired' => 0,
 				'filterable' => 0,
+				'list_visible' => 1,
 				'desc' => __('Sets a unique identifier for an issue.', 'sim-com') ,
 				'type' => 'char',
 				'hidden_func' => 'unique_id',
@@ -469,7 +504,9 @@ if (!class_exists('Sim_Com_Install_Deactivate')):
 				'label' => __('Due Date', 'sim-com') ,
 				'display_type' => 'date',
 				'required' => 0,
+				'srequired' => 0,
 				'filterable' => 0,
+				'list_visible' => 1,
 				'desc' => __('Sets the targeted resolution date for an issue.', 'sim-com') ,
 				'type' => 'date',
 				'dformat' => array(
@@ -483,7 +520,9 @@ if (!class_exists('Sim_Com_Install_Deactivate')):
 				'label' => __('Resolution Summary', 'sim-com') ,
 				'display_type' => 'wysiwyg',
 				'required' => 0,
+				'srequired' => 0,
 				'filterable' => 0,
+				'list_visible' => 0,
 				'desc' => __('Sets a brief summary of the resolution of an issue.', 'sim-com') ,
 				'type' => 'char',
 				'options' => array(
@@ -495,7 +534,9 @@ if (!class_exists('Sim_Com_Install_Deactivate')):
 				'label' => __('Documents', 'sim-com') ,
 				'display_type' => 'file',
 				'required' => 0,
+				'srequired' => 0,
 				'filterable' => 0,
+				'list_visible' => 1,
 				'desc' => __('Allows to upload files related to an issue.', 'sim-com') ,
 				'type' => 'char',
 			);
@@ -504,7 +545,9 @@ if (!class_exists('Sim_Com_Install_Deactivate')):
 				'label' => __('Form Name', 'sim-com') ,
 				'display_type' => 'hidden',
 				'required' => 0,
+				'srequired' => 0,
 				'filterable' => 1,
+				'list_visible' => 0,
 				'type' => 'char',
 				'options' => array() ,
 				'no_update' => 1,
@@ -515,7 +558,9 @@ if (!class_exists('Sim_Com_Install_Deactivate')):
 				'label' => __('Form Submitted By', 'sim-com') ,
 				'display_type' => 'hidden',
 				'required' => 0,
+				'srequired' => 0,
 				'filterable' => 1,
+				'list_visible' => 0,
 				'type' => 'char',
 				'options' => array() ,
 				'hidden_func' => 'user_login',
@@ -526,7 +571,9 @@ if (!class_exists('Sim_Com_Install_Deactivate')):
 				'label' => __('Form Submitted IP', 'sim-com') ,
 				'display_type' => 'hidden',
 				'required' => 0,
+				'srequired' => 0,
 				'filterable' => 1,
+				'list_visible' => 0,
 				'type' => 'char',
 				'options' => array() ,
 				'hidden_func' => 'user_ip',
@@ -535,55 +582,176 @@ if (!class_exists('Sim_Com_Install_Deactivate')):
 			if (!empty($attr_list)) {
 				update_option($this->option_name . '_attr_list', $attr_list);
 			}
+			if (!empty($glob_list)) {
+				update_option($this->option_name . '_glob_list', $glob_list);
+			}
+			$glob_forms_list['issue_entry']['captcha'] = 'show-to-visitors';
+			$glob_forms_list['issue_entry']['blt_title'] = Array(
+				'show' => 1,
+				'row' => 1,
+				'size' => 12,
+				'label' => __('Title', 'sim-com') ,
+				'required' => 1
+			);
+			$glob_forms_list['issue_entry']['blt_content'] = Array(
+				'show' => 1,
+				'row' => 2,
+				'size' => 12,
+				'label' => __('Content', 'sim-com') ,
+				'required' => 0
+			);
+			$glob_forms_list['issue_entry']['emd_iss_due_date'] = Array(
+				'show' => 1,
+				'row' => 3,
+				'size' => 12,
+			);
+			$glob_forms_list['issue_entry']['issue_priority'] = Array(
+				'show' => 1,
+				'row' => 4,
+				'size' => 12,
+			);
+			$glob_forms_list['issue_entry']['issue_cat'] = Array(
+				'show' => 1,
+				'row' => 5,
+				'size' => 12,
+			);
+			$glob_forms_list['issue_entry']['issue_status'] = Array(
+				'show' => 1,
+				'row' => 6,
+				'size' => 12,
+			);
+			$glob_forms_list['issue_entry']['issue_tag'] = Array(
+				'show' => 1,
+				'row' => 7,
+				'size' => 12,
+			);
+			$glob_forms_list['issue_entry']['browser'] = Array(
+				'show' => 1,
+				'row' => 8,
+				'size' => 12,
+			);
+			$glob_forms_list['issue_entry']['operating_system'] = Array(
+				'show' => 1,
+				'row' => 9,
+				'size' => 12,
+			);
+			$glob_forms_list['issue_entry']['emd_iss_document'] = Array(
+				'show' => 1,
+				'row' => 10,
+				'size' => 12,
+			);
+			$glob_forms_list['issue_entry']['rel_project_issues'] = Array(
+				'show' => 1,
+				'row' => 12,
+				'size' => 12,
+			);
+			$glob_forms_list['issue_search']['captcha'] = 'show-to-visitors';
+			$glob_forms_list['issue_search']['emd_iss_id'] = Array(
+				'show' => 1,
+				'row' => 1,
+				'size' => 12,
+			);
+			$glob_forms_list['issue_search']['emd_iss_due_date'] = Array(
+				'show' => 1,
+				'row' => 2,
+				'size' => 12,
+			);
+			$glob_forms_list['issue_search']['issue_cat'] = Array(
+				'show' => 1,
+				'row' => 3,
+				'size' => 12,
+			);
+			$glob_forms_list['issue_search']['issue_priority'] = Array(
+				'show' => 1,
+				'row' => 4,
+				'size' => 12,
+			);
+			$glob_forms_list['issue_search']['issue_status'] = Array(
+				'show' => 1,
+				'row' => 5,
+				'size' => 12,
+			);
+			$glob_forms_list['issue_search']['rel_project_issues'] = Array(
+				'show' => 1,
+				'row' => 6,
+				'size' => 12,
+			);
+			if (!empty($glob_forms_list)) {
+				update_option($this->option_name . '_glob_forms_list', $glob_forms_list);
+			}
 			$tax_list['emd_issue']['issue_priority'] = Array(
 				'label' => __('Priorities', 'sim-com') ,
 				'default' => Array(
 					__('Normal', 'sim-com')
 				) ,
-				'type' => 'single'
+				'type' => 'single',
+				'hier' => 0,
+				'required' => 0,
+				'srequired' => 0
 			);
 			$tax_list['emd_issue']['issue_status'] = Array(
 				'label' => __('Statuses', 'sim-com') ,
 				'default' => Array(
 					__('Open', 'sim-com')
 				) ,
-				'type' => 'single'
+				'type' => 'single',
+				'hier' => 0,
+				'required' => 0,
+				'srequired' => 0
 			);
 			$tax_list['emd_issue']['issue_cat'] = Array(
 				'label' => __('Categories', 'sim-com') ,
 				'default' => Array(
 					__('Bug', 'sim-com')
 				) ,
-				'type' => 'single'
+				'type' => 'single',
+				'hier' => 0,
+				'required' => 0,
+				'srequired' => 0
 			);
 			$tax_list['emd_issue']['issue_tag'] = Array(
 				'label' => __('Tags', 'sim-com') ,
 				'default' => '',
-				'type' => 'multi'
+				'type' => 'multi',
+				'hier' => 0,
+				'required' => 0,
+				'srequired' => 0
 			);
 			$tax_list['emd_project']['project_status'] = Array(
 				'label' => __('Statuses', 'sim-com') ,
 				'default' => Array(
 					__('Draft', 'sim-com')
 				) ,
-				'type' => 'single'
+				'type' => 'single',
+				'hier' => 0,
+				'required' => 1,
+				'srequired' => 0
 			);
 			$tax_list['emd_project']['project_priority'] = Array(
 				'label' => __('Priorities', 'sim-com') ,
 				'default' => Array(
 					__('Medium', 'sim-com')
 				) ,
-				'type' => 'single'
+				'type' => 'single',
+				'hier' => 0,
+				'required' => 1,
+				'srequired' => 0
 			);
 			$tax_list['emd_issue']['browser'] = Array(
 				'label' => __('Browsers', 'sim-com') ,
 				'default' => '',
-				'type' => 'multi'
+				'type' => 'multi',
+				'hier' => 0,
+				'required' => 0,
+				'srequired' => 0
 			);
 			$tax_list['emd_issue']['operating_system'] = Array(
 				'label' => __('Operating Systems', 'sim-com') ,
 				'default' => '',
-				'type' => 'multi'
+				'type' => 'multi',
+				'hier' => 0,
+				'required' => 0,
+				'srequired' => 0
 			);
 			if (!empty($tax_list)) {
 				update_option($this->option_name . '_tax_list', $tax_list);
@@ -592,7 +760,9 @@ if (!class_exists('Sim_Com_Install_Deactivate')):
 				'from' => 'emd_project',
 				'to' => 'emd_issue',
 				'from_title' => __('Project Issues', 'sim-com') ,
-				'to_title' => __('Affected Projects', 'sim-com')
+				'to_title' => __('Affected Projects', 'sim-com') ,
+				'required' => 1,
+				'srequired' => 0
 			);
 			if (!empty($rel_list)) {
 				update_option($this->option_name . '_rel_list', $rel_list);
@@ -685,7 +855,7 @@ if (!class_exists('Sim_Com_Install_Deactivate')):
 ?>
 <div class="updated">
 <?php
-				printf('<p><a href="%1s" target="_blank"> %2$s </a>%3$s<a style="float:right;" href="%4$s"><span class="dashicons dashicons-dismiss" style="font-size:15px;"></span>%5$s</a></p>', 'https://emdplugins.com/plugins/software-issue-manager-professional/?pk_campaign=simcom&pk_source=plugin&pk_medium=link&pk_content=notice', __('Upgrade to Professional Version Now!', 'wpas') , __('&#187;', 'wpas') , esc_url(add_query_arg($this->option_name . '_adm_notice2', true)) , __('Dismiss', 'wpas'));
+				printf('<p><a href="%1s" target="_blank"> %2$s </a>%3$s<a style="float:right;" href="%4$s"><span class="dashicons dashicons-dismiss" style="font-size:15px;"></span>%5$s</a></p>', 'https://emdplugins.com/plugin_tag/sim-com/?pk_campaign=simcom&pk_source=plugin&pk_medium=link&pk_content=notice&discount=SIM20', __('Upgrade Now to Software Issue Manager Premium Editions! Save 20% - Use SIM20 code at checkout.', 'wpas') , __('&#187;', 'wpas') , esc_url(add_query_arg($this->option_name . '_adm_notice2', true)) , __('Dismiss', 'wpas'));
 ?>
 </div>
 <?php

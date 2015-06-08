@@ -2,11 +2,13 @@
 /**
  * Setup and Process submit and search forms
  * @package SIM_COM
- * @version 1.3.0
+ * @version 2.0.0
  * @since WPAS 4.0
  */
 if (!defined('ABSPATH')) exit;
 if (is_admin()) {
+	add_action('wp_ajax_emd_load_file', 'emd_load_file');
+	add_action('wp_ajax_nopriv_emd_load_file', 'emd_load_file');
 	add_action('wp_ajax_nopriv_emd_check_unique', 'emd_check_unique');
 }
 add_action('init', 'sim_com_form_shortcodes', -2);
@@ -34,9 +36,24 @@ add_shortcode('issue_search', 'sim_com_process_issue_search');
  */
 function sim_com_set_issue_entry() {
 	global $file_upload_dir;
-	$show_captcha = 1;
-	if (is_user_logged_in()) {
-		$show_captcha = 0;
+	$show_captcha = 0;
+	$form_variables = get_option('sim_com_glob_forms_list');
+	if (!empty($form_variables['issue_entry']['captcha'])) {
+		switch ($form_variables['issue_entry']['captcha']) {
+			case 'never-show':
+				$show_captcha = 0;
+			break;
+			case 'show-always':
+				$show_captcha = 1;
+			break;
+			case 'show-to-visitors':
+				if (is_user_logged_in()) {
+					$show_captcha = 0;
+				} else {
+					$show_captcha = 1;
+				}
+			break;
+		}
 	}
 	require_once SIM_COM_PLUGIN_DIR . '/assets/ext/zebraform/Zebra_Form.php';
 	$form = new Zebra_Form('issue_entry', 0, 'POST', '', array(
@@ -76,6 +93,7 @@ function sim_com_set_issue_entry() {
 	));
 	$obj->format('m-d-Y');
 	$obj->set_rule(array(
+		'dependencies' => array() ,
 		'date' => array(
 			'error',
 			__('Due Date: Please enter a valid date format', 'sim-com')
@@ -98,10 +116,7 @@ function sim_com_set_issue_entry() {
 	}
 	$obj->add_options($txn_arr);
 	$obj->set_rule(array(
-		'required' => array(
-			'error',
-			__('Priority is required!', 'sim-com')
-		) ,
+		'dependencies' => array() ,
 	));
 	$form->add('label', 'label_issue_cat', 'issue_cat', 'Category', array(
 		'class' => 'control-label'
@@ -120,10 +135,7 @@ function sim_com_set_issue_entry() {
 	}
 	$obj->add_options($txn_arr);
 	$obj->set_rule(array(
-		'required' => array(
-			'error',
-			__('Category is required!', 'sim-com')
-		) ,
+		'dependencies' => array() ,
 	));
 	$form->add('label', 'label_issue_status', 'issue_status', 'Status', array(
 		'class' => 'control-label'
@@ -142,10 +154,7 @@ function sim_com_set_issue_entry() {
 	}
 	$obj->add_options($txn_arr);
 	$obj->set_rule(array(
-		'required' => array(
-			'error',
-			__('Status is required!', 'sim-com')
-		) ,
+		'dependencies' => array() ,
 	));
 	$form->add('label', 'label_issue_tag', 'issue_tag', 'Tag', array(
 		'class' => 'control-label'
@@ -163,7 +172,9 @@ function sim_com_set_issue_entry() {
 		$txn_arr[$txn->slug] = $txn->name;
 	}
 	$obj->add_options($txn_arr);
-	$obj->set_rule(array());
+	$obj->set_rule(array(
+		'dependencies' => array() ,
+	));
 	$form->add('label', 'label_browser', 'browser', 'Browser', array(
 		'class' => 'control-label'
 	));
@@ -180,7 +191,9 @@ function sim_com_set_issue_entry() {
 		$txn_arr[$txn->slug] = $txn->name;
 	}
 	$obj->add_options($txn_arr);
-	$obj->set_rule(array());
+	$obj->set_rule(array(
+		'dependencies' => array() ,
+	));
 	$form->add('label', 'label_operating_system', 'operating_system', 'Operating System', array(
 		'class' => 'control-label'
 	));
@@ -197,10 +210,13 @@ function sim_com_set_issue_entry() {
 		$txn_arr[$txn->slug] = $txn->name;
 	}
 	$obj->add_options($txn_arr);
-	$obj->set_rule(array());
+	$obj->set_rule(array(
+		'dependencies' => array() ,
+	));
 	//file
 	$obj = $form->add('file', 'emd_iss_document', '');
 	$obj->set_rule(array(
+		'dependencies' => array() ,
 		'upload' => array(
 			$file_upload_dir,
 			true,
@@ -238,6 +254,7 @@ function sim_com_set_issue_entry() {
 	}
 	$obj->add_options($rel_ent_arr);
 	$obj->set_rule(array(
+		'dependencies' => array() ,
 		'required' => array(
 			'error',
 			__('Affected Projects is required!', 'sim-com')
@@ -292,6 +309,13 @@ function sim_com_process_issue_entry() {
 		$show_form = 0;
 	}
 	if ($show_form == 1) {
+		wp_enqueue_style('wpasui');
+		wp_enqueue_style('jq-css');
+		wp_enqueue_script('jquery');
+		wp_enqueue_script('jvalidate-js');
+		wp_enqueue_script('jquery-ui-datepicker');
+		wp_enqueue_style('issue-entry-forms');
+		wp_enqueue_script('issue-entry-forms-js');
 		return emd_submit_php_form('issue_entry', 'sim_com', 'emd_issue', 'publish', 'draft', 'Thanks for your submission.', 'There has been an error when submitting your entry. Please contact the site administrator.', 0, 1);
 	} else {
 		return "<div class='alert alert-info not-authorized'>" . __('You are not allowed to access to this area. Please contact the site administrator.', 'sim-com') . "</div>";
@@ -306,9 +330,24 @@ function sim_com_process_issue_entry() {
  */
 function sim_com_set_issue_search() {
 	global $file_upload_dir;
-	$show_captcha = 1;
-	if (is_user_logged_in()) {
-		$show_captcha = 0;
+	$show_captcha = 0;
+	$form_variables = get_option('sim_com_glob_forms_list');
+	if (!empty($form_variables['issue_search']['captcha'])) {
+		switch ($form_variables['issue_search']['captcha']) {
+			case 'never-show':
+				$show_captcha = 0;
+			break;
+			case 'show-always':
+				$show_captcha = 1;
+			break;
+			case 'show-to-visitors':
+				if (is_user_logged_in()) {
+					$show_captcha = 0;
+				} else {
+					$show_captcha = 1;
+				}
+			break;
+		}
 	}
 	require_once SIM_COM_PLUGIN_DIR . '/assets/ext/zebraform/Zebra_Form.php';
 	$form = new Zebra_Form('issue_search', 0, 'POST', '', array(
@@ -323,7 +362,9 @@ function sim_com_set_issue_search() {
 		'class' => 'input-md form-control',
 		'placeholder' => __('ID', 'sim-com')
 	));
-	$obj->set_rule(array());
+	$obj->set_rule(array(
+		'dependencies' => array() ,
+	));
 	//date
 	$form->add('label', 'label_emd_iss_due_date', 'emd_iss_due_date', 'Due Date', array(
 		'class' => 'control-label'
@@ -334,6 +375,7 @@ function sim_com_set_issue_search() {
 	));
 	$obj->format('m-d-Y');
 	$obj->set_rule(array(
+		'dependencies' => array() ,
 		'date' => array(
 			'error',
 			__('Due Date: Please enter a valid date format', 'sim-com')
@@ -355,7 +397,9 @@ function sim_com_set_issue_search() {
 		$txn_arr[$txn->slug] = $txn->name;
 	}
 	$obj->add_options($txn_arr);
-	$obj->set_rule(array());
+	$obj->set_rule(array(
+		'dependencies' => array() ,
+	));
 	$form->add('label', 'label_issue_priority', 'issue_priority', 'Priority', array(
 		'class' => 'control-label'
 	));
@@ -372,7 +416,9 @@ function sim_com_set_issue_search() {
 		$txn_arr[$txn->slug] = $txn->name;
 	}
 	$obj->add_options($txn_arr);
-	$obj->set_rule(array());
+	$obj->set_rule(array(
+		'dependencies' => array() ,
+	));
 	$form->add('label', 'label_issue_status', 'issue_status', 'Status', array(
 		'class' => 'control-label'
 	));
@@ -389,7 +435,9 @@ function sim_com_set_issue_search() {
 		$txn_arr[$txn->slug] = $txn->name;
 	}
 	$obj->add_options($txn_arr);
-	$obj->set_rule(array());
+	$obj->set_rule(array(
+		'dependencies' => array() ,
+	));
 	$form->add('label', 'label_rel_project_issues', 'rel_project_issues', __('Affected Projects', 'sim-com') , array(
 		'class' => 'control-label'
 	));
@@ -419,7 +467,9 @@ function sim_com_set_issue_search() {
 		}
 	}
 	$obj->add_options($rel_ent_arr);
-	$obj->set_rule(array());
+	$obj->set_rule(array(
+		'dependencies' => array() ,
+	));
 	$form->assign('show_captcha', $show_captcha);
 	if ($show_captcha == 1) {
 		//Captcha
@@ -458,6 +508,13 @@ function sim_com_process_issue_search() {
 		$show_form = 0;
 	}
 	if ($show_form == 1) {
+		wp_enqueue_style('wpasui');
+		wp_enqueue_style('jq-css');
+		wp_enqueue_script('jquery');
+		wp_enqueue_script('jvalidate-js');
+		wp_enqueue_script('jquery-ui-datepicker');
+		wp_enqueue_style('issue-search-forms');
+		wp_enqueue_script('issue-search-forms-js');
 		$noresult_msg = __('Your search returned no results.', 'sim-com');
 		return emd_search_php_form('issue_search', 'sim_com', 'emd_issue', $noresult_msg, 'sc_issues');
 	} else {

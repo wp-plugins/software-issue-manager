@@ -3,7 +3,7 @@
  * Entity Class
  *
  * @package SIM_COM
- * @version 1.3.0
+ * @version 2.0.0
  * @since WPAS 4.0
  */
 if (!defined('ABSPATH')) exit;
@@ -27,6 +27,10 @@ class Emd_Project extends Emd_Entity {
 		add_action('init', array(
 			$this,
 			'set_filters'
+		));
+		add_action('admin_init', array(
+			$this,
+			'set_metabox'
 		));
 		add_action('save_post', array(
 			$this,
@@ -63,7 +67,7 @@ class Emd_Project extends Emd_Entity {
 				)) && !in_array($mybox_field['type'], Array(
 					'textarea',
 					'wysiwyg'
-				))) {
+				)) && $mybox_field['list_visible'] == 1) {
 					$columns[$fkey] = $mybox_field['name'];
 				}
 			}
@@ -159,6 +163,11 @@ class Emd_Project extends Emd_Entity {
 				$select_list = get_post_meta($post_id, $column_id, false);
 				if (!empty($select_list)) {
 					$value = implode(', ', $select_list);
+				}
+			break;
+			case 'checkbox':
+				if ($value == 1) {
+					$value = '<span class="dashicons dashicons-yes"></span>';
 				}
 			break;
 		}
@@ -349,14 +358,6 @@ class Emd_Project extends Emd_Entity {
 		))) {
 			self::register();
 		}
-		global $pagenow;
-		if ('post-new.php' === $pagenow || 'post.php' === $pagenow) {
-			if (class_exists('EMD_Meta_Box') && is_array($this->boxes)) {
-				foreach ($this->boxes as $meta_box) {
-					new EMD_Meta_Box($meta_box);
-				}
-			}
-		}
 		if (!function_exists('p2p_register_connection_type')) {
 			return;
 		}
@@ -386,6 +387,18 @@ class Emd_Project extends Emd_Entity {
 				'context' => 'advanced'
 			) ,
 		));
+	}
+	/**
+	 * Initialize metaboxes
+	 * @since WPAS 4.5
+	 *
+	 */
+	public function set_metabox() {
+		if (class_exists('EMD_Meta_Box') && is_array($this->boxes)) {
+			foreach ($this->boxes as $meta_box) {
+				new EMD_Meta_Box($meta_box);
+			}
+		}
 	}
 	/**
 	 * Change content for created frontend views

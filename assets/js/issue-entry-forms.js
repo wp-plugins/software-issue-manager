@@ -21,7 +21,28 @@ onkeyup: false,
 onclick: false,
 errorClass: 'text-danger',
 rules: {
-  blt_title:{
+  'rel_project_issues[]':{
+required:true,
+},
+'issue_priority':{
+required:false,
+},
+'issue_status':{
+required:false,
+},
+'issue_cat':{
+required:false,
+},
+'issue_tag[]':{
+required:false,
+},
+'browser[]':{
+required:false,
+},
+'operating_system[]':{
+required:false,
+},
+blt_title:{
 required : true
 },
 blt_content:{
@@ -32,27 +53,6 @@ required : false
 },
 emd_iss_document:{
 required : false
-},
-'rel_project_issues[]':{
-required:true,
-},
-'issue_priority':{
-required:true,
-},
-'issue_status':{
-required:true,
-},
-'issue_cat':{
-required:true,
-},
-'issue_tag[]':{
-required:false,
-},
-'browser[]':{
-required:false,
-},
-'operating_system[]':{
-required:false,
 },
 },
 success: function(label) {

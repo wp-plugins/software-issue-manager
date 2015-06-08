@@ -2,6 +2,8 @@
 <div class="form-alerts">
 <?php
 echo (isset($zf_error) ? $zf_error : (isset($error) ? $error : ''));
+$form_list = get_option('sim_com_glob_forms_list');
+$form_variables = $form_list['issue_search'];
 ?>
 </div>
 <!-- issue_search Form Description -->
@@ -14,7 +16,8 @@ echo (isset($zf_error) ? $zf_error : (isset($error) ? $error : ''));
 <div class="issue_search_attributes">
 <div id="row13" class="row">
 <!-- text input-->
-<div class="col-md-12 woptdiv">
+<?php if ($form_variables['emd_iss_id']['show'] == 1) { ?>
+<div class="col-md-<?php echo $form_variables['emd_iss_id']['size']; ?> woptdiv">
 <div class="form-group">
 <label id="label_emd_iss_id" class="control-label" for="emd_iss_id">
 <?php _e('ID', 'sim-com'); ?>
@@ -25,10 +28,13 @@ echo (isset($zf_error) ? $zf_error : (isset($error) ? $error : ''));
 <?php echo $emd_iss_id; ?>
 </div>
 </div>
+<?php
+} ?>
 </div>
 <div id="row14" class="row">
 <!-- date-->
-<div class="col-md-12 woptdiv">
+<?php if ($form_variables['emd_iss_due_date']['show'] == 1) { ?>
+<div class="col-md-<?php echo $form_variables['emd_iss_due_date']['size']; ?> woptdiv">
 <div class="form-group">
 <label id="label_emd_iss_due_date" class="control-label" for="emd_iss_due_date">
 <?php _e('Due Date', 'sim-com'); ?>
@@ -38,10 +44,13 @@ echo (isset($zf_error) ? $zf_error : (isset($error) ? $error : ''));
 <?php echo $emd_iss_due_date; ?>
 </div>
 </div>
+<?php
+} ?>
 </div>
 <div id="row15" class="row">
 <!-- Taxonomy input-->
-<div class="col-md-12">
+<?php if ($form_variables['issue_cat']['show'] == 1) { ?>
+<div class="col-md-<?php echo $form_variables['issue_cat']['size']; ?>">
 <div class="form-group">
 <label id="label_issue_cat" class="control-label" for="issue_cat">
 <?php _e('Category', 'sim-com'); ?>
@@ -52,10 +61,13 @@ echo (isset($zf_error) ? $zf_error : (isset($error) ? $error : ''));
 <?php echo $issue_cat; ?>
 </div>
 </div>
+<?php
+} ?>
 </div>
 <div id="row16" class="row">
 <!-- Taxonomy input-->
-<div class="col-md-12">
+<?php if ($form_variables['issue_priority']['show'] == 1) { ?>
+<div class="col-md-<?php echo $form_variables['issue_priority']['size']; ?>">
 <div class="form-group">
 <label id="label_issue_priority" class="control-label" for="issue_priority">
 <?php _e('Priority', 'sim-com'); ?>
@@ -66,10 +78,13 @@ echo (isset($zf_error) ? $zf_error : (isset($error) ? $error : ''));
 <?php echo $issue_priority; ?>
 </div>
 </div>
+<?php
+} ?>
 </div>
 <div id="row17" class="row">
 <!-- Taxonomy input-->
-<div class="col-md-12">
+<?php if ($form_variables['issue_status']['show'] == 1) { ?>
+<div class="col-md-<?php echo $form_variables['issue_status']['size']; ?>">
 <div class="form-group">
 <label id="label_issue_status" class="control-label" for="issue_status">
 <?php _e('Status', 'sim-com'); ?>
@@ -80,10 +95,13 @@ echo (isset($zf_error) ? $zf_error : (isset($error) ? $error : ''));
 <?php echo $issue_status; ?>
 </div>
 </div>
+<?php
+} ?>
 </div>
 <div id="row18" class="row">
 <!-- rel-ent input-->
-<div class="col-md-12">
+<?php if ($form_variables['rel_project_issues']['show'] == 1) { ?>
+<div class="col-md-<?php echo $form_variables['rel_project_issues']['size']; ?>">
 <div class="form-group">
 <label id="label_rel_project_issues" class="control-label" for="rel_project_issues">
 <?php _e('Affected Projects', 'sim-com'); ?>
@@ -94,6 +112,8 @@ echo (isset($zf_error) ? $zf_error : (isset($error) ? $error : ''));
 <?php echo $rel_project_issues; ?>
 </div>
 </div>
+<?php
+} ?>
 </div>
 </div><!--form-attributes-->
 <?php if ($show_captcha == 1) { ?>

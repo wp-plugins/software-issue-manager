@@ -3,7 +3,7 @@
  * Entity Class
  *
  * @package SIM_COM
- * @version 1.3.0
+ * @version 2.0.0
  * @since WPAS 4.0
  */
 if (!defined('ABSPATH')) exit;
@@ -27,6 +27,10 @@ class Emd_Issue extends Emd_Entity {
 		add_action('init', array(
 			$this,
 			'set_filters'
+		));
+		add_action('admin_init', array(
+			$this,
+			'set_metabox'
 		));
 		add_filter('post_updated_messages', array(
 			$this,
@@ -59,7 +63,7 @@ class Emd_Issue extends Emd_Entity {
 				)) && !in_array($mybox_field['type'], Array(
 					'textarea',
 					'wysiwyg'
-				))) {
+				)) && $mybox_field['list_visible'] == 1) {
 					$columns[$fkey] = $mybox_field['name'];
 				}
 			}
@@ -157,6 +161,11 @@ class Emd_Issue extends Emd_Entity {
 					$value = implode(', ', $select_list);
 				}
 			break;
+			case 'checkbox':
+				if ($value == 1) {
+					$value = '<span class="dashicons dashicons-yes"></span>';
+				}
+			break;
 		}
 		echo $value;
 	}
@@ -208,6 +217,45 @@ class Emd_Issue extends Emd_Entity {
 				'comments'
 			)
 		));
+		$issue_status_nohr_labels = array(
+			'name' => __('Statuses', 'sim-com') ,
+			'singular_name' => __('Status', 'sim-com') ,
+			'search_items' => __('Search Statuses', 'sim-com') ,
+			'popular_items' => __('Popular Statuses', 'sim-com') ,
+			'all_items' => __('All', 'sim-com') ,
+			'parent_item' => null,
+			'parent_item_colon' => null,
+			'edit_item' => __('Edit Status', 'sim-com') ,
+			'update_item' => __('Update Status', 'sim-com') ,
+			'add_new_item' => __('Add New Status', 'sim-com') ,
+			'new_item_name' => __('Add New Status Name', 'sim-com') ,
+			'separate_items_with_commas' => __('Seperate Statuses with commas', 'sim-com') ,
+			'add_or_remove_items' => __('Add or Remove Statuses', 'sim-com') ,
+			'choose_from_most_used' => __('Choose from the most used Statuses', 'sim-com') ,
+			'menu_name' => __('Statuses', 'sim-com') ,
+		);
+		register_taxonomy('issue_status', array(
+			'emd_issue'
+		) , array(
+			'hierarchical' => false,
+			'labels' => $issue_status_nohr_labels,
+			'public' => true,
+			'show_ui' => true,
+			'show_in_nav_menus' => true,
+			'show_in_menu' => false,
+			'show_tagcloud' => true,
+			'update_count_callback' => '_update_post_term_count',
+			'query_var' => true,
+			'rewrite' => array(
+				'slug' => 'issue_status'
+			) ,
+			'capabilities' => array(
+				'manage_terms' => 'manage_issue_status',
+				'edit_terms' => 'edit_issue_status',
+				'delete_terms' => 'delete_issue_status',
+				'assign_terms' => 'assign_issue_status'
+			) ,
+		));
 		$operating_system_nohr_labels = array(
 			'name' => __('Operating Systems', 'sim-com') ,
 			'singular_name' => __('Operating System', 'sim-com') ,
@@ -245,84 +293,6 @@ class Emd_Issue extends Emd_Entity {
 				'edit_terms' => 'edit_operating_system',
 				'delete_terms' => 'delete_operating_system',
 				'assign_terms' => 'assign_operating_system'
-			) ,
-		));
-		$issue_priority_nohr_labels = array(
-			'name' => __('Priorities', 'sim-com') ,
-			'singular_name' => __('Priority', 'sim-com') ,
-			'search_items' => __('Search Priorities', 'sim-com') ,
-			'popular_items' => __('Popular Priorities', 'sim-com') ,
-			'all_items' => __('All', 'sim-com') ,
-			'parent_item' => null,
-			'parent_item_colon' => null,
-			'edit_item' => __('Edit Priority', 'sim-com') ,
-			'update_item' => __('Update Priority', 'sim-com') ,
-			'add_new_item' => __('Add New Priority', 'sim-com') ,
-			'new_item_name' => __('Add New Priority Name', 'sim-com') ,
-			'separate_items_with_commas' => __('Seperate Priorities with commas', 'sim-com') ,
-			'add_or_remove_items' => __('Add or Remove Priorities', 'sim-com') ,
-			'choose_from_most_used' => __('Choose from the most used Priorities', 'sim-com') ,
-			'menu_name' => __('Priorities', 'sim-com') ,
-		);
-		register_taxonomy('issue_priority', array(
-			'emd_issue'
-		) , array(
-			'hierarchical' => false,
-			'labels' => $issue_priority_nohr_labels,
-			'public' => true,
-			'show_ui' => true,
-			'show_in_nav_menus' => true,
-			'show_in_menu' => true,
-			'show_tagcloud' => true,
-			'update_count_callback' => '_update_post_term_count',
-			'query_var' => true,
-			'rewrite' => array(
-				'slug' => 'issue_priority'
-			) ,
-			'capabilities' => array(
-				'manage_terms' => 'manage_issue_priority',
-				'edit_terms' => 'edit_issue_priority',
-				'delete_terms' => 'delete_issue_priority',
-				'assign_terms' => 'assign_issue_priority'
-			) ,
-		));
-		$issue_cat_nohr_labels = array(
-			'name' => __('Categories', 'sim-com') ,
-			'singular_name' => __('Category', 'sim-com') ,
-			'search_items' => __('Search Categories', 'sim-com') ,
-			'popular_items' => __('Popular Categories', 'sim-com') ,
-			'all_items' => __('All', 'sim-com') ,
-			'parent_item' => null,
-			'parent_item_colon' => null,
-			'edit_item' => __('Edit Category', 'sim-com') ,
-			'update_item' => __('Update Category', 'sim-com') ,
-			'add_new_item' => __('Add New Category', 'sim-com') ,
-			'new_item_name' => __('Add New Category Name', 'sim-com') ,
-			'separate_items_with_commas' => __('Seperate Categories with commas', 'sim-com') ,
-			'add_or_remove_items' => __('Add or Remove Categories', 'sim-com') ,
-			'choose_from_most_used' => __('Choose from the most used Categories', 'sim-com') ,
-			'menu_name' => __('Categories', 'sim-com') ,
-		);
-		register_taxonomy('issue_cat', array(
-			'emd_issue'
-		) , array(
-			'hierarchical' => false,
-			'labels' => $issue_cat_nohr_labels,
-			'public' => true,
-			'show_ui' => true,
-			'show_in_nav_menus' => true,
-			'show_in_menu' => true,
-			'show_tagcloud' => true,
-			'update_count_callback' => '_update_post_term_count',
-			'query_var' => true,
-			'rewrite' => array(
-				'slug' => 'issue_cat'
-			) ,
-			'capabilities' => array(
-				'manage_terms' => 'manage_issue_cat',
-				'edit_terms' => 'edit_issue_cat',
-				'delete_terms' => 'delete_issue_cat',
-				'assign_terms' => 'assign_issue_cat'
 			) ,
 		));
 		$issue_tag_nohr_labels = array(
@@ -364,6 +334,84 @@ class Emd_Issue extends Emd_Entity {
 				'assign_terms' => 'assign_issue_tag'
 			) ,
 		));
+		$issue_priority_nohr_labels = array(
+			'name' => __('Priorities', 'sim-com') ,
+			'singular_name' => __('Priority', 'sim-com') ,
+			'search_items' => __('Search Priorities', 'sim-com') ,
+			'popular_items' => __('Popular Priorities', 'sim-com') ,
+			'all_items' => __('All', 'sim-com') ,
+			'parent_item' => null,
+			'parent_item_colon' => null,
+			'edit_item' => __('Edit Priority', 'sim-com') ,
+			'update_item' => __('Update Priority', 'sim-com') ,
+			'add_new_item' => __('Add New Priority', 'sim-com') ,
+			'new_item_name' => __('Add New Priority Name', 'sim-com') ,
+			'separate_items_with_commas' => __('Seperate Priorities with commas', 'sim-com') ,
+			'add_or_remove_items' => __('Add or Remove Priorities', 'sim-com') ,
+			'choose_from_most_used' => __('Choose from the most used Priorities', 'sim-com') ,
+			'menu_name' => __('Priorities', 'sim-com') ,
+		);
+		register_taxonomy('issue_priority', array(
+			'emd_issue'
+		) , array(
+			'hierarchical' => false,
+			'labels' => $issue_priority_nohr_labels,
+			'public' => true,
+			'show_ui' => true,
+			'show_in_nav_menus' => true,
+			'show_in_menu' => false,
+			'show_tagcloud' => true,
+			'update_count_callback' => '_update_post_term_count',
+			'query_var' => true,
+			'rewrite' => array(
+				'slug' => 'issue_priority'
+			) ,
+			'capabilities' => array(
+				'manage_terms' => 'manage_issue_priority',
+				'edit_terms' => 'edit_issue_priority',
+				'delete_terms' => 'delete_issue_priority',
+				'assign_terms' => 'assign_issue_priority'
+			) ,
+		));
+		$issue_cat_nohr_labels = array(
+			'name' => __('Categories', 'sim-com') ,
+			'singular_name' => __('Category', 'sim-com') ,
+			'search_items' => __('Search Categories', 'sim-com') ,
+			'popular_items' => __('Popular Categories', 'sim-com') ,
+			'all_items' => __('All', 'sim-com') ,
+			'parent_item' => null,
+			'parent_item_colon' => null,
+			'edit_item' => __('Edit Category', 'sim-com') ,
+			'update_item' => __('Update Category', 'sim-com') ,
+			'add_new_item' => __('Add New Category', 'sim-com') ,
+			'new_item_name' => __('Add New Category Name', 'sim-com') ,
+			'separate_items_with_commas' => __('Seperate Categories with commas', 'sim-com') ,
+			'add_or_remove_items' => __('Add or Remove Categories', 'sim-com') ,
+			'choose_from_most_used' => __('Choose from the most used Categories', 'sim-com') ,
+			'menu_name' => __('Categories', 'sim-com') ,
+		);
+		register_taxonomy('issue_cat', array(
+			'emd_issue'
+		) , array(
+			'hierarchical' => false,
+			'labels' => $issue_cat_nohr_labels,
+			'public' => true,
+			'show_ui' => true,
+			'show_in_nav_menus' => true,
+			'show_in_menu' => false,
+			'show_tagcloud' => true,
+			'update_count_callback' => '_update_post_term_count',
+			'query_var' => true,
+			'rewrite' => array(
+				'slug' => 'issue_cat'
+			) ,
+			'capabilities' => array(
+				'manage_terms' => 'manage_issue_cat',
+				'edit_terms' => 'edit_issue_cat',
+				'delete_terms' => 'delete_issue_cat',
+				'assign_terms' => 'assign_issue_cat'
+			) ,
+		));
 		$browser_nohr_labels = array(
 			'name' => __('Browsers', 'sim-com') ,
 			'singular_name' => __('Browser', 'sim-com') ,
@@ -403,46 +451,55 @@ class Emd_Issue extends Emd_Entity {
 				'assign_terms' => 'assign_browser'
 			) ,
 		));
-		$issue_status_nohr_labels = array(
-			'name' => __('Statuses', 'sim-com') ,
-			'singular_name' => __('Status', 'sim-com') ,
-			'search_items' => __('Search Statuses', 'sim-com') ,
-			'popular_items' => __('Popular Statuses', 'sim-com') ,
-			'all_items' => __('All', 'sim-com') ,
-			'parent_item' => null,
-			'parent_item_colon' => null,
-			'edit_item' => __('Edit Status', 'sim-com') ,
-			'update_item' => __('Update Status', 'sim-com') ,
-			'add_new_item' => __('Add New Status', 'sim-com') ,
-			'new_item_name' => __('Add New Status Name', 'sim-com') ,
-			'separate_items_with_commas' => __('Seperate Statuses with commas', 'sim-com') ,
-			'add_or_remove_items' => __('Add or Remove Statuses', 'sim-com') ,
-			'choose_from_most_used' => __('Choose from the most used Statuses', 'sim-com') ,
-			'menu_name' => __('Statuses', 'sim-com') ,
-		);
-		register_taxonomy('issue_status', array(
-			'emd_issue'
-		) , array(
-			'hierarchical' => false,
-			'labels' => $issue_status_nohr_labels,
-			'public' => true,
-			'show_ui' => true,
-			'show_in_nav_menus' => true,
-			'show_in_menu' => true,
-			'show_tagcloud' => true,
-			'update_count_callback' => '_update_post_term_count',
-			'query_var' => true,
-			'rewrite' => array(
-				'slug' => 'issue_status'
-			) ,
-			'capabilities' => array(
-				'manage_terms' => 'manage_issue_status',
-				'edit_terms' => 'edit_issue_status',
-				'delete_terms' => 'delete_issue_status',
-				'assign_terms' => 'assign_issue_status'
-			) ,
-		));
 		if (!get_option('sim_com_emd_issue_terms_init')) {
+			$set_tax_terms = Array(
+				Array(
+					'name' => __('Open', 'sim-com') ,
+					'slug' => sanitize_title('Open') ,
+					'desc' => __('This issue is in the initial state, ready for the assignee to start work on it.', 'sim-com')
+				) ,
+				Array(
+					'name' => __('In Progress', 'sim-com') ,
+					'slug' => sanitize_title('In Progress') ,
+					'desc' => __('This issue is being actively worked on at the moment.', 'sim-com')
+				) ,
+				Array(
+					'name' => __('Reopened', 'sim-com') ,
+					'slug' => sanitize_title('Reopened') ,
+					'desc' => __('This issue was once \'Resolved\' or \'Closed\', but is now being re-visited, e.g. an issue with a Resolution of \'Cannot Reproduce\' is Reopened when more information becomes available and the issue becomes reproducible. The next issue states are either marked In Progress, Resolved or Closed.', 'sim-com')
+				) ,
+				Array(
+					'name' => __('Closed', 'sim-com') ,
+					'slug' => sanitize_title('Closed') ,
+					'desc' => __('This issue is complete.', 'sim-com')
+				) ,
+				Array(
+					'name' => __('Resolved - Fixed', 'sim-com') ,
+					'slug' => sanitize_title('Resolved - Fixed') ,
+					'desc' => __('A fix for this issue has been implemented.', 'sim-com')
+				) ,
+				Array(
+					'name' => __('Resolved - Won\'t Fix', 'sim-com') ,
+					'slug' => sanitize_title('Resolved - Won\'t Fix') ,
+					'desc' => __('This issue will not be fixed, e.g. it may no longer be relevant.', 'sim-com')
+				) ,
+				Array(
+					'name' => __('Resolved - Duplicate', 'sim-com') ,
+					'slug' => sanitize_title('Resolved - Duplicate') ,
+					'desc' => __('This issue is a duplicate of an existing issue. It is recommended you create a link to the duplicated issue by creating a related issue connection.', 'sim-com')
+				) ,
+				Array(
+					'name' => __('Resolved - Incomplete', 'sim-com') ,
+					'slug' => sanitize_title('Resolved - Incomplete') ,
+					'desc' => __('There is not enough information to work on this issue.', 'sim-com')
+				) ,
+				Array(
+					'name' => __('Resolved - CNR', 'sim-com') ,
+					'slug' => sanitize_title('Resolved - CNR') ,
+					'desc' => __('This issue could not be reproduced at this time, or not enough information was available to reproduce the issue. If more information becomes available, reopen the issue.', 'sim-com')
+				)
+			);
+			self::set_taxonomy_init($set_tax_terms, 'issue_status');
 			$set_tax_terms = Array(
 				Array(
 					'name' => __('Windows 8 (32-bit and 64-bit)', 'sim-com') ,
@@ -566,54 +623,6 @@ class Emd_Issue extends Emd_Entity {
 				)
 			);
 			self::set_taxonomy_init($set_tax_terms, 'browser');
-			$set_tax_terms = Array(
-				Array(
-					'name' => __('Open', 'sim-com') ,
-					'slug' => sanitize_title('Open') ,
-					'desc' => __('This issue is in the initial state, ready for the assignee to start work on it.', 'sim-com')
-				) ,
-				Array(
-					'name' => __('In Progress', 'sim-com') ,
-					'slug' => sanitize_title('In Progress') ,
-					'desc' => __('This issue is being actively worked on at the moment.', 'sim-com')
-				) ,
-				Array(
-					'name' => __('Reopened', 'sim-com') ,
-					'slug' => sanitize_title('Reopened') ,
-					'desc' => __('This issue was once \'Resolved\' or \'Closed\', but is now being re-visited, e.g. an issue with a Resolution of \'Cannot Reproduce\' is Reopened when more information becomes available and the issue becomes reproducible. The next issue states are either marked In Progress, Resolved or Closed.', 'sim-com')
-				) ,
-				Array(
-					'name' => __('Closed', 'sim-com') ,
-					'slug' => sanitize_title('Closed') ,
-					'desc' => __('This issue is complete.', 'sim-com')
-				) ,
-				Array(
-					'name' => __('Resolved - Fixed', 'sim-com') ,
-					'slug' => sanitize_title('Resolved - Fixed') ,
-					'desc' => __('A fix for this issue has been implemented.', 'sim-com')
-				) ,
-				Array(
-					'name' => __('Resolved - Won\'t Fix', 'sim-com') ,
-					'slug' => sanitize_title('Resolved - Won\'t Fix') ,
-					'desc' => __('This issue will not be fixed, e.g. it may no longer be relevant.', 'sim-com')
-				) ,
-				Array(
-					'name' => __('Resolved - Duplicate', 'sim-com') ,
-					'slug' => sanitize_title('Resolved - Duplicate') ,
-					'desc' => __('This issue is a duplicate of an existing issue. It is recommended you create a link to the duplicated issue by creating a related issue connection.', 'sim-com')
-				) ,
-				Array(
-					'name' => __('Resolved - Incomplete', 'sim-com') ,
-					'slug' => sanitize_title('Resolved - Incomplete') ,
-					'desc' => __('There is not enough information to work on this issue.', 'sim-com')
-				) ,
-				Array(
-					'name' => __('Resolved - CNR', 'sim-com') ,
-					'slug' => sanitize_title('Resolved - CNR') ,
-					'desc' => __('This issue could not be reproduced at this time, or not enough information was available to reproduce the issue. If more information becomes available, reopen the issue.', 'sim-com')
-				)
-			);
-			self::set_taxonomy_init($set_tax_terms, 'issue_status');
 			update_option('sim_com_emd_issue_terms_init', true);
 		}
 	}
@@ -642,12 +651,16 @@ class Emd_Issue extends Emd_Entity {
 		))) {
 			self::register();
 		}
-		global $pagenow;
-		if ('post-new.php' === $pagenow || 'post.php' === $pagenow) {
-			if (class_exists('EMD_Meta_Box') && is_array($this->boxes)) {
-				foreach ($this->boxes as $meta_box) {
-					new EMD_Meta_Box($meta_box);
-				}
+	}
+	/**
+	 * Initialize metaboxes
+	 * @since WPAS 4.5
+	 *
+	 */
+	public function set_metabox() {
+		if (class_exists('EMD_Meta_Box') && is_array($this->boxes)) {
+			foreach ($this->boxes as $meta_box) {
+				new EMD_Meta_Box($meta_box);
 			}
 		}
 	}

@@ -3,7 +3,7 @@
  * Settings Glossary Functions
  *
  * @package SIM_COM
- * @version 1.3.0
+ * @version 2.0.0
  * @since WPAS 4.0
  */
 if (!defined('ABSPATH')) exit;
@@ -62,7 +62,7 @@ function sim_com_settings_glossary() {
 <tr>
 <th><?php _e('Category', 'sim-com'); ?></th>
 
-<td><?php _e('Sets the category that an issue belongs to. Category accepts multiple values like tags', 'sim-com'); ?>. <?php _e('Category has a default value of:', 'sim-com'); ?> <?php _e(' bug', 'sim-com'); ?>. <?php _e('Category is a required field therefore must be assigned to a value', 'sim-com'); ?>.<div class="taxdef-block"><p><?php _e('The following are the preset values and value descriptions for <b>Category:</b>', 'sim-com'); ?></p>
+<td><?php _e('Sets the category that an issue belongs to. Category accepts multiple values like tags', 'sim-com'); ?>. <?php _e('Category has a default value of:', 'sim-com'); ?> <?php _e(' bug', 'sim-com'); ?>. <div class="taxdef-block"><p><?php _e('The following are the preset values and value descriptions for <b>Category:</b>', 'sim-com'); ?></p>
 <table class="table tax-table form-table"><tr><td><?php _e('Bug', 'sim-com'); ?></td>
 <td><?php _e('Bugs are software problems or defects in the system that need to be resolved.', 'sim-com'); ?></td>
 </tr>
@@ -80,7 +80,7 @@ function sim_com_settings_glossary() {
 <tr>
 <th><?php _e('Priority', 'sim-com'); ?></th>
 
-<td><?php _e('Sets the priority level assigned to an issue. Priority accepts multiple values like tags', 'sim-com'); ?>. <?php _e('Priority has a default value of:', 'sim-com'); ?> <?php _e(' normal', 'sim-com'); ?>. <?php _e('Priority is a required field therefore must be assigned to a value', 'sim-com'); ?>.<div class="taxdef-block"><p><?php _e('The following are the preset values and value descriptions for <b>Priority:</b>', 'sim-com'); ?></p>
+<td><?php _e('Sets the priority level assigned to an issue. Priority accepts multiple values like tags', 'sim-com'); ?>. <?php _e('Priority has a default value of:', 'sim-com'); ?> <?php _e(' normal', 'sim-com'); ?>. <div class="taxdef-block"><p><?php _e('The following are the preset values and value descriptions for <b>Priority:</b>', 'sim-com'); ?></p>
 <table class="table tax-table form-table"><tr><td><?php _e('Critical', 'sim-com'); ?></td>
 <td><?php _e('Critical bugs either render a system unusable (not being able to create content or upgrade between versions, blocks not displaying, and the like), cause loss of data, or expose security vulnerabilities. These bugs are to be fixed immediately.', 'sim-com'); ?></td>
 </tr>
@@ -102,7 +102,7 @@ function sim_com_settings_glossary() {
 <tr>
 <th><?php _e('Status', 'sim-com'); ?></th>
 
-<td><?php _e('Sets the current status of an issue. Status accepts multiple values like tags', 'sim-com'); ?>. <?php _e('Status has a default value of:', 'sim-com'); ?> <?php _e(' open', 'sim-com'); ?>. <?php _e('Status is a required field therefore must be assigned to a value', 'sim-com'); ?>.<div class="taxdef-block"><p><?php _e('The following are the preset values and value descriptions for <b>Status:</b>', 'sim-com'); ?></p>
+<td><?php _e('Sets the current status of an issue. Status accepts multiple values like tags', 'sim-com'); ?>. <?php _e('Status has a default value of:', 'sim-com'); ?> <?php _e(' open', 'sim-com'); ?>. <div class="taxdef-block"><p><?php _e('The following are the preset values and value descriptions for <b>Status:</b>', 'sim-com'); ?></p>
 <table class="table tax-table form-table"><tr><td><?php _e('Open', 'sim-com'); ?></td>
 <td><?php _e('This issue is in the initial state, ready for the assignee to start work on it.', 'sim-com'); ?></td>
 </tr>

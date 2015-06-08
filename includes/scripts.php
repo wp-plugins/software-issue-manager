@@ -3,7 +3,7 @@
  * Enqueue Scripts Functions
  *
  * @package SIM_COM
- * @version 1.3.0
+ * @version 2.0.0
  * @since WPAS 4.0
  */
 if (!defined('ABSPATH')) exit;
@@ -20,7 +20,7 @@ function sim_com_load_admin_enq($hook) {
 	if ($hook == 'edit-tags.php') {
 		return;
 	}
-	if ($hook == 'toplevel_page_sim_com' || $hook == 'sim-com_page_sim_com_notify') {
+	if ($hook == 'toplevel_page_sim_com' || $hook == 'sim-com_page_sim_com_notify' || $hook == 'sim-com_page_sim_com_settings') {
 		wp_enqueue_script('accordion');
 		return;
 	} else if (in_array($hook, Array(
@@ -42,10 +42,26 @@ function sim_com_load_admin_enq($hook) {
 		$tab_enq = 0;
 		if ($hook == 'post.php' || $hook == 'post-new.php') {
 			$unique_vars['msg'] = __('Please enter a unique value.', 'sim-com');
+			$unique_vars['reqtxt'] = __('required', 'sim-com');
 			$unique_vars['app_name'] = 'sim_com';
 			$ent_list = get_option('sim_com_ent_list');
 			if (!empty($ent_list[$typenow])) {
 				$unique_vars['keys'] = $ent_list[$typenow]['unique_keys'];
+				if (!empty($ent_list[$typenow]['req_blt'])) {
+					$unique_vars['req_blt_tax'] = $ent_list[$typenow]['req_blt'];
+				}
+			}
+			$tax_list = get_option('sim_com_tax_list');
+			if (!empty($tax_list[$typenow])) {
+				foreach ($tax_list[$typenow] as $txn_name => $txn_val) {
+					if ($txn_val['required'] == 1) {
+						$unique_vars['req_blt_tax'][$txn_name] = Array(
+							'hier' => $txn_val['hier'],
+							'type' => $txn_val['type'],
+							'label' => $txn_val['label'] . ' ' . __('Taxonomy', 'sim-com')
+						);
+					}
+				}
 			}
 			wp_enqueue_script('unique_validate-js', SIM_COM_PLUGIN_URL . 'assets/js/unique_validate.js', array(
 				'jquery',
@@ -113,34 +129,19 @@ function sim_com_frontend_scripts() {
 		$local_vars['validate_msg']['min'] = __('Please enter a value greater than or equal to {0}.', 'emd-plugins');
 		$local_vars['unique_msg'] = __('Please enter a unique value.', 'emd-plugins');
 		$wpas_shc_list = get_option('sim_com_shc_list');
-		$check_content = "";
-		if (!is_author() && !is_tax()) {
-			$check_content = get_post(get_the_ID())->post_content;
-		}
-		if (!empty($check_content) && has_shortcode($check_content, 'issue_entry')) {
-			wp_enqueue_script('jquery');
-			wp_enqueue_script('jvalidate-js', $dir_url . 'assets/ext/jvalidate1111/wpas.validate.min.js', array(
-				'jquery'
-			));
-			wp_enqueue_style('jq-css', SIM_COM_PLUGIN_URL . 'assets/css/smoothness-jquery-ui.css');
-			wp_enqueue_style('wpasui', SIM_COM_PLUGIN_URL . 'assets/ext/wpas-jui/wpas-jui.min.css');
-			wp_enqueue_script('jquery-ui-datepicker');
-			wp_enqueue_style('issue-entry-forms', $dir_url . 'assets/css/issue-entry-forms.css');
-			wp_enqueue_script('issue-entry-forms-js', $dir_url . 'assets/js/issue-entry-forms.js');
-			wp_localize_script('issue-entry-forms-js', 'issue_entry_vars', $local_vars);
-		} elseif (!empty($check_content) && has_shortcode($check_content, 'issue_search')) {
-			wp_enqueue_script('jquery');
-			wp_enqueue_script('jvalidate-js', $dir_url . 'assets/ext/jvalidate1111/wpas.validate.min.js', array(
-				'jquery'
-			));
-			wp_enqueue_style('jq-css', SIM_COM_PLUGIN_URL . 'assets/css/smoothness-jquery-ui.css');
-			wp_enqueue_style('wpasui', SIM_COM_PLUGIN_URL . 'assets/ext/wpas-jui/wpas-jui.min.css');
-			wp_enqueue_script('jquery-ui-datepicker');
-			wp_enqueue_style('allview-css', $dir_url . '/assets/css/allview.css');
-			wp_enqueue_style('issue-search-forms', $dir_url . 'assets/css/issue-search-forms.css');
-			wp_enqueue_script('issue-search-forms-js', $dir_url . 'assets/js/issue-search-forms.js');
-			wp_localize_script('issue-search-forms-js', 'issue_search_vars', $local_vars);
-		}
+		wp_register_style('issue-entry-forms', $dir_url . 'assets/css/issue-entry-forms.css');
+		wp_register_script('issue-entry-forms-js', $dir_url . 'assets/js/issue-entry-forms.js');
+		wp_localize_script('issue-entry-forms-js', 'issue_entry_vars', $local_vars);
+		wp_register_style('allview-css', $dir_url . '/assets/css/allview.css');
+		wp_register_style('issue-search-forms', $dir_url . 'assets/css/issue-search-forms.css');
+		wp_register_script('issue-search-forms-js', $dir_url . 'assets/js/issue-search-forms.js');
+		wp_localize_script('issue-search-forms-js', 'issue_search_vars', $local_vars);
+		wp_register_script('jvalidate-js', $dir_url . 'assets/ext/jvalidate1111/wpas.validate.min.js', array(
+			'jquery'
+		));
+		wp_register_style('wpasui', SIM_COM_PLUGIN_URL . 'assets/ext/wpas-jui/wpas-jui.min.css');
+		wp_register_style('jq-css', SIM_COM_PLUGIN_URL . 'assets/css/smoothness-jquery-ui.css');
+		wp_register_style('allview-css', $dir_url . '/assets/css/allview.css');
 		return;
 	}
 	if (is_single() && get_post_type() == 'emd_issue') {

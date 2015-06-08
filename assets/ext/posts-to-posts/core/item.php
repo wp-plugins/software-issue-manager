@@ -108,7 +108,7 @@ function get_edit_user_link( $user_id = null ) {
 	if ( get_current_user_id() == $user->ID )
 		$link = get_edit_profile_url( $user->ID );
 	else
-		$link = add_query_arg( 'user_id', $user->ID, self_admin_url( 'user-edit.php' ) );
+		$link = esc_url(add_query_arg( 'user_id', $user->ID, self_admin_url( 'user-edit.php' ) ));
 
 	return apply_filters( 'get_edit_user_link', $link, $user->ID );
 }
