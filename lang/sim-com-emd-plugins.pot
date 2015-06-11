@@ -7,8 +7,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2015-06-08T10:45:27-04:00\n"
-"POT-Creation-Date: 2015-06-08T10:45:27-04:00\n"
+"PO-Revision-Date: 2015-06-11T10:48:09-04:00\n"
+"POT-Creation-Date: 2015-06-11T10:48:09-04:00\n"
 
 #: ./software-issue-manager/assets/ext/edd/EDD_SL_Plugin_Updater.php:177
 msgid "There is a new version of %1$s available. <a target=\"_blank\" class=\"thickbox\" href=\"%2$s\">View version %3$s details</a>."

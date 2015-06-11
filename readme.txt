@@ -6,7 +6,7 @@ Donate link: https://emarketdesign.com/donate-emarket-design/
 Tags: bug, bug tracking, issue tracking, defect, defect tracking, issues, issue management, product features tracking, task tracking, software development, software requirements management, task management, wp app studio, wpas, issue tracker, projects, project management, requirements, submit issues, submit bugs, issue manager, todo, project planning, bug tracker, enhancement, feature, IMAP, POP3, email, incoming email, post by email
 Requires at least: 4.0 
 Tested up to: 4.2.2
-Stable tag: 2.0.0
+Stable tag: 2.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -102,6 +102,8 @@ SIM Projects are identified by a name and a version number. Projects may have un
 Check the plugin page for details:
 [Enterprise Edition](https://emdplugins.com/plugins/software-issue-manager-enterprise/)
 
+For detailed feature by feature comparison of all editions, go to one of the premium plugin pages and click "Compare" in the menu. You can also open a [support ticket](https://support.emarketdesign.com).
+
 <strong>Enterprise Edition Intro Video</strong> <br>
 
 [youtube https://www.youtube.com/watch?v=IjD3aZSmYhc]
@@ -153,6 +155,8 @@ The simplest way to install is to click on 'Plugins' then 'Add' and type 'Softwa
 9. Modify Issue Entry and Search Issues forms from SIM Com Settings page
 
 == Changelog ==
+= 2.0.1 =
+* Fixed the issue related to some taxonomies not displaying in the admin backend
 = 2.0.0 =
 * Added settings page for form customization such as enable/disable fields, captcha and change field sizes
 * Made some fields optional so that they can be disabled
@@ -185,6 +189,8 @@ The simplest way to install is to click on 'Plugins' then 'Add' and type 'Softwa
 * Initial release.
 
 == Upgrade Notice ==
+= 2.0.1 =
+* Fixed the issue related to some taxonomies not displaying in the admin backend
 = 2.0.0 =
 * Major improvements, bug fixes etc.
 = 1.3.0 =

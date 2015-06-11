@@ -7,8 +7,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2015-06-08T10:45:30-04:00\n"
-"POT-Creation-Date: 2015-06-08T10:45:30-04:00\n"
+"PO-Revision-Date: 2015-06-11T10:48:12-04:00\n"
+"POT-Creation-Date: 2015-06-11T10:48:12-04:00\n"
 
 #: software-issue-manager/forms/issue-entry.php:11
 msgid "<p>Use this <em>form</em> to file <em>issues</em> about projects.</p>"
@@ -816,11 +816,11 @@ msgid "No Issues Found In Trash"
 msgstr ""
 
 #: software-issue-manager/includes/entities/class-emd-issue.php:223
-msgid "Search Statuses"
+msgid "Search Operating Systems"
 msgstr ""
 
 #: software-issue-manager/includes/entities/class-emd-issue.php:224
-msgid "Popular Statuses"
+msgid "Popular Operating Systems"
 msgstr ""
 
 #: software-issue-manager/includes/entities/class-emd-issue.php:225
@@ -833,214 +833,214 @@ msgid "All"
 msgstr ""
 
 #: software-issue-manager/includes/entities/class-emd-issue.php:228
-msgid "Edit Status"
-msgstr ""
-
-#: software-issue-manager/includes/entities/class-emd-issue.php:229
-msgid "Update Status"
-msgstr ""
-
-#: software-issue-manager/includes/entities/class-emd-issue.php:230
-msgid "Add New Status"
-msgstr ""
-
-#: software-issue-manager/includes/entities/class-emd-issue.php:231
-msgid "Add New Status Name"
-msgstr ""
-
-#: software-issue-manager/includes/entities/class-emd-issue.php:232
-msgid "Seperate Statuses with commas"
-msgstr ""
-
-#: software-issue-manager/includes/entities/class-emd-issue.php:233
-msgid "Add or Remove Statuses"
-msgstr ""
-
-#: software-issue-manager/includes/entities/class-emd-issue.php:234
-msgid "Choose from the most used Statuses"
-msgstr ""
-
-#: software-issue-manager/includes/entities/class-emd-issue.php:262
-msgid "Search Operating Systems"
-msgstr ""
-
-#: software-issue-manager/includes/entities/class-emd-issue.php:263
-msgid "Popular Operating Systems"
-msgstr ""
-
-#: software-issue-manager/includes/entities/class-emd-issue.php:267
 msgid "Edit Operating System"
 msgstr ""
 
-#: software-issue-manager/includes/entities/class-emd-issue.php:268
+#: software-issue-manager/includes/entities/class-emd-issue.php:229
 msgid "Update Operating System"
 msgstr ""
 
-#: software-issue-manager/includes/entities/class-emd-issue.php:269
+#: software-issue-manager/includes/entities/class-emd-issue.php:230
 msgid "Add New Operating System"
 msgstr ""
 
-#: software-issue-manager/includes/entities/class-emd-issue.php:270
+#: software-issue-manager/includes/entities/class-emd-issue.php:231
 msgid "Add New Operating System Name"
 msgstr ""
 
-#: software-issue-manager/includes/entities/class-emd-issue.php:271
+#: software-issue-manager/includes/entities/class-emd-issue.php:232
 msgid "Seperate Operating Systems with commas"
 msgstr ""
 
-#: software-issue-manager/includes/entities/class-emd-issue.php:272
+#: software-issue-manager/includes/entities/class-emd-issue.php:233
 msgid "Add or Remove Operating Systems"
 msgstr ""
 
-#: software-issue-manager/includes/entities/class-emd-issue.php:273
+#: software-issue-manager/includes/entities/class-emd-issue.php:234
 msgid "Choose from the most used Operating Systems"
 msgstr ""
 
-#: software-issue-manager/includes/entities/class-emd-issue.php:301
-msgid "Search Tags"
-msgstr ""
-
-#: software-issue-manager/includes/entities/class-emd-issue.php:302
-msgid "Popular Tags"
-msgstr ""
-
-#: software-issue-manager/includes/entities/class-emd-issue.php:306
-msgid "Edit Tag"
-msgstr ""
-
-#: software-issue-manager/includes/entities/class-emd-issue.php:307
-msgid "Update Tag"
-msgstr ""
-
-#: software-issue-manager/includes/entities/class-emd-issue.php:308
-msgid "Add New Tag"
-msgstr ""
-
-#: software-issue-manager/includes/entities/class-emd-issue.php:309
-msgid "Add New Tag Name"
-msgstr ""
-
-#: software-issue-manager/includes/entities/class-emd-issue.php:310
-msgid "Seperate Tags with commas"
-msgstr ""
-
-#: software-issue-manager/includes/entities/class-emd-issue.php:311
-msgid "Add or Remove Tags"
-msgstr ""
-
-#: software-issue-manager/includes/entities/class-emd-issue.php:312
-msgid "Choose from the most used Tags"
-msgstr ""
-
-#: software-issue-manager/includes/entities/class-emd-issue.php:340
+#: software-issue-manager/includes/entities/class-emd-issue.php:262
 msgid "Search Priorities"
 msgstr ""
 
-#: software-issue-manager/includes/entities/class-emd-issue.php:341
+#: software-issue-manager/includes/entities/class-emd-issue.php:263
 msgid "Popular Priorities"
 msgstr ""
 
-#: software-issue-manager/includes/entities/class-emd-issue.php:345
+#: software-issue-manager/includes/entities/class-emd-issue.php:267
 msgid "Edit Priority"
 msgstr ""
 
-#: software-issue-manager/includes/entities/class-emd-issue.php:346
+#: software-issue-manager/includes/entities/class-emd-issue.php:268
 msgid "Update Priority"
 msgstr ""
 
-#: software-issue-manager/includes/entities/class-emd-issue.php:347
+#: software-issue-manager/includes/entities/class-emd-issue.php:269
 msgid "Add New Priority"
 msgstr ""
 
-#: software-issue-manager/includes/entities/class-emd-issue.php:348
+#: software-issue-manager/includes/entities/class-emd-issue.php:270
 msgid "Add New Priority Name"
 msgstr ""
 
-#: software-issue-manager/includes/entities/class-emd-issue.php:349
+#: software-issue-manager/includes/entities/class-emd-issue.php:271
 msgid "Seperate Priorities with commas"
 msgstr ""
 
-#: software-issue-manager/includes/entities/class-emd-issue.php:350
+#: software-issue-manager/includes/entities/class-emd-issue.php:272
 msgid "Add or Remove Priorities"
 msgstr ""
 
-#: software-issue-manager/includes/entities/class-emd-issue.php:351
+#: software-issue-manager/includes/entities/class-emd-issue.php:273
 msgid "Choose from the most used Priorities"
 msgstr ""
 
-#: software-issue-manager/includes/entities/class-emd-issue.php:379
+#: software-issue-manager/includes/entities/class-emd-issue.php:301
 msgid "Search Categories"
 msgstr ""
 
-#: software-issue-manager/includes/entities/class-emd-issue.php:380
+#: software-issue-manager/includes/entities/class-emd-issue.php:302
 msgid "Popular Categories"
 msgstr ""
 
-#: software-issue-manager/includes/entities/class-emd-issue.php:384
+#: software-issue-manager/includes/entities/class-emd-issue.php:306
 msgid "Edit Category"
 msgstr ""
 
-#: software-issue-manager/includes/entities/class-emd-issue.php:385
+#: software-issue-manager/includes/entities/class-emd-issue.php:307
 msgid "Update Category"
 msgstr ""
 
-#: software-issue-manager/includes/entities/class-emd-issue.php:386
+#: software-issue-manager/includes/entities/class-emd-issue.php:308
 msgid "Add New Category"
 msgstr ""
 
-#: software-issue-manager/includes/entities/class-emd-issue.php:387
+#: software-issue-manager/includes/entities/class-emd-issue.php:309
 msgid "Add New Category Name"
 msgstr ""
 
-#: software-issue-manager/includes/entities/class-emd-issue.php:388
+#: software-issue-manager/includes/entities/class-emd-issue.php:310
 msgid "Seperate Categories with commas"
 msgstr ""
 
-#: software-issue-manager/includes/entities/class-emd-issue.php:389
+#: software-issue-manager/includes/entities/class-emd-issue.php:311
 msgid "Add or Remove Categories"
 msgstr ""
 
-#: software-issue-manager/includes/entities/class-emd-issue.php:390
+#: software-issue-manager/includes/entities/class-emd-issue.php:312
 msgid "Choose from the most used Categories"
 msgstr ""
 
-#: software-issue-manager/includes/entities/class-emd-issue.php:418
+#: software-issue-manager/includes/entities/class-emd-issue.php:340
+msgid "Search Tags"
+msgstr ""
+
+#: software-issue-manager/includes/entities/class-emd-issue.php:341
+msgid "Popular Tags"
+msgstr ""
+
+#: software-issue-manager/includes/entities/class-emd-issue.php:345
+msgid "Edit Tag"
+msgstr ""
+
+#: software-issue-manager/includes/entities/class-emd-issue.php:346
+msgid "Update Tag"
+msgstr ""
+
+#: software-issue-manager/includes/entities/class-emd-issue.php:347
+msgid "Add New Tag"
+msgstr ""
+
+#: software-issue-manager/includes/entities/class-emd-issue.php:348
+msgid "Add New Tag Name"
+msgstr ""
+
+#: software-issue-manager/includes/entities/class-emd-issue.php:349
+msgid "Seperate Tags with commas"
+msgstr ""
+
+#: software-issue-manager/includes/entities/class-emd-issue.php:350
+msgid "Add or Remove Tags"
+msgstr ""
+
+#: software-issue-manager/includes/entities/class-emd-issue.php:351
+msgid "Choose from the most used Tags"
+msgstr ""
+
+#: software-issue-manager/includes/entities/class-emd-issue.php:379
 msgid "Search Browsers"
 msgstr ""
 
-#: software-issue-manager/includes/entities/class-emd-issue.php:419
+#: software-issue-manager/includes/entities/class-emd-issue.php:380
 msgid "Popular Browsers"
 msgstr ""
 
-#: software-issue-manager/includes/entities/class-emd-issue.php:423
+#: software-issue-manager/includes/entities/class-emd-issue.php:384
 msgid "Edit Browser"
 msgstr ""
 
-#: software-issue-manager/includes/entities/class-emd-issue.php:424
+#: software-issue-manager/includes/entities/class-emd-issue.php:385
 msgid "Update Browser"
 msgstr ""
 
-#: software-issue-manager/includes/entities/class-emd-issue.php:425
+#: software-issue-manager/includes/entities/class-emd-issue.php:386
 msgid "Add New Browser"
 msgstr ""
 
-#: software-issue-manager/includes/entities/class-emd-issue.php:426
+#: software-issue-manager/includes/entities/class-emd-issue.php:387
 msgid "Add New Browser Name"
 msgstr ""
 
-#: software-issue-manager/includes/entities/class-emd-issue.php:427
+#: software-issue-manager/includes/entities/class-emd-issue.php:388
 msgid "Seperate Browsers with commas"
 msgstr ""
 
-#: software-issue-manager/includes/entities/class-emd-issue.php:428
+#: software-issue-manager/includes/entities/class-emd-issue.php:389
 msgid "Add or Remove Browsers"
 msgstr ""
 
-#: software-issue-manager/includes/entities/class-emd-issue.php:429
+#: software-issue-manager/includes/entities/class-emd-issue.php:390
 msgid "Choose from the most used Browsers"
 msgstr ""
 
-#: software-issue-manager/includes/entities/class-emd-issue.php:549
+#: software-issue-manager/includes/entities/class-emd-issue.php:418
+msgid "Search Statuses"
+msgstr ""
+
+#: software-issue-manager/includes/entities/class-emd-issue.php:419
+msgid "Popular Statuses"
+msgstr ""
+
+#: software-issue-manager/includes/entities/class-emd-issue.php:423
+msgid "Edit Status"
+msgstr ""
+
+#: software-issue-manager/includes/entities/class-emd-issue.php:424
+msgid "Update Status"
+msgstr ""
+
+#: software-issue-manager/includes/entities/class-emd-issue.php:425
+msgid "Add New Status"
+msgstr ""
+
+#: software-issue-manager/includes/entities/class-emd-issue.php:426
+msgid "Add New Status Name"
+msgstr ""
+
+#: software-issue-manager/includes/entities/class-emd-issue.php:427
+msgid "Seperate Statuses with commas"
+msgstr ""
+
+#: software-issue-manager/includes/entities/class-emd-issue.php:428
+msgid "Add or Remove Statuses"
+msgstr ""
+
+#: software-issue-manager/includes/entities/class-emd-issue.php:429
+msgid "Choose from the most used Statuses"
+msgstr ""
+
+#: software-issue-manager/includes/entities/class-emd-issue.php:501
 msgid "Mac OS X 10.5 Leopard"
 msgstr ""
 
@@ -1099,76 +1099,76 @@ msgstr ""
 msgid "No Issues found."
 msgstr ""
 
-#: software-issue-manager/includes/forms.php:73
-msgid "Title is required"
-msgstr ""
-
-#: software-issue-manager/includes/forms.php:81
-msgid "Enter text ..."
-msgstr ""
-
-#: software-issue-manager/includes/forms.php:99
-#: software-issue-manager/includes/forms.php:381
+#: software-issue-manager/includes/forms.php:85
+#: software-issue-manager/includes/forms.php:297
 msgid "Due Date: Please enter a valid date format"
 msgstr ""
 
-#: software-issue-manager/includes/forms.php:107
-#: software-issue-manager/includes/forms.php:126
-#: software-issue-manager/includes/forms.php:145
-#: software-issue-manager/includes/forms.php:165
-#: software-issue-manager/includes/forms.php:184
-#: software-issue-manager/includes/forms.php:203
-#: software-issue-manager/includes/forms.php:233
-#: software-issue-manager/includes/forms.php:390
-#: software-issue-manager/includes/forms.php:409
-#: software-issue-manager/includes/forms.php:428
-#: software-issue-manager/includes/forms.php:447
+#: software-issue-manager/includes/forms.php:94
+#: software-issue-manager/includes/forms.php:113
+#: software-issue-manager/includes/forms.php:132
+#: software-issue-manager/includes/forms.php:151
+#: software-issue-manager/includes/forms.php:305
+#: software-issue-manager/includes/forms.php:324
+#: software-issue-manager/includes/forms.php:343
+#: software-issue-manager/includes/forms.php:363
+#: software-issue-manager/includes/forms.php:382
+#: software-issue-manager/includes/forms.php:401
+#: software-issue-manager/includes/forms.php:431
 msgid "Please Select"
 msgstr ""
 
-#: software-issue-manager/includes/forms.php:230
-#: software-issue-manager/includes/forms.php:444
+#: software-issue-manager/includes/forms.php:148
+#: software-issue-manager/includes/forms.php:428
 msgid "Please select"
 msgstr ""
 
-#: software-issue-manager/includes/forms.php:260
-msgid "Affected Projects is required!"
-msgstr ""
-
-#: software-issue-manager/includes/forms.php:278
-#: software-issue-manager/includes/forms.php:477
+#: software-issue-manager/includes/forms.php:181
+#: software-issue-manager/includes/forms.php:476
 msgid "Please enter the characters with black color."
 msgstr ""
 
-#: software-issue-manager/includes/forms.php:280
-#: software-issue-manager/includes/forms.php:479
+#: software-issue-manager/includes/forms.php:183
+#: software-issue-manager/includes/forms.php:478
 msgid "Code"
 msgstr ""
 
-#: software-issue-manager/includes/forms.php:285
-#: software-issue-manager/includes/forms.php:484
+#: software-issue-manager/includes/forms.php:188
+#: software-issue-manager/includes/forms.php:483
 msgid "Captcha is required"
 msgstr ""
 
-#: software-issue-manager/includes/forms.php:289
-#: software-issue-manager/includes/forms.php:488
+#: software-issue-manager/includes/forms.php:192
+#: software-issue-manager/includes/forms.php:487
 msgid "Characters from captcha image entered incorrectly!"
 msgstr ""
 
-#: software-issue-manager/includes/forms.php:293
-msgid "Create Issue"
-msgstr ""
-
-#: software-issue-manager/includes/forms.php:321
-msgid "You are not allowed to access to this area. Please contact the site administrator."
-msgstr ""
-
-#: software-issue-manager/includes/forms.php:518
+#: software-issue-manager/includes/forms.php:222
 msgid "Your search returned no results."
 msgstr ""
 
-#: software-issue-manager/includes/forms.php:521
+#: software-issue-manager/includes/forms.php:225
 msgid "<p>You are not allowed to access to this area. Please contact the site administrator.</p>"
+msgstr ""
+
+#: software-issue-manager/includes/forms.php:271
+msgid "Title is required"
+msgstr ""
+
+#: software-issue-manager/includes/forms.php:279
+msgid "Enter text ..."
+msgstr ""
+
+#: software-issue-manager/includes/forms.php:458
+msgid "Affected Projects is required!"
+msgstr ""
+
+#: software-issue-manager/includes/forms.php:491
+msgid "Create Issue"
+msgstr ""
+
+#: software-issue-manager/includes/forms.php:519
+msgid "You are not allowed to access to this area. Please contact the site administrator."
 msgstr ""
 
 #: software-issue-manager/includes/scripts.php:44
